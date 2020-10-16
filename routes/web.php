@@ -83,6 +83,12 @@ Route::get('editprosesproduksi', [
 Route::get('addtocartpenerimaanBB/{kode}',[
     'uses' => 'bahanbakuController@addtocartpenerimaanBB'
 ]);
+Route::get('updateBB/{kode2}',[
+    'uses' => 'bahanbakuController@updateBB'
+]);
+Route::get('editbahanbaku',[
+    'uses' => 'bahanbakuController@editbahanbaku'
+]);
 Route::get('newpenerimaanBB',[
     'uses' => 'bahanbakuController@newpenerimaanBB'
 ]);
@@ -137,6 +143,9 @@ Route::get('addtocartDPS/{kode}',[
 ]);
 Route::get('updatetfpembelian/{kode1}',[
     'uses' => 'manajemenpembelianController@updatetfpembelian'
+]);
+Route::get('edittfpembelian', [
+	'uses' => 'manajemenpembelianController@edittfpembelian'
 ]);
 Route::post('savetfpembelian',[
     'uses' => 'manajemenpembelianController@savetfpembelian'

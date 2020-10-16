@@ -24,7 +24,7 @@
                     <td>{{$row->nonotaTFPembelian}}</td>
                     <td>{{$row->tglpembelianTF}}</td>
                     <td>{{$row->statusTF}}</td>
-                    <td></td>
+                    <td><a class="waves-effect waves-light btn modal-trigger red left" href="{!! url('updatetfpembelian/'.$row->nonotaTFPembelian); !!}">CHECK</a></td>
                   </tr>
                   @endforeach
                 </table>

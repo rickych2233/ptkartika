@@ -59,35 +59,66 @@ class manajemenpembelianController extends Controller
 		return view("tfpembelian")->with($data);
 	}
 	
-	function updatetfpembelian($nonotaPP)
+	public function edittfpembelian(){
+		$gettfpembelian 			= new tfpembelian();
+		$data['datatfpembelian'] 	= $gettfpembelian->all();
+
+		$getdetailTF 			= new detailtfpembelian();
+		$data['datadetailTF'] 	= $getdetailTF->all();
+		return view("edittfpembelian")->with($data);
+	}
+
+	function updatetfpembelian($nonotaTF)
 	{
 		$cart = array();
 		$dataPP = [];
 		$jum = 0;
-		$getPP				= new prosesproduksi();
-		$data['dataPP']		= $getPP->all();
-		if(session()->get('sessioneditPP'))
+		$getTF				= new tfpembelian();
+		$data['dataTF']		= $getTF->all();
+		if(session()->get('sessioneditTF'))
 		{
-			$cart	= session()->get('sessioneditPP');
+			$cart	= session()->get('sessioneditTF');
+			// dd($nonotaTF);
 			$jum	= count($cart);
 		}
-		foreach($data['dataPP'] as $row)
+		foreach($data['dataTF'] as $row)
 		{
-			if($row->nonotaPP == $nonotaPP)
+			if($row->nonotaTFPembelian == $nonotaTF)
 			{
-				$cart[$jum]['nonotaPP']		 	= $row->nonotaPP;
-				session()->put("sessioneditPP",$cart);
-				// echo "<script>alert('$txtqtyDPP');</script>";
-				return redirect('editprosesproduksi');
+				$cart[$jum]['nonotaTFPembelian']		 	= $row->nonotaTFPembelian;
+				session()->put("sessioneditTF",$cart);
+				return redirect('edittfpembelian');
 			}
 		}
 	}
     
     public function savetfpembelian(Request $request){
 		if($request->input("btncancels")) {
+			$request->session()->forget('notaDTF');
 			return $this->viewtfpembelian();
-		}
-		else if($request->input("btnInsert")){
+		}else if($request->input("btnupdateTF")){
+			$update = tfpembelian::find($request->txtupnonotaTF);
+			$update->kodesupplier 		= $request->txtupkodesupplierTF;
+			$update->tglpembelianTF 	= $request->txtuptglpembelianTF;
+			$update->statusTF 			= $request->txtupstatusTF;
+			$update->jenispembayaranTF 	= $request->txtupjenispembayaranTF;
+			$update->save();
+			$tempss2 = $request->txtupnomornotaDBJ;
+			$temps3 = session()->get('notaDTF');
+			// dd($temps3);
+			for($i=0; $i< count($temps3); $i++){
+				$update1 = detailtfpembelian::find($request['txtupnonotaDTF'.$temps3[$i]]);
+				$update1->barangbakuDTFPembelian 		= $request['txtupbarangbakuDTF'.$temps3[$i]];
+				$update1->hargaDTFPembelian 			= $request['txthargaDTF'.$temps3[$i]];
+				$update1->qtyDTFPembelian				= $request['txtupqtyDTF'.$temps3[$i]];
+				$update1->grandtotalDTF 				= $request['txtupgrandDTF'.$temps3[$i]];
+				$update1->nonotaTFPembelian 			= $request->txtupnonotaTF;
+				$update1->save();
+			}
+			Alert::success('Success', 'Success Message');
+			$request->session()->forget('notaDTF');
+			return redirect('viewtfpembelian');
+		}else if($request->input("btnInsert")){
 			$rules = [
 				'txtnonotaTFPembelian'	=> 'required',
 				'txtkodesupplierTF'		=> 'required',

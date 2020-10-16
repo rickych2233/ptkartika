@@ -128,7 +128,7 @@
                     <?php
                       $temp3[$idx] = $temp2;
                       $idx++;
-                      dd($temp2);
+                      // dd($temp2);
                     ?>
                     {{Form::hidden('txtupnomornotaDBJ'.$temp2, $rows->nonotaDBJ, ['id'=>'txtupnomornotaDBJ'.$temp2])}}
                     <td>{{Form::text('txtupnamabarangDBJ'.$temp2, $rows->namabarangDBJ, ['id'=>'txtupnamabarangDBJ'.$temp2, 'readonly'=>'readonly',''])}}</td>

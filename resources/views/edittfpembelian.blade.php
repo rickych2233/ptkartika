@@ -1,153 +1,128 @@
 @extends('layouts.headerAdmin')
 <?php
-  $getstatus = "AKTIF";
-
-  $pembayaran['LUNAS']        = "LUNAS"; 
-  $pembayaran['HUTANG']       = "HUTANG";  
-
-  $getkodesupplier = [];
-  foreach($datasupplier as $rows){
-    $getkodesupplier[$rows->kodesupplier] = $rows->namasupplier;
+  $temp;
+  $temp2;
+  $temp3 = [];
+  $index = 0;
+  if(session()->get("sessioneditTF")){
+    $cart = session()->get("sessioneditTF");
+    // dd($cart);
+    $jum  = count($cart);
+    for($j=0; $j < $jum; $j++){
+      $temp = $cart[$j]['nonotaTFPembelian'];
+    }
   }
-  $tempAJAX = [];
+  // dd($temp);
 ?>
 @section('content')
-@if($errors->any())
-  <div class="alert alert-danger">
-    <ul>
-    @foreach($errors->all() as $error)
-      <?php
-        if($error == ""){
-          Alert::success('Success Title', 'Success Message');
-        }else{
-          Alert::error('Error Message', $error);
-        }
-      ?>
-    @endforeach
-    </ul>
-  </div>
-@endif
+
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savetfpembelian')) }}
     <div class="main">
       <div class="row">
+        <div class="col m1"></div>
           <div class="col m5">
             <div class="card-panel">
               <div class="row">
-                <div class="row">
-                  <div class="col m3">Nomor Nota :</div>
+                <h5>Update Kategori Barang<a href=""><span></span></a><hr></h5>
+                @foreach($datatfpembelian as $row)
+                  @if($row->nonotaTFPembelian == $temp)
+                  <div class="row">
+                    <div class="col m3">Nomor Nota :</div>
+                  </div>
+                  <div class="row">
+                      <div class=" col m6">
+                        {{Form::text('txtupnonotaTF', $row->nonotaTFPembelian, ['id'=>'txtupnonotaTF', 'readonly'=>'readonly'])}}
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col m3">Bahan Baku :</div>
+                  </div>
+                  <div class="row">
+                      <div class=" col m6">
+                        {{Form::text('txtupkodesupplierTF', $row->kodesupplier, ['id'=>'txtupkodesupplierTF'])}}
+                      </div>
+                  </div>
+                  
+              <!-- Tombol Submit -->
+              <div class="row">
+                <div class=" col m8">
+                {{Form::submit('Update',['name'=>'btnupdateTF','id'=>'btnupdateTF','class'=>'btn waves-light btn-medium'])}}
+                {{ Form::submit('cancel',['name'=>'btncancels','id'=>'btncancels','class'=>'btn waves-light btn-medium red']) }}
                 </div>
-                <div class="row">
-                    <div class=" col m6">
-                      <?php
-                        $date = date('Ym');
-                        $jum      = $datatfpembelian->count() + 1; 
-                        $kodejum  = "PS".$date.str_pad($jum, 3, "0",STR_PAD_LEFT);
-                      ?>
-                      {{Form::text('txtnonotaTFPembelian', $kodejum, ['id'=>'txtnonotaTFPembelian', 'readonly'=>'readonly'])}}
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="col m3">Kode Supplier :</div>
-                </div>
-                <div class="row">
-                    <div class=" col m6">
-                      {{ Form::select('txtkodesupplierTF',$getkodesupplier , null,['id'=>'txtkodesupplierTF', 'class'=>'validate browser-default','onchange'=>'ubahalamat()']) }}
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="col m6">Nomor Supplier :</div>
-                </div>
-                <div class="row">
-                    <div class=" col m6">
-                      {{Form::text('txtnomorhpsupplierTF', '', ['id'=>'txtnomorhpsupplierTF','','class'=>'validate','readonly'=>'readonly'])}}
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="col m6">Alamat Supplier :</div>
-                </div>
-                <div class="row">
-                    <div class=" col m6">
-                      {{Form::text('txtalamatsupplierTF', '', ['id'=>'txtalamatsupplierTF','','class'=>'validate','readonly'=>'readonly'])}}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class=" col m8">
-                      {{Form::submit('Proses Produksi',['name'=>'btnInsert','id'=>'btnInsert','class'=>'btn waves-light btn-medium'])}}
-                      <input  type='submit' class='btn waves-light btn-medium' name='btncancels' id='btncancels' value='Cancel'>
-                    </div>
-                </div>
+              </div>
               </div>
             </div>
           </div>
-          <div class="col m7">
+          <div class="col m5">
             <div class="card-panel">
               <div class="row">
-              <div class="row">
-                  <div class="col m4">Tanggal Pembelian :</div>
-                </div>
-                <div class="row">
-                    <div class=" col m6">   
-                      {{Form::date('txttglpembelianTF', date('Y-m-d'), ['id'=>'txttglpembelianTF','','readonly'=>'readonly'])}}
+                    <div class="row">
+                      <div class="col m6">Tanggal Pembelian Bahan Baku :</div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class=" col m6">
-                      {{Form::hidden('txtstatusTF', $getstatus, ['id'=>'txtstatusTF','','class'=>'validate'])}}
+                    <div class="row">
+                        <div class=" col m6">
+                          {{Form::text('txtuptglpembelianTF', $row->tglpembelianTF, ['id'=>'txtuptglpembelianTF'])}}
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                  <div class="col m6">Jenis Pembayaran :</div>
-                </div>
-                <div class="row">
-                    <div class=" col m6">
-                      {{ Form::select('txtjenispembayaranTF', $pembayaran, null, ['id'=>'txtjenispembayaranTF', 'class'=>'validate browser-default']) }}
+                    <div class="row">
+                      <div class="col m3">Status:</div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class=" col m6">
+                          {{Form::text('txtupstatusTF', $row->statusTF, ['id'=>'txtupstatusTF', 'readonly'=>'readonly'])}}
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col m5">Jenis Pembayaran :</div>
+                    </div>
+                    <div class="row">
+                        <div class=" col m6">
+                          {{Form::text('txtupjenispembayaranTF', $row->jenispembayaranTF, ['id'=>'txtupjenispembayaranTF'])}}
+                        </div>
+                    </div>
+                  @endif
+                @endforeach
               </div>
             </div>
           </div>
-          <div class="center col m7">
+          <div class="col m7 offset-m3">
             <div class="card-panel">
               <div class="row">
-                <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newtfpembelian'); !!}"><i class="large material-icons">shopping_cart</i></a>
                 <table border="1">
                   <tr>
-                    <th>Nama Barang</th>
-                    <th>Satuan</th>
-                    <th>harga</th>
-                    <th>Action</th>
+                    <th>Bahan Baku</th>
+                    <th>Harga Pembelian</th>
+                    <th>Qty Bahan Baku</th>
                     <th>Grand Total</th>
                   </tr>
-                  @if(session()->get("cartDPS")) 
-                    @php($cart = session()->get("cartDPS"))
-                    @php($jum  = count($cart))
-                    <input name="somedataasd" type="hidden" value="<?php echo ($jum); ?>" >
-                    @for($j=0; $j < $jum; $j++)
-                      <tr>
-                        @php($temp1 = $cart[$j]['kodebarang'])
-                        @php($temp2 = $cart[$j]['harga'])
-                        <input name="txtbarangbakuDTFPembelian" id="txtbarangbakuDTFPembelian" type="hidden" value="<?php echo ($temp1); ?>" >
-                        <td>{{$cart[$j]['namabarang']}}</td>
-                        <td>{{$cart[$j]['satuan']}}</td>
-                        <td>{{$cart[$j]['harga']}}</td>
-                        {{Form::hidden('txthargaDPP'.$temp1, $cart[$j]['harga'],['id'=>'txthargaDPP'.$temp1])}}
-                        <td>{{Form::text('txtqtyDTFPembelian'.$temp1, '', ['id'=>'txtqtyDTFPembelian'.$temp1,'','class'=>'col s3', '','onkeyup'=>"penambahan('$temp1')"])}}</td>
-                        <td>{{Form::text('txtgrandtotalDTF'.$temp1, '', ['id'=>'txtgrandtotalDTF'.$temp1,'','class'=>'col s3','readonly'=>'readonly'])}}</td>
-                      </tr>
-                    @endfor
-                    @php($tempAJAX = $temp1)
-                  @endif
-                  
+                  @foreach($datadetailTF as $rows)
+                    @if($rows->nonotaTFPembelian == $temp)
+                    @php($temp2 = $rows->nonotaDTFPembelian)
+                    <tr>
+                      <?php
+                        $temp3[$index] = $rows->nonotaDTFPembelian;
+                        $index++;
+                      ?>
+                      {{Form::hidden('txtupnonotaDTF'.$temp2, $rows->nonotaDTFPembelian,['id'=>'txtupnonotaDTF'.$temp2])}} 
+                      
+                      <td>{{$rows->barangbakuDTFPembelian}}</td>
+                      {{Form::hidden('txtupbarangbakuDTF'.$temp2, $rows->barangbakuDTFPembelian,['id'=>'txtupbarangbakuDTF'.$temp2])}}
+                      
+                      <td>{{$rows->hargaDTFPembelian}}</td>
+                      {{Form::hidden('txthargaDTF'.$temp2, $rows->hargaDTFPembelian,['id'=>'txthargaDTF'.$temp2])}} 
+                      
+                      <td>{{Form::text('txtupqtyDTF'.$temp2, $rows->qtyDTFPembelian, ['id'=>'txtupqtyDTF'.$temp2,'onkeyup'=>"penambahan($temp2)"])}}</td>
+                      <td>{{Form::text('txtupgrandDTF'.$temp2, $rows->grandtotalDTF, ['id'=>'txtupgrandDTF'.$temp2])}}</td>
+                    </tr>
+                    @endif
+                  @endforeach
                 </table>
+                <?php
+                  session(['notaDTF' => $temp3]);
+                ?>
               </div>
             </div>
-          </div>
-          <!-- Tombol Submit -->
-          <div class="row">
-              <div class=" col m6">
-                
-              </div>
           </div>
       </div>
     </div>
@@ -162,53 +137,28 @@
   <script type="text/javascript" src="{{ URL::asset('js/materialize.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/materialize.min.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/toastr/latest/css/toastr.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script>
-  //AJAX
-  var myurl = "<?php echo URL::to('/'); ?>";
-  function ubahalamat(){
-    // alert(myurl);
-    var kodesupplier = $("#txtkodesupplierTF").val();
-    // alert(kodesupplier);
-    $.get(myurl + '/getkodesupplier',
-    { kodesupplier: kodesupplier  },
-      function(result){ //alert(result);
-        var arr = JSON.parse(result);
-        var kal1 = "";
-        var kal2 = "";
-        var kal3 = "";
-        for(var i=0; i < arr.length; i++){
-          kal1 = arr[i].nomorhpsupplier;
-          kal2 = arr[i].alamatsupplier;
-          kal3 = arr[i].statussupplier;
-          $("#txtnomorhpsupplierTF").val(kal1);
-          $("#txtalamatsupplierTF").val(kal2);
-          $("#txtsstatussupplierTF").val(kal3);
-        }
-      }
-    );
-  }
-
   function penambahan(kodebarang){
-    //alert(myurl);
-    //alert(kodebarang);
-    var qty   = $("#txtqtyDTFPembelian" + kodebarang).val();
-    var hrg   = $("#txthargaDPP" + kodebarang).val();
-    //alert(hrg);
+    var hrg   = $("#txthargaDTF" + kodebarang).val();
+    var qty   = $("#txtupqtyDTF" + kodebarang).val();
     var hasil = hrg * qty;
-    $("#txtgrandtotalDTF" + kodebarang).val(hasil);
+    $("#txtupgrandDTF" + kodebarang).val(hasil);
   }
 
-  //Materialize
   $(document).ready(function(){
     $('.sidenav').sidenav();
     $('.modal').modal();
   });
-  $('.dropdown-trigger').dropdown();
   
+
+  function updatedata(kode,nama,status){
+    $('#txtupkodekategoribarang').val(kode);
+    $('#txtupnamakategoribarang').val(nama);
+    $('#txtupstatuskategoribarang').val(status);
+  }
+
   //modal
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');

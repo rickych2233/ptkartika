@@ -1,5 +1,8 @@
 @extends('layouts.headerAdmin')
-
+<?php
+  $getstatus['AKTIF']     = "AKTIF"; 
+  $getstatus['TIDAK AKTIF'] = "TIDAK AKTIF"; 
+?>
 
 
 @section('content')
@@ -9,29 +12,17 @@
     <div class="main">
       <div class="row">
         <div class="col m1"></div>
-          <div class="col m10">
+          <div class="col m5">
             <div class="card-panel">
               <div class="row">
-                  <h5>Penerimaan Bahan Baku<a href=""><span></span></a><hr></h5>
-                  <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newpenerimaanBB'); !!}"><i class="large material-icons">add</i></a>
-                <table border="1">
-                  <tr>
-                    <th>Nomor Nota</th>
-                    <th>Tanggal Penerimaan</th>
-                    <th>Status Penerimaan</th>
-                    <th>Jenis Penerimaan</th>
-                    <th>ACTION</th>
-                  </tr>
-                  @foreach($datapenerimaanbb as $row)
-                  <tr>
-                    <td>{{$row->nonotapenerimaanBB}}</td>
-                    <td>{{$row->tglpenerimaanBB}}</td>
-                    <td>{{$row->statuspenerimaanBB}}</td>
-                    <td>{{$row->jenispembayaranBB}}</td>
-                    <td><a class="waves-effect waves-light btn modal-trigger red left" href="{!! url('updateBB/'.$row->nonotapenerimaanBB); !!}">CHECK</a></td>
-                  </tr>
-                  @endforeach
-                </table>
+
+              </div>
+            </div>
+          </div>
+          <div class="col m5">
+            <div class="card-panel">
+              <div class="row">
+
               </div>
             </div>
           </div>
@@ -55,12 +46,12 @@
     $('.sidenav').sidenav();
     $('.modal').modal();
   });
-  $('.dropdown-trigger').dropdown();
   
 
-  function updatedata(kode,nama){
+  function updatedata(kode,nama,status){
     $('#txtupkodekategoribarang').val(kode);
     $('#txtupnamakategoribarang').val(nama);
+    $('#txtupstatuskategoribarang').val(status);
   }
 
   //modal

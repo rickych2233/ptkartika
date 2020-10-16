@@ -36,6 +36,39 @@ class bahanbakuController extends Controller
 		return view("viewpenerimaanBB")->with($data);
 	}
 
+	public function editbahanbaku(){
+		$getpenerimaanbb			= new penerimaanbb();
+		$data['datapenerimaanbb']	= $getpenerimaanbb->all();
+
+		$getdetailpenerimaanBB		= new detailpenerimaanbb();
+		$data['datadetailpenerimaanbb']	= $getpenerimaanbb->all();
+		return view("editbahanbaku")->with($data);
+	}
+
+	function updateBB($nonotaBB)
+	{
+		$cart = array();
+		$dataBB = [];
+		$jum = 0;
+		$getBB				= new penerimaanbb();
+		$data['dataBB']		= $getBB->all();
+		if(session()->get('sessioneditBB'))
+		{
+			$cart	= session()->get('sessioneditBB');
+			$jum	= count($cart);
+		}
+		foreach($data['dataBB'] as $row)
+		{
+			if($row->nonotapenerimaanBB == $nonotaBB)
+			{
+				$cart[$jum]['nonotapenerimaanBB']		 	= $row->nonotapenerimaanBB;
+				session()->put("sessioneditBB",$cart);
+				// dd($cart[$jum]['nonotapenerimaanBB']);
+				return redirect('editbahanbaku');
+			}
+		}
+	}
+
 	function addtocartpenerimaanBB($kode)
 	{
 		$cart = array();
@@ -69,6 +102,7 @@ class bahanbakuController extends Controller
 	
 	public function savepenerimaanBB(Request $request){
 		if($request->input("btncancels")) {
+			$request->session()->forget('penerimaanBB');
 			return $this->viewpenerimaanBB();
 		}else if($request->input("btnInsertBB")){
 			$rules = [
@@ -130,6 +164,7 @@ class bahanbakuController extends Controller
 				}
 				Alert::success('Success Title', 'Success Message');
 				$request->session()->forget('cart');
+				$request->session()->forget('penerimaanBB');
 				return redirect('viewpenerimaanBB');
 			}
 		}
