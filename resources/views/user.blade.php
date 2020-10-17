@@ -142,7 +142,7 @@
                   </tr>
                   @foreach($datauser as $row)
                   <tr>
-                    <td>{{$row->username}}<br>{{$row->password}}</td>
+                    <td>{{$row->username}}</td>
                     <td>{{$row->email}}<br>{{$row->nama}}</td>
                     <td>{{$row->alamat}}</td>
                     <td>{{$row->handphone}}<br>{{'(024)'.$row->telepon}}</td>

@@ -136,6 +136,9 @@ Route::post('savepenjualanBJ',[
 Route::get('viewpenjualanBJ', [
 	'uses' => 'penjualanBJController@viewpenjualanBJ'
 ]);
+Route::get('getvalkodecustomer',[
+    'uses' => 'penjualanBJController@getvalkodecustomer'
+]);
 
 //tfpembelian
 Route::get('addtocartDPS/{kode}',[

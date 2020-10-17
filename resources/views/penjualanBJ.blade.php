@@ -10,7 +10,6 @@
   $bayar['TIDAK']     = "TIDAK";
 
   $pesanan['PESANAN']     = "PESANAN";
-  $pesanan['SELESAI']     = "SELESAI";
 
   $pesanandbj    = "PESANAN";
 
@@ -62,6 +61,14 @@
                 <div class="row">
                     <div class=" col m6">
                       {{ Form::select('txtkodecustomerBJ',$getkodecustomer , null,['id'=>'txtkodecustomerBJ', 'class'=>'validate browser-default','onchange'=>'ubahalamat()']) }}
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col m5">Nomor Hp Customer :</div>
+                </div>
+                <div class="row">
+                    <div class=" col m6">
+                      {{Form::text('txtzxc', '', ['id'=>'txtzxc', 'readonly'=>'readonly'])}}
                     </div>
                 </div>
                 <div class="row">
@@ -175,6 +182,26 @@
     var hrg   = $("#txthargaDBJ" + kodebarang).val();
     var hasil = hrg * qty;
     $("#txtgrandtotalDBJ" + kodebarang).val(hasil);
+  }
+  
+  //AJAX
+  var myurl = "<?php echo URL::to('/'); ?>";
+  function ubahalamat(){
+    // alert(myurl);
+    var kodecustomer = $("#txtkodecustomerBJ").val();
+    // alert(kodecustomer);
+    $.get(myurl + '/getvalkodecustomer',
+    { kodecustomer: kodecustomer  },
+      function(result){ 
+        // alert(result);
+        var arr = JSON.parse(result);
+        var kal1 = "";
+        for(var i=0; i < arr.length; i++){
+          kal1 = arr[i].hp;
+          $("#txtzxc").val(kal1);
+        }
+      }
+    );
   }
 
   //Materialize

@@ -12,6 +12,7 @@
         $temp1 = $cart[$j]['nonotapenjualanBJ'];
       }
     }
+    
     foreach($datacustomer as $rows){
         $getkode[$rows->kodecustomer] = $rows->namatoko;
     }
@@ -21,10 +22,15 @@
         $getname[$rowsss->nonotaDBJ] = $rowsss->nonotaDBJ;
       }
     }
-    $pembayaran['LUNAS']     = "LUNAS"; 
-    $pembayaran['HUTANG']    = "HUTANG"; 
+
+
+    $pembayaran['TUNAI']        = "TUNAI"; 
+    $pembayaran['TRANSFER']     = "TRANSFER";
+    $pembayaran['PIUTANG']      = "PIUTANG";  
+
     $getstatus['LUNAS']     = "LUNAS"; 
     $getstatus['TIDAK']     = "TIDAK"; 
+    
     $pesan['PESANAN']     = "PESANAN"; 
     $pesan['SELESAI']     = "SELESAI"; 
 ?>

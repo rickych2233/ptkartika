@@ -143,12 +143,6 @@
               </div>
             </div>
           </div>
-          <!-- Tombol Submit -->
-          <div class="row">
-              <div class=" col m6">
-                
-              </div>
-          </div>
       </div>
     </div>
   {{ Form::close() }}
@@ -170,12 +164,10 @@
   //AJAX
   var myurl = "<?php echo URL::to('/'); ?>";
   function ubahalamat(){
-    // alert(myurl);
     var kodesupplier = $("#txtkodesupplierTF").val();
-    // alert(kodesupplier);
     $.get(myurl + '/getkodesupplier',
     { kodesupplier: kodesupplier  },
-      function(result){ //alert(result);
+      function(result){ 
         var arr = JSON.parse(result);
         var kal1 = "";
         var kal2 = "";

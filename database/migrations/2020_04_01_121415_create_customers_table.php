@@ -22,7 +22,7 @@ class CreateCustomersTable extends Migration
             $table->string('ktp',16);
             $table->string('hp',13);
             $table->string('status',12);
-            $table->string('tipepembayaran',4);
+            $table->string('tipepembayaran',7);
             $table->primary('kodecustomer');
         });
     }

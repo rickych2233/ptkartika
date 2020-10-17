@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2020 at 09:24 PM
+-- Generation Time: Oct 17, 2020 at 07:36 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -101,6 +101,14 @@ CREATE TABLE `detailpenerimaanbb` (
   `nonotapenerimaanBB` varchar(13) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `detailpenerimaanbb`
+--
+
+INSERT INTO `detailpenerimaanbb` (`nonotaDPBB`, `namabarangDPBB`, `satuaanDPBB`, `hargaDPBB`, `qtypenerimaanBB`, `qtypemesananBB`, `nonotapenerimaanBB`) VALUES
+('1', 'B014', 'BOTOL', 18000, 2, 2, 'PBB202010001'),
+('2', 'B015', 'BOTOL', 17000, 4, 5, 'PBB202010001');
+
 -- --------------------------------------------------------
 
 --
@@ -123,9 +131,9 @@ CREATE TABLE `detailpenjualanbj` (
 --
 
 INSERT INTO `detailpenjualanbj` (`nonotaDBJ`, `namabarangDBJ`, `satuaanDBJ`, `hargaDBJ`, `qtyDBJ`, `grandtotalDBJ`, `statusDBJ`, `nonotaBJFK`) VALUES
-('1', 'B001', 'BOTOL', 25000, 4, 100000, 'PESANAN', 'BJ202010001'),
-('2', 'B001', 'BOTOL', 25000, 3, 75000, 'PESANAN', 'BJ202010002'),
-('3', 'B002', 'BOTOL', 26000, 4, 104000, 'PESANAN', 'BJ202010002');
+('1', 'B001', 'BOTOL', 25000, 5, 125000, 'PESANAN', 'BJ202010001'),
+('2', 'B001', 'BOTOL', 25000, 4, 100000, 'PESANAN', 'BJ202010002'),
+('3', 'B002', 'BOTOL', 26000, 5, 130000, 'PESANAN', 'BJ202010002');
 
 -- --------------------------------------------------------
 
@@ -172,8 +180,9 @@ CREATE TABLE `detailtfpembelian` (
 
 INSERT INTO `detailtfpembelian` (`nonotaDTFPembelian`, `barangbakuDTFPembelian`, `qtyDTFPembelian`, `hargaDTFPembelian`, `grandtotalDTF`, `nonotaTFPembelian`) VALUES
 (1, 'B015', 3, 17000, 51000, 'PS202010001'),
-(2, 'B014', 3, 18000, 54000, 'PS202010002'),
-(3, 'B015', 4, 17000, 68000, 'PS202010002');
+(2, 'B014', 4, 18000, 72000, 'PS202010002'),
+(3, 'B015', 5, 17000, 85000, 'PS202010002'),
+(4, 'B016', 6, 16000, 96000, 'PS202010002');
 
 -- --------------------------------------------------------
 
@@ -279,6 +288,13 @@ CREATE TABLE `penerimaanbb` (
   `jenispembayaranBB` varchar(7) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `penerimaanbb`
+--
+
+INSERT INTO `penerimaanbb` (`nonotapenerimaanBB`, `kodesupplier`, `tglpenerimaanBB`, `statuspenerimaanBB`, `jenispembayaranBB`) VALUES
+('PBB202010001', 'S002', '16-10-2020', 'AKTIF', 'LUNAS');
+
 -- --------------------------------------------------------
 
 --
@@ -311,8 +327,8 @@ CREATE TABLE `penjualanbj` (
 --
 
 INSERT INTO `penjualanbj` (`nonotapenjualanBJ`, `kodecustomer`, `tglpembelianBJ`, `statusBJ`, `jenispembayaranBJ`, `statuspesanBJ`) VALUES
-('BJ202010001', 'C001', '2020-10-16', 'LUNAS', 'TUNAI', 'PESANAN'),
-('BJ202010002', 'C001', '2020-10-16', 'LUNAS', 'TUNAI', 'PESANAN');
+('BJ202010001', 'C001', '2020-10-16', 'LUNAS', 'LUNAS', 'PESANAN'),
+('BJ202010002', 'C001', '2020-10-16', 'LUNAS', 'LUNAS', 'PESANAN');
 
 -- --------------------------------------------------------
 

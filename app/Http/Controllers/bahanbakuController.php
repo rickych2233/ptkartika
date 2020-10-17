@@ -40,8 +40,8 @@ class bahanbakuController extends Controller
 		$getpenerimaanbb			= new penerimaanbb();
 		$data['datapenerimaanbb']	= $getpenerimaanbb->all();
 
-		$getdetailpenerimaanBB		= new detailpenerimaanbb();
-		$data['datadetailpenerimaanbb']	= $getpenerimaanbb->all();
+		$getdetailpenerimaanBB			= new detailpenerimaanbb();
+		$data['datadetailpenerimaanbb']	= $getdetailpenerimaanBB->all();
 		return view("editbahanbaku")->with($data);
 	}
 
@@ -63,7 +63,7 @@ class bahanbakuController extends Controller
 			{
 				$cart[$jum]['nonotapenerimaanBB']		 	= $row->nonotapenerimaanBB;
 				session()->put("sessioneditBB",$cart);
-				// dd($cart[$jum]['nonotapenerimaanBB']);
+				// dd($cart);
 				return redirect('editbahanbaku');
 			}
 		}
@@ -104,6 +104,29 @@ class bahanbakuController extends Controller
 		if($request->input("btncancels")) {
 			$request->session()->forget('penerimaanBB');
 			return $this->viewpenerimaanBB();
+		}else if($request->input("btnupdateDPBB")){
+			$update = penerimaanBB::find($request->txtupnonotaBB);
+			$update->kodesupplier 		= $request->txtupkodesupplier;
+			$update->tglpenerimaanBB 	= $request->txtuptglpenerimaanBB;
+			$update->statuspenerimaanBB = $request->txtupstatuspenerimaanBB;
+			$update->jenispembayaranBB 	= $request->txtupjenispembayaranBB;
+			$update->save();
+			$temps3 = session()->get('editDPBB');
+			// dd($temps3);
+			for($i=0; $i< count($temps3); $i++){
+				// dd($temps3);
+				$update1 = detailpenerimaanbb::find($request['txtupnonotaDPBB'.$temps3[$i]]);
+				$update1->namabarangDPBB 				= $request['txtupnamabarangDPBB'.$temps3[$i]];
+				$update1->satuaanDPBB 					= $request['txtupsatuanDPBB'.$temps3[$i]];
+				$update1->hargaDPBB						= $request['txtuphargaDPBB'.$temps3[$i]];
+				$update1->qtypenerimaanBB 				= $request['txtupqtypenerimaanBB'.$temps3[$i]];
+				$update1->qtypemesananBB 				= $request['txtupqtypemesananBB'.$temps3[$i]];
+				$update1->nonotapenerimaanBB 			= $request->txtupnonotaBB;
+				$update1->save();
+			}
+			Alert::success('Success', 'Success Message');
+			$request->session()->forget('sessioneditBB');
+			return redirect('viewpenerimaanBB');
 		}else if($request->input("btnInsertBB")){
 			$rules = [
 				//'txtkodekategoribarang'	=> 'required',

@@ -68,13 +68,17 @@ class DatabaseSeeder extends Seeder
             ['idhistory' => 'H012', 'kodebarang' => 'B012','tanggalhistory' => '2020-06-08','tanggalberlaku' => '2020-06-19','hargajual' => '21000'],
             ['idhistory' => 'H013', 'kodebarang' => 'B013','tanggalhistory' => '2020-06-10','tanggalberlaku' => '2020-06-15','hargajual' => '22000']
         ]);
+        
+        DB::table('customer')->insert([
+            ['kodecustomer'=>'C001', 'namatoko'=>'Toko Semangka', 'contactperson' => '081122041077', 'alamat' => 'jln. Srinindito 90 no. 1', 'kota' => 'Semarang', 'ktp' => '3374022322980001', 'hp' => '081133441077', 'status' => 'AKTIF', 'tipepembayaran' => 'YA'],
+            ['kodecustomer'=>'C002', 'namatoko'=>'Toko Sayuran', 'contactperson' => '081122041123', 'alamat' => 'jln. Srikandi 2 no. 1', 'kota' => 'Pati', 'ktp' => '3374022456780001', 'hp' => '08113344765', 'status' => 'AKTIF', 'tipepembayaran' => 'TIDAK'],  
+            ['kodecustomer'=>'C003', 'namatoko'=>'Toko Kaleng', 'contactperson' => '0811220410234', 'alamat' => 'jln. bubutan 09 no. 113', 'kota' => 'Kudus', 'ktp' => '3374012322980001', 'hp' => '085553231077', 'status' => 'AKTIF', 'tipepembayaran' => 'TIDAK'],  
+            ['kodecustomer'=>'C004', 'namatoko'=>'Toko Kaca', 'contactperson' => '081122041345', 'alamat' => 'jln. kalijudan 10 no. 14', 'kota' => 'Kudus', 'ktp' => '3379876522980001', 'hp' => '081133231077', 'status' => 'AKTIF', 'tipepembayaran' => 'YA']      
+        ]);
 
-        // DB::table('penyesuaianstok')->insert([
-        //     ['kodebarangSP' => 'B001', 'stokNow' => '20', 'stokRevisi' => '19', 'keterangan' => 'KARENA BARANG PECAH SAAT DIPERJALANAN'],
-        //     ['kodebarangSP' => 'B002', 'stokNow' => '20', 'stokRevisi' => '23', 'keterangan' => 'KARENA KEMASUKAN SEMUT SAAT PENUTUPAN BOTOL'],
-        //     ['kodebarangSP' => 'B003', 'stokNow' => '30', 'stokRevisi' => '25', 'keterangan' => 'BOTOL SAAT DISIMPAN KEMASUKAN SEMUT'],
-        //     ['kodebarangSP' => 'B004', 'stokNow' => '15', 'stokRevisi' => '14', 'keterangan' => 'BOTOL PECAH'],
-        //     ['kodebarangSP' => 'B005', 'stokNow' => '10', 'stokRevisi' => '9', 'keterangan' => 'SAAT PROSES PEMASUKAN CAIRAN TERJADI KEGAGALAN']
-        // ]);
+        DB::table('supplier')->insert([
+            ['kodesupplier'=>'S001', 'namasupplier'=> 'RUDI SUPRIANTO' , 'nomorhpsupplier'=>'081392055072','alamatsupplier'=>'JLN. SRINANGKA 6 NO. 19','statussupplier'=>'LUNAS'],
+            ['kodesupplier'=>'S002', 'namasupplier'=> 'ONDE SUMBING' , 'nomorhpsupplier'=>'081321076651','alamatsupplier'=>'JLN. SRINANGKA 44 NO. 12','statussupplier'=>'LUNAS']
+        ]);
     }
 }

@@ -29,4 +29,10 @@ class customer extends Model
         $insert->tipepembayaran = $txttipepembayaran;
         $insert->save(); 
     }
+
+    public function getkodecustomer($kodecustomer)
+    {
+        $data = customer::select("customer.*")->where("kodecustomer","=",$kodecustomer)->get();
+        return $data;
+    }
 }

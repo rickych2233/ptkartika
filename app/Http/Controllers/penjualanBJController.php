@@ -22,6 +22,13 @@ class penjualanBJController extends Controller
 		return view("newpenjualanBJ")->with($data);
 	}
 
+	public function getvalkodecustomer(Request $request){
+		$getcustomer 	= new customer();
+		$kodecustomer 	= $request->kodecustomer;
+		$data 			= $getcustomer->getkodecustomer($kodecustomer);
+		echo json_encode($data);
+	}
+
 	public function updatenewBJ(){
 		$getbarang					= new barang();
 		$data['databarang']			= $getbarang->all();
