@@ -77,8 +77,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('supplier')->insert([
-            ['kodesupplier'=>'S001', 'namasupplier'=> 'RUDI SUPRIANTO' , 'nomorhpsupplier'=>'081392055072','alamatsupplier'=>'JLN. SRINANGKA 6 NO. 19','statussupplier'=>'LUNAS'],
-            ['kodesupplier'=>'S002', 'namasupplier'=> 'ONDE SUMBING' , 'nomorhpsupplier'=>'081321076651','alamatsupplier'=>'JLN. SRINANGKA 44 NO. 12','statussupplier'=>'LUNAS']
+            ['kodesupplier'=>'S001', 'namasupplier'=> 'RUDI SUPRIANTO' , 'nomorhpsupplier'=>'081392055072','alamatsupplier'=>'JLN. SRINANGKA 6 NO. 19','statussupplier'=>'AKTIF'],
+            ['kodesupplier'=>'S002', 'namasupplier'=> 'ONDE SUMBING' , 'nomorhpsupplier'=>'081321076651','alamatsupplier'=>'JLN. SRINANGKA 44 NO. 12','statussupplier'=>'TIDAK AKTIF']
         ]);
     }
 }
