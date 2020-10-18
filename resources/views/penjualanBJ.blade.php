@@ -48,7 +48,7 @@
                 <div class="row">
                     <div class=" col m6">
                       <?php
-                        $date = date('Ym');
+                        $date     = date('Ym');
                         $jum      = $datapenjualanBJ->count() + 1; 
                         $kodejum  = "BJ".$date.str_pad($jum, 3, "0",STR_PAD_LEFT);
                       ?>

@@ -115,6 +115,12 @@ Route::get('addtocartpenjualanBJ/{kode}',[
 Route::get('addupdatetocartpenjualanBJ/{kode2}',[
     'uses' => 'penjualanBJController@addupdatetocartpenjualanBJ'
 ]);
+Route::get('pelunasanpiutang/{kode3}',[
+    'uses' => 'penjualanBJController@pelunasanpiutang'
+]);
+Route::get('viewpelunasanpiutang',[
+    'uses' => 'penjualanBJController@viewpelunasanpiutang'
+]);
 Route::get('updatenewBJ',[
     'uses' => 'penjualanBJController@updatenewBJ'
 ]);

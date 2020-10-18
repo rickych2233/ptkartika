@@ -12,6 +12,9 @@ use App\detailpenjualanbj;
 use App\customer;
 use App\barang;
 use App\penjualanbj;
+use App\user;
+
+use App\pelunasanpiutang;
 
 
 class penjualanBJController extends Controller
@@ -67,6 +70,20 @@ class penjualanBJController extends Controller
 		return view("editpenjualanBJ")->with($data);
 	}
 
+	public function viewpelunasanpiutang(){
+		$user							= new penjualanbj();
+		$data['datapenjualanbj']		= $user->all();
+		$user1							= new detailpenjualanbj();
+		$data['datadetailpenjualanbj']	= $user1->all();
+		$user2							= new customer();
+		$data['datacustomer']			= $user2->all();
+		$user3							= new pelunasanpiutang();
+		$data['datapelunasanpiutang']	= $user3->all();
+		$user4							= new user();
+		$data['datauser']				= $user4->all();
+		return view("viewpelunasanpiutang")->with($data);
+	}
+
 	function addtocartpenjualanBJ($kode)
 	{
 		$cart = array();
@@ -98,6 +115,28 @@ class penjualanBJController extends Controller
 		}
 	}
 
+	function pelunasanpiutang($data1)
+	{
+		$cart = array();
+		$jum = 0;
+		$getbarang			= new penjualanbj();
+		$data['databarang']	= $getbarang->all();
+		if(session()->get('penjualanBJ3'))
+		{
+			$cart	= session()->get('penjualanBJ3');
+			$jum	= count($cart);
+		}
+		foreach($data['databarang'] as $row)
+		{
+			if($row->nonotapenjualanBJ == $data1)
+			{
+				$cart[$jum]['nonotapenjualanBJ']		 	= $row->nonotapenjualanBJ;
+				session()->put("penjualanBJ3",$cart);
+				return redirect('viewpelunasanpiutang');
+			}
+		}
+	}
+
 	function updatepenjualanBJ($nonota)
 	{
 		$cart = array();
@@ -123,10 +162,25 @@ class penjualanBJController extends Controller
 	
 	public function savepenjualanBJ(Request $request){
 		if($request->input("btncancels")) {
+			$request->session()->forget('penjualanBJ3');
 			$request->session()->forget('penjualanBJ2');
 			$request->session()->forget('penjualanBJ');
 			$request->session()->forget('notaDBJ1');
 			return $this->viewpenjualanBJ();
+		}
+		else if($request->input("btnInsertpiutang")){
+			$txtnonotapelunasan		= $request->txtnonotapelunasan;
+			$txtsalespenjualan	    = $request->txtsalespenjualan;
+			$txtkodecustomer		= $request->txtkodecustomer;
+			$txttglpelunasan		= $request->txttglpelunasan;
+			$txtgrandtotal			= $request->txtgrandtotal;
+			$txtjumlahdibayar		= $request->txtjumlahdibayar;
+			$txtnonotapenjualanBJ	= $request->txtnonotapenjualanBJ;
+			$addpelunasan 			= new pelunasanpiutang();
+			$addpelunasan->insertdata($txtnonotapelunasan,$txtsalespenjualan,$txtkodecustomer,$txttglpelunasan,$txtgrandtotal,$txtjumlahdibayar,$txtnonotapenjualanBJ);
+			Alert::success('Success', 'Success Message');
+			$request->session()->forget('penjualanBJ3');
+			return redirect('viewpenjualanBJ');
 		}
 		else if($request->input("btnInsertPBJ")){
 			$update = penjualanbj::find($request->txtupnonotapenjualanBJ);
@@ -138,7 +192,6 @@ class penjualanBJController extends Controller
 			$update->save();
 			$tempss2 = $request->txtupnomornotaDBJ;
 			$temps3 = session()->get('notaDBJ1');
-			// dd($temps3);
 			for($i=0; $i< count($temps3); $i++){
 				$update1 = detailpenjualanbj::find($request['txtupnomornotaDBJ'.$temps3[$i]]);
 				$update1->namabarangDBJ 		= $request['txtupnamabarangDBJ'.$temps3[$i]];
