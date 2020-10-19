@@ -113,7 +113,8 @@
                     <td>{{ $row->kodekategoribarang }}</td>
                     <td>{{ $row->satuan }}</td>
                     <td>{{ $row->stok }}</td>
-                    <td>{{ $row->harga }}</td>
+                    @php($hasil_rupiah = number_format($row->harga, 2, ".", ","))
+                    <td>{{ $hasil_rupiah }}</td>
                     <td>{{ $row->status }}</td>
                     @php($kode      = $row->kodebarang)
                     @php($nama      = $row->namabarang)

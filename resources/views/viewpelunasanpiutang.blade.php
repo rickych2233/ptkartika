@@ -29,7 +29,48 @@
     <div class="main">
       <div class="row">
         <div class="col m1"></div>
-          <div class="col m5">
+        <div class="col m8 offset-m1">
+            <div class="card-panel">
+              <div class="row">
+                <h5>History Pelunasan Piutang<a href=""><span></span></a><hr></h5>
+                @foreach($datadetailpenjualanbj as $rows2)
+                  @if($rows2->nonotaBJFK == $temp1)
+                  <?php
+                    $temps[$index] = $rows2->grandtotalDBJ;
+                    $index++;
+                  ?>
+                  @endif
+                @endforeach
+                <div class="row">
+                    <?php
+                      $tempsss  = 0;
+                      for($i=0; $i< count($temps); $i++){
+                        $tempsss += $temps[$i];
+                      }
+                      $hasil_rupiah = " Rp " . number_format($tempsss,2,',','.');
+                    ?>
+                    {{Form::hidden('txtgrandtotal', $tempsss,['id'=>'txtgrandtotal'])}}
+                  <div class="col m3">Grand Total :@php(print_r($hasil_rupiah))</div>
+                </div>
+                <table border="1">
+                  <tr>
+                    <th>Nomor Nota</th>
+                    <th>Tanggal Pembayaran</th>
+                    <th>Jumlah di Bayar</th>
+                  </tr>
+                  @foreach($datapelunasanpiutang as $rows3)
+                  <tr>
+                    <td>{{$rows3->nonotapelunasan}}</td>
+                    <td>{{$rows3->tglpelunasan}}</td>
+                    @php($hasil_rupiah1 = " Rp " . number_format($rows3->jumlahdibayar,2,',','.'))
+                    <td>@php(print_r($hasil_rupiah1))</td>
+                  </tr>
+                  @endforeach
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col m5 offset-m1">
             <div class="card-panel">
               <div class="row">
                 <h5>Pelunasan Piutang<a href=""><span></span></a><hr></h5>
@@ -41,8 +82,7 @@
                       <?php
                         $date     = date('Ym');
                         $jum      = $datapelunasanpiutang->count() + 1; 
-                        // dd($datapelunasanpiutang);
-                        $kodejum  = "PS".$date.str_pad($jum, 3, "0",STR_PAD_LEFT);
+                        $kodejum  = "PP".$date.str_pad($jum, 3, "0",STR_PAD_LEFT);
                       ?>
                       {{Form::text('txtnonotapelunasan', $kodejum, ['id'=>'txtnonotapelunasan','','readonly'=>'readonly'])}}
                     </div>
@@ -75,7 +115,7 @@
                 </div>
                 <div class="row">
                   <div class=" col m6">
-                    {{Form::text('txtkodecustomer', $row->kodecustomer, ['id'=>'txtkodecustomer','',''])}}
+                    {{Form::text('txtkodecustomer', $row->kodecustomer, ['id'=>'txtkodecustomer','readonly'=>'readonly'])}}
                   </div>
                 </div>
                 <div class="row">
@@ -87,28 +127,24 @@
                     {{Form::text('txttglpelunasan', $date, ['id'=>'txttglpelunasan','readonly'=>'readonly'])}}
                   </div>
                 </div>
-                @endif
+                  @endif
                 @endforeach
-                @foreach($datadetailpenjualanbj as $rows2)
-                  @if($rows2->nonotaBJFK == $temp1)
-                  <?php
-                    $temps[$index] = $rows2->grandtotalDBJ;
-                    $index++;
-                  ?>
+                <?php
+                  $sisa = $tempsss;
+                ?>
+                @foreach($datapelunasanpiutang as $row5)
+                  @if($row5->nonotapenjualanBJ == $temp1)
+                    <?php
+                      $sisa -= $row5->jumlahdibayar;
+                    ?>
                   @endif
                 @endforeach
                 <div class="row">
-                  <div class="col m3">Grand Total :</div>
+                  <div class="col m3">Sisa piutang:</div>
                 </div>
                 <div class="row">
                   <div class=" col m6">
-                    <?php
-                      $tempsss  = 0;
-                      for($i=0; $i< count($temps); $i++){
-                        $tempsss += $temps[$i];
-                      }
-                    ?>
-                    {{Form::text('txtgrandtotal', $tempsss, ['id'=>'txtgrandtotal'])}}
+                    {{Form::text('txtmbn', $sisa, ['id'=>'txtmbn','readonly'=>'readonly'])}}
                   </div>
                 </div>
                 <div class="row">
@@ -142,6 +178,17 @@
   $(document).ready(function(){
     $('.sidenav').sidenav();
     $('.modal').modal();
+    $('#txtjumlahdibayar').keyup(function(){
+      var jum = $('#txtmbn').val();
+      var dijum = $('#txtjumlahdibayar').val();
+      var temp = jum-dijum;
+      if( temp < 0){
+        alert("anda bayar nya lebih");
+        $('#btnInsertpiutang').prop('disabled', true);
+      }else{
+        $('#btnInsertpiutang').prop('disabled', false);
+      }
+    });
   });
   
 
@@ -150,6 +197,7 @@
     $('#txtupnamakategoribarang').val(nama);
     $('#txtupstatuskategoribarang').val(status);
   }
+
 
   //modal
   document.addEventListener('DOMContentLoaded', function() {

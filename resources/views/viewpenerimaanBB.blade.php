@@ -14,24 +14,24 @@
               <div class="row">
                   <h5>Penerimaan Bahan Baku<a href=""><span></span></a><hr></h5>
                   <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newpenerimaanBB'); !!}"><i class="large material-icons">add</i></a>
-                <table border="1">
-                  <tr>
-                    <th>Nomor Nota</th>
-                    <th>Tanggal Penerimaan</th>
-                    <th>Status Penerimaan</th>
-                    <th>Jenis Penerimaan</th>
-                    <th>ACTION</th>
-                  </tr>
-                  @foreach($datapenerimaanbb as $row)
-                  <tr>
-                    <td>{{$row->nonotapenerimaanBB}}</td>
-                    <td>{{$row->tglpenerimaanBB}}</td>
-                    <td>{{$row->statuspenerimaanBB}}</td>
-                    <td>{{$row->jenispembayaranBB}}</td>
-                    <td><a class="waves-effect waves-light btn modal-trigger red left" href="{!! url('updateBB/'.$row->nonotapenerimaanBB); !!}">CHECK</a></td>
-                  </tr>
-                  @endforeach
-                </table>
+                  <table border="1">
+                    <tr>
+                      <th>Nomor Nota</th>
+                      <th>Tanggal Penerimaan</th>
+                      <th>Status Penerimaan</th>
+                      <th>Jenis Penerimaan</th>
+                      <th>ACTION</th>
+                    </tr>
+                    @foreach($datapenerimaanbb as $row)
+                    <tr>
+                      <td>{{$row->nonotapenerimaanBB}}</td>
+                      <td>{{$row->tglpenerimaanBB}}</td>
+                      <td>{{$row->statuspenerimaanBB}}</td>
+                      <td>{{$row->jenispembayaranBB}}</td>
+                      <td><a class="waves-effect waves-light btn modal-trigger red left" href="{!! url('updateBB/'.$row->nonotapenerimaanBB); !!}">CHECK</a></td>
+                    </tr>
+                    @endforeach
+                  </table>
               </div>
             </div>
           </div>

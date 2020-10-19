@@ -13,7 +13,6 @@ use App\customer;
 use App\barang;
 use App\penjualanbj;
 use App\user;
-
 use App\pelunasanpiutang;
 
 
