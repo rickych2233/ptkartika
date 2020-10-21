@@ -15,6 +15,7 @@
 <ul id="transaksipenjualan" class="dropdown-content">
   <!--<li class="divider"></li>-->
   <li><a href="{!! url('viewpenjualanBJ'); !!}">Penjualan Bahan Jadi</a></li>
+  <li><a href="{!! url('viewpiutangcustomer'); !!}">List Piutang</a></li>
 </ul>
 <ul id="transaksipembelian" class="dropdown-content">
   <!--<li class="divider"></li>-->

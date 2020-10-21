@@ -121,6 +121,9 @@ Route::get('pelunasanpiutang/{kode3}',[
 Route::get('viewpelunasanpiutang',[
     'uses' => 'penjualanBJController@viewpelunasanpiutang'
 ]);
+Route::get('viewpiutangcustomer',[
+    'uses' => 'penjualanBJController@viewpiutangcustomer'
+]);
 Route::get('updatenewBJ',[
     'uses' => 'penjualanBJController@updatenewBJ'
 ]);

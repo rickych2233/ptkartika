@@ -31,8 +31,10 @@ class bahanbakuController extends Controller
 	}
 
 	public function viewpenerimaanBB(){
-		$getpenerimaanbb			= new penerimaanbb();
-		$data['datapenerimaanbb']	= $getpenerimaanbb->all();
+		$getpenerimaanbb				= new penerimaanbb();
+		$data['datapenerimaanbb']		= $getpenerimaanbb->all();
+		$getdetailpenerimaan			= new detailpenerimaanbb();
+		$data['datadetailpenerimaan']	= $getdetailpenerimaan->all();
 		return view("viewpenerimaanBB")->with($data);
 	}
 

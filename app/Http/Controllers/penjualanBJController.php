@@ -50,6 +50,14 @@ class penjualanBJController extends Controller
         $getpenjualanBJ				    = new penjualanbj();
 		$data['datapenjualanBJ']		= $getpenjualanBJ->all();
         return view("penjualanBJ")->with($data);
+	}
+	
+	public function viewpiutangcustomer(){
+        $getpenjualan				    	= new penjualanbj();
+        $data['datapenjualanbj']		    = $getpenjualan->all();
+        $getdetail					    	= new detailpenjualanbj();
+		$data['datadetailpenjualanbj']		= $getdetail->all();
+        return view("viewpiutangcustomer")->with($data);
     }
 
 	public function viewpenjualanBJ(){
