@@ -6,7 +6,6 @@
   $pembayaran['TRANSFER']     = "TRANSFER";
   $pembayaran['PIUTANG']      = "PIUTANG";  
 
-  $bayar['LUNAS']     = "LUNAS";
   $bayar['TIDAK']     = "TIDAK";
 
   $pesanan['PESANAN']     = "PESANAN";
@@ -121,8 +120,8 @@
                   <tr>
                     <th>Nama Barang</th>
                     <th>Satuan</th>
-                    <th>harga</th>
-                    <th>Action</th>
+                    <th>Harga</th>
+                    <th>Qty</th>
                     <th>Grand Total</th>
                     <th>Status</th>
                   </tr>
@@ -142,6 +141,7 @@
                                 <td>{{Form::text('txtqtyDBJ'.$temp1, '', ['id'=>'txtqtyDBJ'.$temp1,'','class'=>'col s3', '','onkeyup'=>"penambahan('$temp1')"])}}</td>
                                 <td>{{Form::text('txtgrandtotalDBJ'.$temp1, '', ['id'=>'txtgrandtotalDBJ'.$temp1,'','class'=>'col s3','readonly'=>'readonly'])}}</td>
                                 <td>{{Form::text('txtstatusDBJ'.$temp1, $pesanandbj, ['id'=>'txtstatusDBJ'.$temp1, 'readonly'=>'readonly'])}}</td>
+                                <td>{{Form::hidden('txthistoryDBJ'.$temp1, '', ['id'=>'txthistoryDBJ'.$temp1])}}</td>
                             </tr>
                         @endfor
                         @php($tempAJAX = $temp1)

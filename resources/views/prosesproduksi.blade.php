@@ -34,7 +34,7 @@
                 </div>
                 <div class="row">
                     <div class=" col m6">
-                      {{Form::date('txttglPP', '', ['id'=>'txttglPP','',''])}}
+                      {{Form::date('txttglPP', date('Y-m-d'), ['id'=>'txttglPP','','readonly'=>'readonly'])}}
                     </div>
                 </div>
               </div>
@@ -87,7 +87,8 @@
                           <td>{{$cart[$j]['namabarang']}}</td>
                           <td>{{$cart[$j]['satuan']}}</td>
                           <td>{{$cart[$j]['stok']}}</td>
-                          <td>{{Form::text('txtqtyDPP'.$temp1, '', ['id'=>'txtqtyDPP','','class'=>'col s3','placeholder'=>'QTY'.$temp1])}}</td>
+                          {{Form::hidden('txtstokasd'.$temp1, $cart[$j]['stok'],['id'=>'txtstokasd'.$temp1])}}
+                          <td>{{Form::text('txtqtyDPP'.$temp1, '', ['id'=>'txtqtyDPP'.$temp1,'class'=>'col s3','onkeyup'=>"penambahan('$temp1')"])}}</td>
                           <input name="txthargaDPP" type="hidden" value="<?php echo ($temp2); ?>" >
                         </tr>
                       @endfor
@@ -121,10 +122,19 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script>
-
+  var myurl = "<?php echo URL::to('/'); ?>";
   //AJAX
-  tambahProsesProduksi(){
-    alert('test');
+  function penambahan(kodebarang){
+    var qtytertera      = $("#txtstokasd" + kodebarang).val();
+    var qtymengisi      = $("#txtqtyDPP" + kodebarang).val();
+    var temptertera = parseInt(qtytertera,10);
+    var tempmengisi = parseInt(qtymengisi,10);
+    if(qtymengisi !== null  && tempmengisi > temptertera){
+      alert("Masih Kosong atau yang diisi lebih besar");
+      $('#btnInsertPP').prop('disabled', true);
+    }else{
+      $('#btnInsertPP').prop('disabled', false);
+    }
   }
   //Materialize
   $(document).ready(function(){

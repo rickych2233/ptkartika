@@ -59,12 +59,14 @@
                     <th>Jumlah di Bayar</th>
                   </tr>
                   @foreach($datapelunasanpiutang as $rows3)
-                  <tr>
-                    <td>{{$rows3->nonotapelunasan}}</td>
-                    <td>{{$rows3->tglpelunasan}}</td>
-                    @php($hasil_rupiah1 = " Rp " . number_format($rows3->jumlahdibayar,2,',','.'))
-                    <td>@php(print_r($hasil_rupiah1))</td>
-                  </tr>
+                    @if($rows3->nonotapenjualanBJ == $temp1)
+                    <tr>
+                      <td>{{$rows3->nonotapelunasan}}</td>
+                      <td>{{$rows3->tglpelunasan}}</td>
+                      @php($hasil_rupiah1 = " Rp " . number_format($rows3->jumlahdibayar,2,',','.'))
+                      <td>@php(print_r($hasil_rupiah1))</td>
+                    </tr>
+                    @endif()
                   @endforeach
                 </table>
               </div>
@@ -90,7 +92,7 @@
                 @foreach($datapenjualanbj as $row)
                   @if($row->nonotapenjualanBJ == $temp1)
                 <div class="row">
-                  <div class="col m3">Username :</div>
+                  <div class="col m3">Sales Penjualan :</div>
                 </div>
                 <div class="row">
                     <div class=" col m6">

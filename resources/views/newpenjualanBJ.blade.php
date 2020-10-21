@@ -26,7 +26,7 @@
             <div class="card-panel">
               <div class="row">
                 <div class="row">
-                    <div class="col m12"><h5>List Pembelian Bahan Baku<a href=""><span></span></a><hr></h5></div>
+                    <div class="col m12"><h5>List Penjualan Bahan Jadi<a href=""><span></span></a><hr></h5></div>
                 </div>
                 <table border="1">
                 <tr>

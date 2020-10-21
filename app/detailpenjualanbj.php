@@ -10,7 +10,7 @@ class detailpenjualanbj extends Model
     public $primaryKey  = 'nonotaDBJ';
     public $incrementing= false;
     public $timestamps  =  false;
-    public function insertdata($txtnonotaDBJ, $txtnamabarangDBJ, $txtsatuaanDBJ, $txthargaDBJ, $txtqtyDBJ, $txtgrandtotalDBJ, $txtstatusDBJ, $txtnonotaBJFK)
+    public function insertdata($txtnonotaDBJ, $txtnamabarangDBJ, $txtsatuaanDBJ, $txthargaDBJ, $txtqtyDBJ, $txtgrandtotalDBJ, $txtstatusDBJ, $txthistoryDBJ,$txtnonotaBJFK)
     {
         $insertuser                     = new detailpenjualanbj(); 
         $insertuser->nonotaDBJ          = $txtnonotaDBJ; 
@@ -20,6 +20,7 @@ class detailpenjualanbj extends Model
         $insertuser->qtyDBJ             = $txtqtyDBJ;
         $insertuser->grandtotalDBJ      = $txtgrandtotalDBJ;
         $insertuser->statusDBJ          = $txtstatusDBJ;
+        $insertuser->historyDBJ         = $txthistoryDBJ;
         $insertuser->nonotaBJFK         = $txtnonotaBJFK;
         $insertuser->save(); 
     }

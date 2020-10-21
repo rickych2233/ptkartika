@@ -209,6 +209,7 @@ class BarangController extends Controller
 	public function saveprosesproduksi(Request $request){
 		if($request->input("btncancels")) {
 			$request->session()->forget('sessioneditPP');
+			$request->session()->forget('cart');
 			return $this->viewprosesproduksi();
 		}
 		elseif($request->input("btnupdateDPP")){

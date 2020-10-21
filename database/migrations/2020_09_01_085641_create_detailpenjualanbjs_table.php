@@ -21,6 +21,7 @@ class CreateDetailpenjualanbjsTable extends Migration
             $table->integer('qtyDBJ');
             $table->integer('grandtotalDBJ');
             $table->string('statusDBJ',12);
+            $table->string('historyDBJ',12);
             $table->string('nonotaBJFK',12);
             $table->primary('nonotaDBJ');
         });

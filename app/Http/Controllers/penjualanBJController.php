@@ -268,9 +268,9 @@ class penjualanBJController extends Controller
 					$txtgrandtotalDBJ 	= $request['txtgrandtotalDBJ'.$txtnamabarangDBJ];
 					$txtstatusDBJ 		= $request['txtstatusDBJ'.$txtnamabarangDBJ];
 					$txtnonotaBJFK		= $request->txtnonotapenjualanBJ;
-					
-					$insertdata 	= new detailpenjualanbj();
-					$insertdata->insertdata($txtnonotaDBJ,$txtnamabarangDBJ,$txtsatuaanDBJ,$txthargaDBJ, $txtqtyDBJ, $txtgrandtotalDBJ, $txtstatusDBJ, $txtnonotaBJFK);
+					$txthistoryDBJ		= " ";
+					$insertdata 		= new detailpenjualanbj();
+					$insertdata->insertdata($txtnonotaDBJ,$txtnamabarangDBJ,$txtsatuaanDBJ,$txthargaDBJ, $txtqtyDBJ, $txtgrandtotalDBJ, $txtstatusDBJ, $txthistoryDBJ, $txtnonotaBJFK);
 				}
 				Alert::success('Success', 'Success Message');
 				$request->session()->forget('penjualanBJ');
