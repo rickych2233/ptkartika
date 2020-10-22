@@ -10,7 +10,7 @@ class penerimaanbb extends Model
     public $primaryKey  = 'nonotapenerimaanBB';
     public $incrementing= false;
     public $timestamps  =  false;
-    public function insertdata($nonotapenerimaanBB, $txtsupplierpenerimaanBB, $txttglpenerimaanBB, $txtstatuspenerimaanBB,$txtjenispembayaranBB)
+    public function insertdata($nonotapenerimaanBB, $txtsupplierpenerimaanBB, $txttglpenerimaanBB, $txtstatuspenerimaanBB,$txtjenispembayaranBB,$txttotalGrand)
     {
         $insertuser                             = new penerimaanbb(); 
         $insertuser->nonotapenerimaanBB         = $nonotapenerimaanBB; 
@@ -18,6 +18,7 @@ class penerimaanbb extends Model
         $insertuser->tglpenerimaanBB            = $txttglpenerimaanBB; 
         $insertuser->statuspenerimaanBB         = $txtstatuspenerimaanBB; 
         $insertuser->jenispembayaranBB          = $txtjenispembayaranBB;
+        $insertuser->grandhargaBB               = $txttotalGrand;
         $insertuser->save(); 
     }
 }

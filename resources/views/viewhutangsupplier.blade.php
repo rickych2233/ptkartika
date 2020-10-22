@@ -1,36 +1,30 @@
 @extends('layouts.headerAdmin')
-<?php
-  $getstatus['AKTIF']     = "AKTIF"; 
-  $getstatus['TIDAK AKTIF'] = "TIDAK AKTIF"; 
-?>
 
 
 @section('content')
-
   <!-- INI MENU UTAMA-->
-  {{ Form::open(array('url' => 'savepenjualanBJ')) }}
+  {{ Form::open(array('url' => 'savetfpembelian')) }}
     <div class="main">
       <div class="row">
-        <div class="col m1"></div>
-          <div class="col m10">
+        <div class="col m2"></div>
+          <div class="col m8">
             <div class="card-panel">
               <div class="row">
-                  <h5>Data Kategori Barang<a href=""><span></span></a><hr></h5>
-                  <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newkategoribarang'); !!}"><i class="large material-icons">add</i></a>
+                  <h5>List hutang ke supplier<a href=""><span></span></a><hr></h5>
                 <table border="1">
                   <tr>
                     <th>Nomor Nota</th>
-                    <th>Nama Customer</th>
+                    <th>Nama Supplier</th>
                     <th>Tanggal Pembelian</th>
-                    <th>Status</th>
+                    <th>Total Hutang</th>
                   </tr>
-                  @foreach($datapenjualanbj as $row)
-                    @if($row->statusBJ == "TIDAK")
+                  @foreach($datapenerimaanbb as $row)
+                    @if($row->jenispembayaranBB == "HUTANG")
                     <tr>
-                      <td>{{$row->nonotapenjualanBJ}}</td>
-                      <td>{{$row->kodecustomer}}</td>
-                      <td>{{$row->tglpembelianBJ}}</td>
-                      <td>{{$row->statusBJ}}</td>
+                        <td>{{$row->nonotapenerimaanBB}}</td>
+                        <td>{{$row->kodesupplier}}</td>
+                        <td>{{$row->tglpenerimaanBB}}</td>
+                        <td>{{$row->grandhargaBB}}</td>
                     </tr>
                     @endif
                   @endforeach
@@ -59,6 +53,7 @@
     $('.modal').modal();
   });
   $('.dropdown-trigger').dropdown();
+  
   //modal
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');

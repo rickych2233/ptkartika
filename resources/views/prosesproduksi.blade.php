@@ -141,7 +141,7 @@
     $('.sidenav').sidenav();
     $('.modal').modal();
   });
-  //$('.dropdown-trigger').dropdown();
+  $('.dropdown-trigger').dropdown();
   
   //modal
   document.addEventListener('DOMContentLoaded', function() {

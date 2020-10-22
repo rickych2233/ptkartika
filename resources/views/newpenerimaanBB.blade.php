@@ -8,6 +8,7 @@
   foreach($datasupplier as $rows){
     $getkode[$rows->kodesupplier] = $rows->namasupplier;
   }
+  $temp = 0;
 ?>
 
 @section('content')
@@ -56,10 +57,6 @@
                 {{ Form::select('txtsupplierpenerimaanBB', $getkode, null, ['id'=>'txtsupplierpenerimaanBB', 'class'=>'validate browser-default']) }}
                 </div>
             </div>
-          </div>
-        </div>
-        <div class="col m5">
-          <div class="card-panel">
             <!-- Kode Barang -->
             <div class="row">
                 <div class="col m6">Tanggal Penerimaan :</div>
@@ -70,6 +67,16 @@
                     {{Form::text('txttglpenerimaanBB',$datepenerimaan, ['id'=>'txttglpenerimaanBB', 'readonly'=>'readonly'])}}
                 </div>
             </div>
+              <div class="row">
+                <div class=" col m6">
+                  {{Form::submit('Insert',['name'=>'btnInsertBB','id'=>'btnInsertBB','class'=>'btn waves-light btn-small'])}}
+                  <input  type='submit' class='waves-light btn-small' name='btncancels' id='btncancels' value='Cancel'>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col m5">
+          <div class="card-panel">
             <!-- Status penerimaan -->
             <div class="row">
                 <div class="col m6">Status :</div>
@@ -86,6 +93,15 @@
             <div class="row">
                 <div class=" col m6">
                 {{ Form::select('txtjenispembayaranBB', $pembayaran, null, ['id'=>'txtjenispembayaranBB', 'class'=>'validate browser-default']) }}
+                </div>
+            </div>
+            <!-- Nama Barang -->
+            <div class="row">
+                <div class="col m6">Total Grand:</div>
+            </div>
+            <div class="row">
+                <div class=" col m6">
+                  {{Form::text('txttotalGrand','', ['id'=>'txttotalGrand', 'readonly'=>'readonly'])}}
                 </div>
             </div>
           </div>
@@ -105,9 +121,11 @@
                 <th>Qty Penerimaan</th>
                 <th>Qty Pemesanan</th>
               </tr>
+              
               @if(session()->get("penerimaanBB")) 
                     @php($cart = session()->get("penerimaanBB"))
                     @php($jum  = count($cart))
+                    @php($temp = count($cart))
                     <input name="somedatas" type="hidden" value="<?php echo ($jum); ?>" >
                     @for($j=0; $j < $jum; $j++)
                       <tr>
@@ -117,20 +135,14 @@
                         <td>{{$cart[$j]['namabarang']}}</td>
                         <td>{{$cart[$j]['satuan']}}</td>
                         <td>{{$cart[$j]['harga']}}</td>
-                        <td>{{Form::text('txtqtypenerimaanBB'.$temp1, '', ['id'=>'txtqtypenerimaanBB'.$temp1,'','class'=>'col s3'])}}</td>
+                        {{Form::hidden('txtharga'.$jum,$cart[$j]['harga'], ['id'=>'txtharga'.$j,'','class'=>'validate'])}}
+                        <td>{{Form::text('txtqtypenerimaanBB'.$temp1, '', ['id'=>'txtqtypenerimaanBB'.$j,'','class'=>'col s3','onkeyup'=>"penambahan('$jum')"])}}</td>
                         <td>{{Form::text('txtqtypemesananBB'.$temp1, '', ['id'=>'txtqtypemesananBB'.$temp1,'','class'=>'col s3'])}}</td>
                       </tr>
                     @endfor
                     @php($tempAJAX = $temp1)
                   @endif
             </table>
-            <br>
-            <div class="row">
-              <div class=" col m6">
-                {{Form::submit('Insert',['name'=>'btnInsertBB','id'=>'btnInsertBB','class'=>'btn waves-light btn-small'])}}
-                <input  type='submit' class='waves-light btn-small' name='btncancels' id='btncancels' value='Cancel'>
-              </div>
-          </div>
           </div>
         </div>
       </div>
@@ -154,9 +166,20 @@
   $(document).ready(function(){
     $('.sidenav').sidenav();
     $('.modal').modal();
+    $('.dropdown-trigger').dropdown();
   });
-  $('.dropdown-trigger').dropdown();
-  
+  function penambahan(temp){
+    var qty = 0;
+    var harga = 0;
+    var hasil = 0;
+    for(var i=0; i<temp; i++){
+      qty   = $("#txtqtypenerimaanBB" + i).val();
+      harga = $("#txtharga" + i).val();
+      hasil += qty * harga;
+    }
+    $("#txttotalGrand").val(hasil);
+  }
+
   //modal
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');

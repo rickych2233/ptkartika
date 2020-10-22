@@ -19,6 +19,7 @@ class CreatePenerimaanbbsTable extends Migration
             $table->string('tglpenerimaanBB');
             $table->string('statuspenerimaanBB',12);
             $table->string('jenispembayaranBB',7);
+            $table->integer('grandhargaBB');
             $table->primary('nonotapenerimaanBB');
         });
     }

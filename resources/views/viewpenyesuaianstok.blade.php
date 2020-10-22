@@ -109,6 +109,7 @@
     $('.sidenav').sidenav();
     $('.modal').modal();
   });
+  $('.dropdown-trigger').dropdown();
 
 
   function updatedata(nonotaPS,kodebarang,stokNow,stokRevisi,keterangan){

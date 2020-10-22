@@ -104,6 +104,9 @@ Route::get('penerimaanBB', [
 Route::get('viewpenerimaanBB', [
 	'uses' => 'bahanbakuController@viewpenerimaanBB'
 ]);
+Route::get('viewhutangsupplier',[
+    'uses' => 'bahanbakuController@viewhutangsupplier'
+]);
 
 //penjualanBJ
 Route::get('updatepenjualanBJ/{nonota}',[

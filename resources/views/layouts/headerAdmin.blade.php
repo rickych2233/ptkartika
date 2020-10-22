@@ -21,6 +21,7 @@
   <!--<li class="divider"></li>-->
   <li><a href="{!! url('viewtfpembelian'); !!}">Pembelian Bahan Baku</a></li>
   <li><a href="{!! url('viewpenerimaanBB'); !!}">Penerimaan Bahan Baku</a></li>
+  <li><a href="{!! url('viewhutangsupplier'); !!}">List Hutang ke supplier</a></li>
 </ul>
 <ul id="login" class="dropdown-content">
   <!--<li class="divider"></li>-->

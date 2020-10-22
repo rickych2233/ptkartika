@@ -85,6 +85,7 @@
     $('.sidenav').sidenav();
     $('.modal').modal();
   });
+  $('.dropdown-trigger').dropdown();
   //$('.dropdown-trigger').dropdown();
   
   //modal

@@ -36,7 +36,9 @@ class manajemenpembelianController extends Controller
 		$getsupplier 			= new supplier();
 		$data['datasupplier'] 	= $getsupplier->all();
 		return view("newtfpembelian")->with($data);
-    }
+	}
+	
+	
 
 	public function viewtfpembelian(){
 		$gettfpembelian 			= new tfpembelian();

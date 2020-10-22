@@ -38,6 +38,12 @@ class bahanbakuController extends Controller
 		return view("viewpenerimaanBB")->with($data);
 	}
 
+	public function viewhutangsupplier(){
+		$getpenerimaanbb 				= new penerimaanbb();
+		$data['datapenerimaanbb'] 		= $getpenerimaanbb->all();
+		return view("viewhutangsupplier")->with($data);
+	}
+
 	public function editbahanbaku(){
 		$getpenerimaanbb			= new penerimaanbb();
 		$data['datapenerimaanbb']	= $getpenerimaanbb->all();
@@ -158,8 +164,9 @@ class bahanbakuController extends Controller
 				$txttglpenerimaanBB			= $request->txttglpenerimaanBB;
 				$txtstatuspenerimaanBB		= $request->txtstatuspenerimaanBB;
 				$txtjenispembayaranBB		= $request->txtjenispembayaranBB;
+				$txttotalGrand				= $request->txttotalGrand;
 				$adduser = new penerimaanBB();
-				$adduser->insertdata($nonotapenerimaanBB,$txtsupplierpenerimaanBB,$txttglpenerimaanBB,$txtstatuspenerimaanBB,$txtjenispembayaranBB);
+				$adduser->insertdata($nonotapenerimaanBB,$txtsupplierpenerimaanBB,$txttglpenerimaanBB,$txtstatuspenerimaanBB,$txtjenispembayaranBB,$txttotalGrand);
 				//detail penerimaan BB 
 				$txtnonotaDPBB		= detailpenerimaanbb::all()->count()+1;
 				$somedatas			= $request->somedatas; 
