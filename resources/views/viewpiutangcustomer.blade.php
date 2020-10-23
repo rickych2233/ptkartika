@@ -15,9 +15,8 @@
           <div class="col m10">
             <div class="card-panel">
               <div class="row">
-                  <h5>Data Kategori Barang<a href=""><span></span></a><hr></h5>
-                  <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newkategoribarang'); !!}"><i class="large material-icons">add</i></a>
-                <table border="1">
+                  <h5>Data Piutang Customer<a href=""><span></span></a><hr></h5>
+                  <table border="1">
                   <tr>
                     <th>Nomor Nota</th>
                     <th>Nama Customer</th>
