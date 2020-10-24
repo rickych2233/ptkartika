@@ -235,3 +235,19 @@ Route::get('getstokbarang',[
     'uses'          => 'penyesuaianstokController@getstokbarang'
 ]);
 
+//pengirimanbarang
+Route::get('addtocartpengirimanbarang/{kode}',[
+    'uses'          => 'pengirimanController@addtocartpengirimanbarang'
+]);
+Route::get('newbarangbuatpengiriman',[
+    'uses'          => 'pengirimanController@newbarangbuatpengiriman'
+]);
+Route::get('viewpengiriman',[
+    'uses'          => 'pengirimanController@viewpengiriman'
+]);
+Route::get('newpengiriman',[
+    'uses'          => 'pengirimanController@newpengiriman'
+]);
+Route::post('savepengirimanbarang',[
+    'uses'          => 'pengirimanController@savepengirimanbarang'
+]);
