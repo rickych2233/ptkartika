@@ -39,7 +39,31 @@ class pengirimanController extends Controller
         $data['databarang'] 	            = $barang->all();
         return view("newbarangbuatpengiriman")->with($data);
     }
-    
+	
+	function updatepengirimanbarang($data1)
+	{
+		$cart = array();
+		$dataPP = [];
+		$jum = 0;
+		$getpengiriman				= new pengirimanbarang();
+		$data['datapengiriman']		= $getpengiriman->all();
+		if(session()->get('sessionpengiriman'))
+		{
+			$cart	= session()->get('sessionpengiriman');
+			$jum	= count($cart);
+		}
+		foreach($data['datapengiriman'] as $row)
+		{
+			if($row->nonotaTFPembelian == $data1)
+			{
+				$cart[$jum]['nonotapengirimanB']		 	= $row->nonotapengirimanB;
+				session()->put("sessionpengiriman",$cart);
+				return redirect('detailpengirimanbarang');
+			}
+		}
+	}
+
+
     function addtocartpengirimanbarang($kode)
 	{
 		$cart = array();
@@ -75,14 +99,29 @@ class pengirimanController extends Controller
 		$detailpengiriman 				= new detailpengirimanbarang();
         $data['datapengiriman'] 	    = $detailpengiriman->all();
 		return view("detailpengiriman")->with($data);
-    }
+	}
+	
+	public function detailpengirimanbarang(){
+		$barang 				            = new barang();
+        $data['databarang'] 	            = $barang->all();
+        $customer 				            = new customer();
+        $data['datacustomer'] 	            = $customer->all();
+        $user 				                = new user();
+        $data['datauser'] 	                = $user->all();
+        $pengirimanbarang 				    = new pengirimanbarang();
+		$pengirimanbarang 					= new pengirimanbarang();
+        $data['datapengiriman'] 	    	= $pengirimanbarang->all();
+		$detailpengiriman 					= new detailpengirimanbarang();
+        $data['datadetailpengiriman'] 	    = $detailpengiriman->all();		
+		return view("detailpengirimanbarang")->with($data);
+	}
 
 	public function savepengirimanbarang(Request $request){
         if($request->input("btncancels")) {
 			$request->session()->forget('cartpe');
 			return $this->viewpengiriman();
-		}else if($request->input("btndetail")){
-			return $this->detailpengiriman();
+		}else if($request->input("btnupdate")){
+			return $this->detailpengirimanbarang();
 		}else if($request->input("btninsert")){
 			$rules = [
 				'txtnonotapengirimanB'	=> 'required',

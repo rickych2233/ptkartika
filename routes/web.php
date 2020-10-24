@@ -236,6 +236,10 @@ Route::get('getstokbarang',[
 ]);
 
 //pengirimanbarang
+
+Route::get('updatepengirimanbarang/{kode1}',[
+    'uses'          => 'pengirimanController@updatepengirimanbarang'
+]);
 Route::get('addtocartpengirimanbarang/{kode}',[
     'uses'          => 'pengirimanController@addtocartpengirimanbarang'
 ]);
