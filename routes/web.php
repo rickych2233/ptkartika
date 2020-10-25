@@ -243,6 +243,9 @@ Route::get('updatepengirimanbarang/{kode1}',[
 Route::get('addtocartpengirimanbarang/{kode}',[
     'uses'          => 'pengirimanController@addtocartpengirimanbarang'
 ]);
+Route::get('detailpengirimanbarang',[
+    'uses'          => 'pengirimanController@detailpengirimanbarang'
+]);
 Route::get('newbarangbuatpengiriman',[
     'uses'          => 'pengirimanController@newbarangbuatpengiriman'
 ]);

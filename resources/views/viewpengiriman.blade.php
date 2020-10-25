@@ -27,8 +27,7 @@
                     <td>{{$row->username}}</td>
                     <td>{{$row->kodecustomer}}</td>
                     <td>
-                    <a class="waves-effect waves-light btn modal-trigger yellow darken-1 left" href="{!! url('updatepengirimanbarang/'.$row->nonotapengirimanB); !!}">UPDATE</a>
-                    {{ Form::submit('DETAIL',['name'=>'btndetail','id'=>'btndetail','class'=>'btn waves-light btn-medium red']) }}
+                      <a class="waves-effect waves-light btn modal-trigger yellow darken-1 left" href="{!! url('updatepengirimanbarang/'.$row->nonotapengirimanB); !!}">UPDATE</a>
                     </td>
                   </tr>
                   @endforeach

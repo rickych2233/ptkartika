@@ -54,7 +54,7 @@ class pengirimanController extends Controller
 		}
 		foreach($data['datapengiriman'] as $row)
 		{
-			if($row->nonotaTFPembelian == $data1)
+			if($row->nonotapengirimanB == $data1)
 			{
 				$cart[$jum]['nonotapengirimanB']		 	= $row->nonotapengirimanB;
 				session()->put("sessionpengiriman",$cart);
@@ -108,7 +108,6 @@ class pengirimanController extends Controller
         $data['datacustomer'] 	            = $customer->all();
         $user 				                = new user();
         $data['datauser'] 	                = $user->all();
-        $pengirimanbarang 				    = new pengirimanbarang();
 		$pengirimanbarang 					= new pengirimanbarang();
         $data['datapengiriman'] 	    	= $pengirimanbarang->all();
 		$detailpengiriman 					= new detailpengirimanbarang();
@@ -121,7 +120,21 @@ class pengirimanController extends Controller
 			$request->session()->forget('cartpe');
 			return $this->viewpengiriman();
 		}else if($request->input("btnupdate")){
-			return $this->detailpengirimanbarang();
+			$update = pengirimanbarang::find($request->txtnonotapengirimanB);
+			$update->tglpengirimanB 		= $request->txttglpengirimanB;
+			$update->username	 			= $request->txtusername;
+			$update->kodecustomer 			= $request->txtkodecustomer;
+			$update->save();
+			// $tempss2 = $request->txtupnomornotaDBJ;
+			$temps3 = session()->get('notaDpengiriman');
+			for($i=0; $i< count($temps3); $i++){
+				$update1 					= detailpengirimanbarang::find($request['txtupnonota'.$temps3[$i]]);
+				$update1->jumlahbarang 		= $request['txtupjmlbarang'.$temps3[$i]];
+				$update1->save();
+			}
+			Alert::success('Success', 'Success Message');
+			$request->session()->forget('notaDpengiriman');
+			return redirect('viewpengiriman');
 		}else if($request->input("btninsert")){
 			$rules = [
 				'txtnonotapengirimanB'	=> 'required',

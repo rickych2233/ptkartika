@@ -40,8 +40,15 @@ class BarangController extends Controller
 			$getpass	= $request->password;
 			$usr		= new user();
 			$result		= $usr->ceklogin($getuser,$getpass);
+			$data['dtusr']	= $usr->all();
 			if(count($result) > 0){
 				$request->session()->put('data',$getuser);
+				foreach($data['dtusr'] as $row10){
+					if($row10->username == $getuser){
+						$vars = $row10->role;
+						$request->session()->put('data2',$vars);
+					}
+				}
 				return redirect("kategoribarang");
 			}else{
 				return redirect('login');

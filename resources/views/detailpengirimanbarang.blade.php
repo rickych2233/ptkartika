@@ -14,7 +14,7 @@
         $temp1 = $cart[$j]['nonotapengirimanB'];
       }
     }
-
+    // dd($temp1);
     foreach($datauser as $rows){
         if($rows->role == "SALES PENJUALAN")$getkode[$rows->username]   = $rows->username;
     }
@@ -39,10 +39,10 @@
                     <div class="col m6">Nomor Nota :</div>
                 </div>
                 @foreach($datapengiriman as $row)
-                    @if($row->nonotapengiriman == $temp1)
+                    @if($row->nonotapengirimanB == $temp1)
                         <div class="row">
                             <div class=" col m6">
-                                {{Form::text('txtnonotapengirimanB', '', ['id'=>'txtnonotapengirimanB', 'readonly'=>'readonly'])}}
+                              {{Form::text('txtnonotapengirimanB', $row->nonotapengirimanB, ['id'=>'txtnonotapengirimanB', 'readonly'=>'readonly'])}}
                             </div>
                         </div>
                         <div class="row">
@@ -53,12 +53,11 @@
                                 {{Form::date('txttglpengirimanB', date('Y-m-d'), ['id'=>'txttglpengirimanB'])}}
                             </div>
                         </div>
-                    @endif
-                @endforeach
+
                  <!-- Tombol Submit -->
                 <div class="row">
                     <div class=" col m6">
-                        {{Form::submit('Pengiriman',['name'=>'btninsert','id'=>'btninsert','class'=>'btn waves-light btn-medium'])}}
+                        {{Form::submit('Update',['name'=>'btnupdate','id'=>'btnupdate','class'=>'btn waves-light btn-medium'])}}
                         <input  type='submit' class='btn waves-light btn-medium' name='btncancels' id='btncancels' value='Cancel'>
                     </div>
                 </div>
@@ -72,7 +71,7 @@
                     </div> 
                     <div class="row">
                         <div class=" col m6">
-                        {{ Form::select('txtusername', $getkode, null, ['id'=>'txtusername', 'class'=>'validate browser-default']) }}
+                        {{ Form::select('txtusername', $getkode, $row->username, ['id'=>'txtusername', 'class'=>'validate browser-default']) }}
                         </div>
                     </div>
                 </div>
@@ -82,42 +81,38 @@
                     </div> 
                     <div class="row">
                         <div class=" col m6">
-                        {{ Form::select('txtkodecustomer', $getcust, null, ['id'=>'txtkodecustomer', 'class'=>'validate browser-default']) }}
+                        {{ Form::select('txtkodecustomer', $getcust, $row->kodecustomer, ['id'=>'txtkodecustomer', 'class'=>'validate browser-default']) }}
                         </div>
                     </div>
                 </div>  
+                @endif
+              @endforeach
             </div>
           </div>
-          <div class="col m10 offset-m1">
+          <div class="col m5 offset-m3">
             <div class="card-panel">
-            <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newbarangbuatpengiriman'); !!}"><i class="large material-icons">shopping_cart</i></a>
             <table border="1">
                   <tr>
                     <th>Nama Barang</th>
-                    <th>Harga</th>
-                    <th>Stok Sekarang</th>
-                    <th>Stok DiAmbil</th>
+                    <th>Stok Di Ambil</th>
                   </tr>
-                    @if(session()->get("cartpe")) 
-                        @php($cart = session()->get("cartpe"))
-                        @php($jum  = count($cart))
-                        <input name="somed" id="somed" type="hidden" value="<?php echo ($jum); ?>" >
-                        @for($j=0; $j < $jum; $j++)
-                            <tr>
-                                @php($temp1 = $cart[$j]['kodebarang'])
-                                @php($temp2 = $cart[$j]['harga'])
-                                <input name="somedataasd" id="somedataasd" type="hidden" value="<?php echo ($temp1); ?>" >
-                                {{Form::hidden('txtnonotadpengirimanB', '', ['id'=>'txtnonotadpengirimanB'])}}
-                                {{Form::hidden('txtkodebarang'.$temp1, $cart[$j]['kodebarang'], ['id'=>'txtkodebarang'.$temp1])}}
-                                <td>{{$cart[$j]['namabarang']}}</td>
-                                <td>{{$cart[$j]['harga']}}</td>
-                                <td>{{$cart[$j]['stok']}}</td>
-                                {{Form::hidden('txtstoksekarang'.$temp1, $cart[$j]['stok'], ['id'=>'txtstoksekarang'.$temp1])}}
-                                <td>{{Form::text('txtjumlahbarang'.$temp1, '', ['id'=>'txtjumlahbarang'.$temp1,'onkeyup'=>"penambahan('$temp1')"])}}</td>
-                            </tr>
-                        @endfor
-                        @php($tempAJAX = $temp1)
+                  @foreach($datadetailpengiriman as $row2)
+                    @if($row2->nonotapengirimanB == $temp1)
+                      <?php
+                        $temp2 = $row2->nonotadpengirimanB;
+                        $temp3[$idx] = $temp2;
+                        $idx++;
+                      ?>
+                      <tr>
+                        <td>{{$row2->kodebarang}}</td>
+                        {{Form::hidden('txtupnonota'.$temp2, $row2->nonotadpengirimanB,['id'=>'txtupnonota'.$temp2])}}
+                        <td>{{Form::text('txtupjmlbarang'.$temp2, $row2->jumlahbarang, ['id'=>'txtupjmlbarang'.$temp2])}}</td>
+                      </tr>
                     @endif
+                  @endforeach
+                  <?php
+                    session(['notaDpengiriman' => $temp3]);
+                  ?>
                 </table>
             </div> 
           </div>

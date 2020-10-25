@@ -32,13 +32,23 @@
 <nav>
   <div class="nav-wrapper">
     <a href="#" class="dropdown-trigger right"  data-target="login" class=""><i class="material-icons right">arrow_drop_down</i>{{session('data')}}</a>
+    <?php
+      $tempdata = session('data2');
+    ?>
     <!--<a href="#"><img class="circle brand-logo right" src="images/kartika.jpg"></a>-->  
     <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li><a class="dropdown-trigger"  data-target="manajemendatamaster" href=""><i class="material-icons right">arrow_drop_down</i>Manajemen Data Master</a></li>
-      <li><a class="dropdown-trigger"  data-target="manajemenstok" href=""><i class="material-icons right">arrow_drop_down</i>Manajemen Stok</a></li>
-      <li><a class="dropdown-trigger"  data-target="transaksipenjualan" href=""><i class="material-icons right">arrow_drop_down</i>Manajemen Transaksi Penjualan</a></li>
-      <li><a class="dropdown-trigger"  data-target="transaksipembelian" href=""><i class="material-icons right">arrow_drop_down</i>Manajemen Transaksi Pembelian</a></li>
-      <li><a class="dropdown-trigger"  data-target="daftarlaporan" href=""><i class="material-icons right">arrow_drop_down</i>Daftar Laporan</a></li>
+      @if($tempdata == "ADMIN")
+        <li><a class="dropdown-trigger"  data-target="manajemendatamaster" href=""><i class="material-icons right">arrow_drop_down</i>Manajemen Data Master</a></li>
+        <li><a class="dropdown-trigger"  data-target="manajemenstok" href=""><i class="material-icons right">arrow_drop_down</i>Manajemen Stok</a></li>
+        <li><a class="dropdown-trigger"  data-target="transaksipenjualan" href=""><i class="material-icons right">arrow_drop_down</i>Manajemen Transaksi Penjualan</a></li>
+        <li><a class="dropdown-trigger"  data-target="transaksipembelian" href=""><i class="material-icons right">arrow_drop_down</i>Manajemen Transaksi Pembelian</a></li>
+        <li><a class="dropdown-trigger"  data-target="daftarlaporan" href=""><i class="material-icons right">arrow_drop_down</i>Daftar Laporan</a></li>
+      @elseif($tempdata == "SALES PENJUALAN")
+        <li><a class="dropdown-trigger"  data-target="transaksipenjualan" href=""><i class="material-icons right">arrow_drop_down</i>Manajemen Transaksi Penjualan</a></li>
+      @elseif($tempdata == "PEGAWAI")
+        <li><a class="dropdown-trigger"  data-target="manajemenstok" href=""><i class="material-icons right">arrow_drop_down</i>Manajemen Stok</a></li>
+        <li><a class="dropdown-trigger"  data-target="transaksipembelian" href=""><i class="material-icons right">arrow_drop_down</i>Manajemen Transaksi Pembelian</a></li>
+      @endif
     </ul>
   </div>
 </nav>
