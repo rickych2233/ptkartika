@@ -24,6 +24,9 @@
   <li><a href="{!! url('viewpenerimaanBB'); !!}">Penerimaan Bahan Baku</a></li>
   <li><a href="{!! url('viewhutangsupplier'); !!}">List Hutang ke supplier</a></li>
 </ul>
+<ul id="daftarlaporan" class="dropdown-content">
+  <li><a href="{!! url('laporanbahanmentah'); !!}">Laporan Bahan Mentah</a></li>
+</ul>
 <ul id="login" class="dropdown-content">
   <!--<li class="divider"></li>-->
   <li><a href="{!! url('login'); !!}">Log Out</a></li>

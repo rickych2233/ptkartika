@@ -29,7 +29,6 @@ Route::get('user', [
 	'uses' => 'userController@getuser',
 ]);
 
-
 //kategoribarang
 Route::get('login',[
     'uses' => 'BarangController@login'
@@ -42,6 +41,9 @@ Route::post('savekategoribarang',[
 ]);
 Route::get('kategoribarang', [
 	'uses' => 'BarangController@getkategoribarang'
+]);
+Route::get('laporanbahanmentah', [
+	'uses' => 'BarangController@laporanbahanmentah'
 ]);
 
 //barang

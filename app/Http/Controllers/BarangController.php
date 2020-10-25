@@ -25,6 +25,12 @@ class BarangController extends Controller
 		return view("newkategoribarang")->with($data);
 	}
 
+	public function laporanbahanmentah(){
+		$getbarang 					= new barang();
+		$data['databarang'] 		= $getbarang->all();
+		return view("laporanbahanmentah")->with($data);
+	}
+
 	public function getkategoribarang() {
 		$getkategoribarang 					= new kategoribarang();
 		$data['datakategoribarang'] 		= $getkategoribarang->all();
