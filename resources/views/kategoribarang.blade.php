@@ -1,119 +1,127 @@
 @extends('layouts.headerAdmin')
+@section('title')
 <?php
-  $getstatus['AKTIF']     = "AKTIF"; 
-  $getstatus['TIDAK AKTIF'] = "TIDAK AKTIF"; 
+  $getstatus['AKTIF']         = "AKTIF"; 
+  $getstatus['TIDAK AKTIF']        = "TIDAK AKTIF"; 
 ?>
-
+@endsection
+@if($errors->any())
+<div class="alert alert-danger">
+    <ul>
+    @foreach($errors->all() as $error)
+      <?php
+        if($error == ""){
+          Alert::success('Success Title', 'Success Message');
+        }else{
+          Alert::error('Error Message', $error);
+        }
+      ?>
+    @endforeach
+    </ul>
+  </div>
+@endif
 
 @section('content')
-
-  <!-- INI MENU UTAMA-->
-  {{ Form::open(array('url' => 'savekategoribarang')) }}
-  
-  <!-- modal -->
-  <div id="modal_update" class="modal" style='border-radius:2px;width:40%'>
-            <h3 class='rounded-font center white-text red lighten-3' style="padding-top:2%;padding-bottom:3%">Update Kategori Barang</h3>
-            <!--<hr class='center' style='border: 1px solid white;margin-top:-3.7%'>-->
-            <div class="row">
-              <div class="row">
-                  <div class="col m6">Kode Kategori Barang :</div>
-              </div> 
-              <div class="row">
-                  <div class=" col m6">
-                    {{Form::text('txtupkodekategoribarang', '', ['id'=>'txtupkodekategoribarang','','class'=>'validate','readonly'=>'readonly'])}}
-                  </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="row">
-                  <div class="col m6">Nama Kategori Barang :</div>
-              </div> 
-              <div class="row">
-                  <div class=" col m6">
-                  {{Form::text('txtupnamakategoribarang', '', ['id'=>'txtupnamakategoribarang','','class'=>'validate'])}}
-                  </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="row">
-                  <div class="col m6">Status Kategori Barang :</div>
-              </div> 
-              <div class="row">
-                  <div class=" col m6">
-                    {{ Form::select('txtupstatuskategoribarang', $getstatus, null, ['id'=>'txtupstatuskategoribarang', 'class'=>'validate browser-default']) }}
-                  </div>
-              </div>
-            </div>   
-
-            <div class="modal-footer">
-                {{ Form::submit('UPDATE',['name'=>'btnEditbarang','id'=>'btnEditbarang','class'=>'btn waves-light btn-medium red']) }}
-            </div>
+{{ Form::open(array('url' => 'savekategoribarang')) }}
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> List Kategori Barang</h4>
+        <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newkategoribarang'); !!}">Tambah</i></a>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <tr>
+                <th>Kode Kategori Barang</th>
+                <th>Nama Kategori Barang</th>
+                <th>Status</th>
+                <th>AKSI</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($datakategoribarang as $row)
+              <tr>
+                <td>{{$row->kodekategoribarang}}</td>
+                <td>{{$row->namakategoribarang}}</td>
+                <td>{{$row->statuskategoribarang}}</td>
+                @php($kode    = $row->kodekategoribarang)
+                @php($nama    = $row->namakategoribarang)
+                @php($status  = $row->statuskategoribarang)
+                <td>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="updatedata('{!! $kode !!}','{!! $nama !!}','{!! $status !!}')" href="#modal_update">EDIT</button>
+                </td>
+              </tr>
+            @endforeach
+            </tbody>
+          </table>
         </div>
-  <!-- tutup modal -->
-
-    <div class="main">
-      <div class="row">
-        <div class="col m1"></div>
-          <div class="col m10">
-            <div class="card-panel">
-              <div class="row">
-                  <h5>Data Kategori Barang<a href=""><span></span></a><hr></h5>
-                  <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newkategoribarang'); !!}"><i class="large material-icons">add</i></a>
-                <table border="1">
-                  <tr>
-                    <th>Kode Kategori Barang</th>
-                    <th>Nama Kategori Barang</th>
-                    <th>Status</th>
-                    <th>AKSI</th>
-                  </tr>
-                  @foreach($datakategoribarang as $row)
-                  <tr>
-                    <td>{{$row->kodekategoribarang}}</td>
-                    <td>{{$row->namakategoribarang}}</td>
-                    <td>{{$row->statuskategoribarang}}</td>
-                    @php($kode    = $row->kodekategoribarang)
-                    @php($nama    = $row->namakategoribarang)
-                    @php($status  = $row->statuskategoribarang)
-                    <td>
-                      <a class="waves-effect waves-light btn modal-trigger red" onclick="updatedata('{!! $kode !!}','{!! $nama !!}','{!! $status !!}')" href="#modal_update">EDIT</a>
-                    </td>
-                  </tr>
-                  @endforeach
-                </table>
-              </div>
-            </div>
-          </div>
       </div>
     </div>
-  {{ Form::close() }}
-  @endsection
-  
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" >
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{{ URL::asset('css/materialize.css') }}" rel="stylesheet"/>
-  <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/materialize.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/materialize.min.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </div>
+</div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-1-2">Kode Kategori Barang :</div>
+          </div>
+          <div class="row">
+            <div class="col-3-2">
+            {{Form::text('txtupkodekategoribarang', '', ['id'=>'txtupkodekategoribarang','','class'=>'form-control','readonly'=>'readonly'])}}
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-1-2">Nama Kategori Barang :</div>
+          </div>
+          <div class="row">
+            <div class="col-3-2">
+              {{Form::text('txtupnamakategoribarang', '', ['id'=>'txtupnamakategoribarang','','class'=>'form-control'])}}
+            </div>
+          </div>
+        </div>
+
+        <div class="Container">
+          <div class="row">
+              <div class="col-1-2">Status Kategori Barang :</div>
+          </div> 
+          <div class="row">
+              <div class="col-3-2">
+                {{ Form::select('txtupstatuskategoribarang', $getstatus, null, ['id'=>'txtupstatuskategoribarang', 'class'=>'validate browser-default']) }}
+              </div>
+          </div>
+        </div>   
+        
+        <div class="modal-footer">
+          {{ Form::submit('UPDATE',['name'=>'btnEditbarang','id'=>'btnEditbarang','class'=>'btn waves-light btn-medium red']) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{ Form::close() }}
+@endsection
+@section('scripts')
+@endsection
 <script>
-  $(document).ready(function(){
-    $('.sidenav').sidenav();
-    $('.modal').modal();
-  });
-  
-
   function updatedata(kode,nama,status){
     $('#txtupkodekategoribarang').val(kode);
     $('#txtupnamakategoribarang').val(nama);
     $('#txtupstatuskategoribarang').val(status);
   }
-
-  //modal
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, options);
-  });
 </script>

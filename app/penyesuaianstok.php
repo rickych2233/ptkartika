@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use barang;
 
 class penyesuaianstok extends Model
 {

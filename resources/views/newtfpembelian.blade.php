@@ -19,16 +19,16 @@
 @endif
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savetfpembelian')) }}
-    <div class="main">
-      <div class="row">
-        <div class="col m1"></div>
-          <div class="col m10">
-            <div class="card-panel">
-              <div class="row">
-                <div class="row">
-                    <div class="col m12"><h5>List Pembelian Bahan Baku<a href=""><span></span></a><hr></h5></div>
-                </div>
-                <table border="1">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">List Pembelian Bahan Baku</h4>
+          </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
                 <tr>
                     <th>Kode Barang</th>
                     <th>Nama Barang</th>
@@ -67,12 +67,14 @@
                   @endif
                   </tr>
                 @endforeach
-                </table>
-              </div>
-            </div>
+                </tbody>
+            </table>
           </div>
+        </div>
       </div>
     </div>
+  </div>
+</div>
   {{ Form::close() }}
   @endsection
   
@@ -98,8 +100,12 @@
   $('.dropdown-trigger').dropdown();
   
   //modal
+
+
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, options);
   });
+
+  
 </script>

@@ -2,201 +2,208 @@
 <?php
   $getstatus['AKTIF']     = "AKTIF"; 
   $getstatus['TIDAK AKTIF'] = "TIDAK AKTIF"; 
-
-  if(!isset($restore)){
-    $restore = "AKTIF";
-  }
 ?>
-
+@if($errors->any())
+<div class="alert alert-danger">
+    <ul>
+    @foreach($errors->all() as $error)
+      <?php
+        if($error == ""){
+          Alert::success('Success Title', 'Success Message');
+        }else{
+          Alert::error('Error Message', $error);
+        }
+      ?>
+    @endforeach
+    </ul>
+  </div>
+@endif
 @section('content')
-  
-  {{ Form::open(array('url' => 'saveregisteruser')) }}
-  <!-- modal -->
-  <div id="modal_update" class="modal" style='border-radius:2px;width:40%'>
-            <h3 class='rounded-font center white-text red lighten-3' style="padding-top:2%;padding-bottom:3%">Update Kategori Barang</h3>
-            <!--<hr class='center' style='border: 1px solid white;margin-top:-3.7%'>-->
-            <div class="row">
-              <div class="row">
-                  <div class="col m6">Username :</div>
-              </div> 
-              <div class="row">
-                  <div class=" col m6">
-                    {{Form::text('txtupusername', '', ['id'=>'txtupusername','','class'=>'validate','readonly'=>'readonly'])}}
-                  </div>
-              </div>
+{{ Form::open(array('url' => 'saveregisteruser')) }}
+  <!-- ======================================================= -->
+  <!-- INI MENU UTAMA-->
+  <div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">List Pegawai</h4>
+        <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newregisteruser'); !!}">Tambah</a>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <tr>
+                <th>Username/Password</th>
+                <th>Email / Nama</th>
+                <th>Hp/Telp</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach($datauser as $row)
+              <tr>
+                <td>{{$row->username}}</td>
+                <td>{{$row->email}}<br>{{$row->nama}}</td>
+                <td>{{$row->handphone}}<br>{{'(024)'.$row->telepon}}</td>
+                <td>{{$row->role}}</td>
+                <td>{{$row->status}}</td>
+                @php($username  = $row->username)
+                @php($email     = $row->email)
+                @php($password  = $row->password)
+                @php($nama      = $row->nama)
+                @php($alamat    = $row->alamat)
+                @php($telepon   = $row->telepon)
+                @php($handphone = $row->handphone)
+                @php($noktp     = $row->noktp)
+                @php($role      = $row->role)
+                @php($status    = $row->status)
+                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="updatedata('{!! $username !!}','{!! $email !!}','{!! $password !!}','{!! $nama !!}','{!! $alamat !!}','{!! $telepon !!}','{!! $handphone !!}','{!! $noktp !!}','{!! $role !!}','{!! $status !!}')" href="#modal_update">EDIT</button></td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+        {{ $datauser->links() }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Barang</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-1-2">Username :</div>
+          </div>
+          <div class="row">
+            <div class="col-3-2">
+              {{Form::text('txtupusername', '', ['id'=>'txtupusername','','class'=>'validate','readonly'=>'readonly'])}}
             </div>
-            <div class="row">
+          </div>
+        </div>
+
+            <div class="container">
               <div class="row">
-                  <div class="col m6">Email :</div>
+                  <div class="col-1-2">Email :</div>
               </div> 
               <div class="row">
-                  <div class=" col m6">
+                  <div class="col-3-2">
                   {{Form::text('txtupemail', '', ['id'=>'txtupemail','','class'=>'validate'])}}
                   </div>
               </div>
             </div>
-            <div class="row">
+
+            <div class="container">
               <div class="row">
-                  <div class="col m6">Password :</div>
+                  <div class="col-1-2">Password :</div>
               </div> 
               <div class="row">
-                  <div class=" col m6">
+                  <div class=" col-3-2">
                   {{Form::text('txtuppassword', '', ['id'=>'txtuppassword','','class'=>'validate'])}}
                   </div>
               </div>
             </div>
-            <div class="row">
+
+            <div class="container">
               <div class="row">
-                  <div class="col m6">Nama :</div>
+                  <div class="col-1-2">Nama :</div>
               </div> 
               <div class="row">
-                  <div class=" col m6">
+                  <div class="col-3-2">
                   {{Form::text('txtupnama', '', ['id'=>'txtupnama','','class'=>'validate'])}}
                   </div>
               </div>
             </div>
-            <div class="row">
+            <div class="container">
               <div class="row">
-                  <div class="col m6">Alamat :</div>
+                  <div class="col-1-2">Alamat :</div>
               </div> 
               <div class="row">
-                  <div class=" col m6">
+                  <div class="col-3-2">
                   {{Form::text('txtupalamat', '', ['id'=>'txtupalamat','','class'=>'validate'])}}
                   </div>
               </div>
             </div>
-            <div class="row">
+
+            <div class="container">
               <div class="row">
-                  <div class="col m6">Telepon :</div>
+                  <div class="col-1-2">Telepon :</div>
               </div> 
               <div class="row">
-                  <div class=" col m6">
+                  <div class="col-3-2">
                   {{Form::text('txtuptelepon', '', ['id'=>'txtuptelepon','','class'=>'validate'])}}
                   </div>
               </div>
             </div>
-            <div class="row">
+
+            <div class="container">
               <div class="row">
-                  <div class="col m6">Hp :</div>
+                  <div class="col-1-2">Hp :</div>
               </div> 
               <div class="row">
-                  <div class=" col m6">
+                  <div class="col-3-2">
                   {{Form::text('txtuphandphone', '', ['id'=>'txtuphandphone','','class'=>'validate'])}}
                   </div>
               </div>
             </div>
-            <div class="row">
+
+            <div class="container">
               <div class="row">
-                  <div class="col m6">No Ktp :</div>
+                  <div class="col-1-2">No Ktp :</div>
               </div> 
               <div class="row">
-                  <div class=" col m6">
+                  <div class="col-3-2">
                   {{Form::text('txtupktp', '', ['id'=>'txtupktp','','class'=>'validate'])}}
                   </div>
               </div>
             </div>
-            <div class="row">
+            <div class="container">
               <div class="row">
-                  <div class="col m6">Role :</div>
+                  <div class="col-1-2">Role :</div>
               </div> 
               <div class="row">
-                  <div class=" col m6">
+                  <div class="col-3-2">
                   {{Form::text('txtuprole', '', ['id'=>'txtuprole','','class'=>'validate'])}}
                   </div>
               </div>
             </div>
-            <div class="row">
+            <div class="container">
               <div class="row">
-                  <div class="col m6">Status :</div>
+                  <div class="col-1-2">Status :</div>
               </div> 
               <div class="row">
-                  <div class=" col m6">
+                  <div class="col-3-2">
                   {{ Form::select('txtupstatus', $getstatus, null, ['id'=>'txtupstatus', 'class'=>'validate browser-default']) }}
                   </div>
               </div>
             </div> 
-            <div class="modal-footer">
-                {{ Form::submit('UPDATE',['name'=>'btnEditcustomer','id'=>'btnEditcustomer','class'=>'btn waves-light btn-medium red']) }}
-            </div>
+
+        <div class="modal-footer">
+            <!-- <i class="material-icons" id="help">help</i> -->
+            {{ Form::submit('Submit',['name'=>'btnupbarang','id'=>'btnupbarang','class'=>'btn waves-light btn-medium red']) }}            </div>
         </div>
-  <!-- tutup modal -->
-  <!-- INI MENU UTAMA-->
-    <div class="main">
-      <div class="row">
-        <div class="col m1 l1"></div>
-          <div class="col m10">
-            <div class="card-panel">
-              <div class="row">
-                <h4>Data Pegawai</a><hr></h4>
-                <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newregisteruser'); !!}"><i class="large material-icons">add</i></a>
-                <table border="1">
-                  <tr>
-                    <th>Username/Password</th>
-                    <th>Email / Nama</th>
-                    <th>Alamat</th>
-                    <th>Hp/Telp</th>
-                    <th>No Ktp</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                  @foreach($datauser as $row)
-                  <tr>
-                    <td>{{$row->username}}</td>
-                    <td>{{$row->email}}<br>{{$row->nama}}</td>
-                    <td>{{$row->alamat}}</td>
-                    <td>{{$row->handphone}}<br>{{'(024)'.$row->telepon}}</td>
-                    <td>{{$row->noktp}}</td>
-                    <td>{{$row->role}}</td>
-                    <td>{{$row->status}}</td>
-                    @php($username  = $row->username)
-                    @php($email     = $row->email)
-                    @php($password  = $row->password)
-                    @php($nama      = $row->nama)
-                    @php($alamat    = $row->alamat)
-                    @php($telepon   = $row->telepon)
-                    @php($handphone = $row->handphone)
-                    @php($noktp     = $row->noktp)
-                    @php($role      = $row->role)
-                    @php($status    = $row->status)
-                    <td><a class="waves-effect waves-light btn modal-trigger red" onclick="updatedata('{!! $username !!}','{!! $email !!}','{!! $password !!}','{!! $nama !!}','{!! $alamat !!}','{!! $telepon !!}','{!! $handphone !!}','{!! $noktp !!}','{!! $role !!}','{!! $status !!}')" href="#modal_update">EDIT</a></td>
-                  </tr>
-                  @endforeach
-                </table>
-                <br>
-                @if($restore == "TIDAK AKTIF")
-                  <input  type='submit' class='waves-light btn-small right col m0.5 red' name='btncancels' id='btncancels' value='Cancel'>
-                @endif
-              </div>
-              </div>
-              {{ $datauser->links() }}
-            </div>
-          </div>
+
       </div>
     </div>
-  {{ Form::close() }}
-  @endsection
-  
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" >
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{{ URL::asset('css/materialize.css') }}" rel="stylesheet"/>
-  <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/materialize.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/materialize.min.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script type="text/javascript" src="js/materialize.min.js"></script>
+  </div>
+</div>
+{{ Form::close() }}
+@endsection
 
-<script>
-  $(document).ready(function(){
-    $('.sidenav').sidenav();
-    $('.modal').modal();
-  });
-  $('.dropdown-trigger').dropdown();
-  
+  <script>
   function updatedata(username,email,password,nama,alamat,telepon,handphone,noktp,role,status){
     $('#txtupusername').val(username);
     $('#txtupemail').val(email);
@@ -209,7 +216,7 @@
     $('#txtuprole').val(role);
     $('#txtupstatus').val(status);
   }
-  //modal
+  
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, options);

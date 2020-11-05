@@ -3,67 +3,19 @@
 
 @section('content')
   {{ Form::open(array('url' => 'savepenyesuaianstok')) }}
-  <!-- modal -->
-  <div id="modal_update" class="modal" style='border-radius:2px;width:40%'>
-            <h3 class='rounded-font center white-text red lighten-3' style="padding-top:2%;padding-bottom:3%">Update Penyesuaian Stok</h3>
-            <!--<hr class='center' style='border: 1px solid white;margin-top:-3.7%'>-->
-            <div class="row">
-              <div class="row">
-                  <div class="col m6">Kode Barang :</div>
-              </div> 
-              <div class="row">
-                  <div class=" col m6">
-                    {{Form::text('txtupkodebarang', '', ['id'=>'txtupkodebarang','','class'=>'validate','readonly'=>'readonly'])}}
-                    {{Form::hidden('txtupnonotaPS', '',['id'=>'txtupnonotaPS'])}}
-                  </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="row">
-                  <div class="col m6">Stok Barang Sekarang :</div>
-              </div> 
-              <div class="row">
-                  <div class=" col m6">
-                  {{Form::text('txtupstokNow', '', ['id'=>'txtupstokNow','','class'=>'validate'])}}
-                  </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="row">
-                  <div class="col m6">Stok Barang Revisi :</div>
-              </div> 
-              <div class="row">
-                  <div class=" col m6">
-                    {{Form::text('txtupstokRevisi', '', ['id'=>'txtupstokRevisi','','class'=>'validate'])}}
-                  </div>
-              </div>
-            </div>   
-            <div class="row">
-              <div class="row">
-                  <div class="col m6">Keterangan :</div>
-              </div> 
-              <div class="row">
-                  <div class=" col m6">
-                    {{Form::text('txtupketerangan', '', ['id'=>'txtupketerangan','','class'=>'validate'])}}
-                  </div>
-              </div>
-            </div>   
-
-            <div class="modal-footer">
-                {{ Form::submit('UPDATE',['name'=>'btnupdate','id'=>'btnupdate','class'=>'btn waves-light btn-medium red']) }}
-            </div>
-        </div>
-  <!-- tutup modal -->
+  
   <!-- INI MENU UTAMA-->
-    <div class="main">
-      <div class="row">
-        <div class="col m1"></div>
-          <div class="col m10">
-            <div class="card-panel">
-              <div class="row">
-                  <h5>Data Penyesuaian Stok<a href=""><span></span></a><hr></h5>
-                  <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('penyesuaianstok'); !!}"><i class="large material-icons">add</i></a>
-                <table border="1">
+  <div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">List Pegawai</h4>
+        <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('penyesuaianstok'); !!}">Tambah</a>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
                   <tr>
                     <th>Kode Barang</th>
                     <th>Stok Barang Sekarang</th>
@@ -82,26 +34,81 @@
                     @php($stokNow  = $row->stokNow)
                     @php($stokRevisi  = $row->stokRevisi)
                     @php($keterangan  = $row->keterangan)
-                    <td><a class="waves-effect waves-light btn modal-trigger red" onclick="updatedata('{!! $nonotaPS !!}','{!! $kodebarang !!}','{!! $stokNow !!}','{!! $stokRevisi !!}','{!! $keterangan !!}')" href="#modal_update">EDIT</a></td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="updatedata('{!! $nonotaPS !!}','{!! $kodebarang !!}','{!! $stokNow !!}','{!! $stokRevisi !!}','{!! $keterangan !!}')" href="#modal_update">UPDATE</a></td>
                   </tr>
                   @endforeach
                 </table>
               </div>
-            </div>
-          </div>
       </div>
     </div>
-  {{ Form::close() }}
-  @endsection
+  </div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Barang</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>  
+        <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                  <div class="col-1-2">Kode Barang :</div>
+              </div> 
+              <div class="row">
+                  <div class="col-3-2">
+                    {{Form::text('txtupkodebarang', '', ['id'=>'txtupkodebarang','','class'=>'form-control','readonly'=>'readonly'])}}
+                    {{Form::hidden('txtupnonotaPS', '',['id'=>'txtupnonotaPS'])}}
+                  </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                  <div class="col-1-2">Stok Barang Sekarang :</div>
+              </div> 
+              <div class="row">
+                  <div class="col-3-2">
+                  {{Form::text('txtupstokNow', '', ['id'=>'txtupstokNow','','class'=>'form-control'])}}
+                  </div>
+              </div>
+            </div>
+            <div class="container">
+              <div class="row">
+                  <div class="col-1-2">Stok Barang Revisi :</div>
+              </div> 
+              <div class="row">
+                  <div class="col-3-2">
+                    {{Form::text('txtupstokRevisi', '', ['id'=>'txtupstokRevisi','','class'=>'form-control'])}}
+                  </div>
+              </div>
+            </div>   
+            <div class="container">
+              <div class="row">
+                  <div class="col-1-2">Keterangan :</div>
+              </div> 
+              <div class="row">
+                  <div class="col-3-2">
+                    {{Form::text('txtupketerangan', '', ['id'=>'txtupketerangan','','class'=>'form-control'])}}
+                  </div>
+              </div>
+            </div>   
+
+            <div class="modal-footer">
+                {{ Form::submit('UPDATE',['name'=>'btnupdate','id'=>'btnupdate','class'=>'btn waves-light btn-medium red']) }}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- tutup modal -->
+{{ Form::close() }}
+@endsection
   
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" >
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{{ URL::asset('css/materialize.css') }}" rel="stylesheet"/>
-  <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/materialize.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/materialize.min.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script>

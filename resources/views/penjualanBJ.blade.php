@@ -36,125 +36,118 @@
 @endif
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savepenjualanBJ')) }}
-    <div class="main">
-      <div class="row">
-          <div class="col m5">
-            <div class="card-panel">
-              <div class="row">
-                <div class="row">
-                  <div class="col m3">Nomor Nota :</div>
-                </div>
-                <div class="row">
-                    <div class=" col m6">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          </div>
+            <div class="card-body">
+                <div class="container">
+                  <div class="form-group">
                       <?php
                         $date     = date('Ym');
                         $jum      = $datapenjualanBJ->count() + 1; 
                         $kodejum  = "BJ".$date.str_pad($jum, 3, "0",STR_PAD_LEFT);
                       ?>
-                      {{Form::text('txtnonotapenjualanBJ', $kodejum, ['id'=>'txtnonotapenjualanBJ', 'readonly'=>'readonly'])}}
-                    </div>
+                    <label>Nomor Nota :</label>
+                    {{Form::text('txtnonotapenjualanBJ', $kodejum, ['id'=>'txtnonotapenjualanBJ', 'readonly'=>'readonly'])}}
+                  </div> 
                 </div>
-                <div class="row">
-                  <div class="col m3">Kode Customer :</div>
                 </div>
-                <div class="row">
-                    <div class=" col m6">
-                      {{ Form::select('txtkodecustomerBJ',$getkodecustomer , null,['id'=>'txtkodecustomerBJ', 'class'=>'validate browser-default','onchange'=>'ubahalamat()']) }}
-                    </div>
+                <div class="container">
+                  <div class="form-group">
+                    <label>Kode Customer :</label>
+                    {{ Form::select('txtkodecustomerBJ',$getkodecustomer , null,['id'=>'txtkodecustomerBJ', 'class'=>'validate browser-default','onchange'=>'ubahalamat()']) }}
+                  </div> 
                 </div>
-                <div class="row">
-                  <div class="col m5">Nomor Hp Customer :</div>
+                <div class="container">
+                  <div class="form-group">
+                    <label>Nomor Hp Customer :</label>
+                    {{Form::text('txtzxc', '', ['id'=>'txtzxc', 'readonly'=>'readonly'])}}
+                  </div> 
                 </div>
-                <div class="row">
-                    <div class=" col m6">
-                      {{Form::text('txtzxc', '', ['id'=>'txtzxc', 'readonly'=>'readonly'])}}
-                    </div>
+                <div class="container">
+                  <div class="form-group">
+                    <label>Tanggal Pembelian :</label>
+                    {{Form::date('txttglpembelianBJ', date('Y-m-d'), ['id'=>'txttglpembelianBJ','','readonly'=>'readonly'])}}
+                  </div> 
                 </div>
-                <div class="row">
-                  <div class="col m4">Tanggal Pembelian :</div>
+                <div class="container">
+                  <div class="form-group">
+                    <label>Status Pembayaran:</label>
+                    {{ Form::select('txtstatusBJ',$bayar , null,['id'=>'txtstatusBJ', 'class'=>'validate browser-default','onchange'=>'ubahalamat()']) }}
+                  </div> 
                 </div>
-                <div class="row">
-                    <div class=" col m6">   
-                      {{Form::date('txttglpembelianBJ', date('Y-m-d'), ['id'=>'txttglpembelianBJ','','readonly'=>'readonly'])}}
-                    </div>
+                <div class="container">
+                  <div class="form-group">
+                    <label>Jenis Pembayaran:</label>
+                    {{ Form::select('txtjenispembayaranBJ', $pembayaran, null, ['id'=>'txtjenispembayaranBJ', 'class'=>'validate browser-default']) }}
+                  </div> 
                 </div>
-                <br>
-              </div>
+                <div class="container">
+                  <div class="form-group">
+                    <label>Status Pesanan:</label>
+                    {{ Form::select('txtstatuspesanBJ', $pesanan, null, ['id'=>'txtstatuspesanBJ', 'class'=>'validate browser-default']) }}
+                  </div> 
+                </div>
+                {{Form::submit('Penjualan Barang',['name'=>'btnInsert','id'=>'btnInsert','class'=>'btn btn-Success btn-xl'])}}
+                <input  type='submit' class='btn btn-warning btn-xl' name='btncancels' id='btncancels' value='Cancel'>
             </div>
           </div>
-          <div class="col m5">
-            <div class="card-panel">
-              <div class="row">
-                <div class="row">
-                  <div class="col m5">Status Pembayaran :</div>
-                </div>
-                <div class="row">
-                    <div class=" col m6">
-                      {{ Form::select('txtstatusBJ',$bayar , null,['id'=>'txtstatusBJ', 'class'=>'validate browser-default','onchange'=>'ubahalamat()']) }}
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="col m6">Jenis Pembayaran :</div>
-                </div>
-                <div class="row">
-                    <div class=" col m6">
-                      {{ Form::select('txtjenispembayaranBJ', $pembayaran, null, ['id'=>'txtjenispembayaranBJ', 'class'=>'validate browser-default']) }}
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="col m6">Status Pesanan :</div>
-                </div>
-                <div class="row">
-                    <div class=" col m6">
-                      {{ Form::select('txtstatuspesanBJ', $pesanan, null, ['id'=>'txtstatuspesanBJ', 'class'=>'validate browser-default']) }}
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="center col m9">
-            <div class="card-panel">
-              <div class="row">
-                <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newpenjualanBJ'); !!}"><i class="large material-icons">shopping_cart</i></a>
-                <table border="1">
-                  <tr>
-                    <th>Nama Barang</th>
-                    <th>Satuan</th>
-                    <th>Harga</th>
-                    <th>Qty</th>
-                    <th>Grand Total</th>
-                    <th>Status</th>
-                  </tr>
-                    @if(session()->get("penjualanBJ")) 
-                        @php($cart = session()->get("penjualanBJ"))
-                        @php($jum  = count($cart))
-                        <input name="somed" type="hidden" value="<?php echo ($jum); ?>" >
-                        @for($j=0; $j < $jum; $j++)
-                            <tr>
-                                @php($temp1 = $cart[$j]['kodebarang'])
-                                @php($temp2 = $cart[$j]['harga'])
-                                <input name="txtpenjualanBJ" id="txtpenjualanBJ" type="hidden" value="<?php echo ($temp1); ?>" >
-                                <td>{{$cart[$j]['namabarang']}}</td>
-                                <td>{{$cart[$j]['satuan']}}</td>
-                                <td>{{$cart[$j]['harga']}}</td>
-                                    {{Form::hidden('txthargaDBJ'.$temp1, $cart[$j]['harga'],['id'=>'txthargaDBJ'.$temp1])}}
-                                <td>{{Form::text('txtqtyDBJ'.$temp1, '', ['id'=>'txtqtyDBJ'.$temp1,'','class'=>'col s3', '','onkeyup'=>"penambahan('$temp1')"])}}</td>
-                                <td>{{Form::text('txtgrandtotalDBJ'.$temp1, '', ['id'=>'txtgrandtotalDBJ'.$temp1,'','class'=>'col s3','readonly'=>'readonly'])}}</td>
-                                <td>{{Form::text('txtstatusDBJ'.$temp1, $pesanandbj, ['id'=>'txtstatusDBJ'.$temp1, 'readonly'=>'readonly'])}}</td>
-                                <td>{{Form::hidden('txthistoryDBJ'.$temp1, '', ['id'=>'txthistoryDBJ'.$temp1])}}</td>
-                            </tr>
-                        @endfor
-                        @php($tempAJAX = $temp1)
-                    @endif
-                </table>
-              </div>
-            </div>
-          </div>
+        <div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">
+        <a class="btn btn-warning btn-xl" href="{!! url('newpenjualanBJ'); !!}"><i class="large material-icons">shopping_cart</i></a>
+        <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+            <tr>
+                <th>Nama Barang</th>
+                <th>Satuan</th>
+                <th>Harga</th>
+                <th>Qty</th>
+                <th>Grand Total</th>
+                <th>Status</th>
+              </tr>
+              @if(session()->get("penjualanBJ")) 
+                  @php($cart = session()->get("penjualanBJ"))
+                  @php($jum  = count($cart))
+                  <input name="somed" type="hidden" value="<?php echo ($jum); ?>" >
+                  @for($j=0; $j < $jum; $j++)
+                    <tr>
+                        @php($temp1 = $cart[$j]['kodebarang'])
+                        @php($temp2 = $cart[$j]['harga'])
+                        <input name="txtpenjualanBJ" id="txtpenjualanBJ" type="hidden" value="<?php echo ($temp1); ?>" >
+                        <td>{{$cart[$j]['namabarang']}}</td>
+                        <td>{{$cart[$j]['satuan']}}</td>
+                        <td>{{$cart[$j]['harga']}}</td>
+                            {{Form::hidden('txthargaDBJ'.$temp1, $cart[$j]['harga'],['id'=>'txthargaDBJ'.$temp1])}}
+                        <td>{{Form::text('txtqtyDBJ'.$temp1, '', ['id'=>'txtqtyDBJ'.$temp1,'','class'=>'col s3', '','onkeyup'=>"penambahan('$temp1')"])}}</td>
+                        <td>{{Form::text('txtgrandtotalDBJ'.$temp1, '', ['id'=>'txtgrandtotalDBJ'.$temp1,'','class'=>'col s3','readonly'=>'readonly'])}}</td>
+                        <td>{{Form::text('txtstatusDBJ'.$temp1, $pesanandbj, ['id'=>'txtstatusDBJ'.$temp1, 'readonly'=>'readonly'])}}</td>
+                        <td>{{Form::hidden('txthistoryDBJ'.$temp1, '', ['id'=>'txthistoryDBJ'.$temp1])}}</td>
+                    </tr>
+                  @endfor
+                  @php($tempAJAX = $temp1)
+              @endif
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
           <!-- Tombol Submit -->
           <div class="row">
             <div class=" col m8">
-                {{Form::submit('Penjualan Barang',['name'=>'btnInsert','id'=>'btnInsert','class'=>'btn waves-light btn-medium'])}}
-                <input  type='submit' class='btn waves-light btn-medium' name='btncancels' id='btncancels' value='Cancel'>
+                
             </div>
         </div>
       </div>

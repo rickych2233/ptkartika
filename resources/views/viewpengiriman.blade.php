@@ -4,15 +4,16 @@
 @section('content')
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savepengirimanbarang')) }}
-    <div class="main">
-      <div class="row">
-        <div class="col m1"></div>
-          <div class="col m10">
-            <div class="card-panel">
-              <div class="row">
-                  <h5>Data List Pengiriman<a href=""><span></span></a><hr></h5>
-                  <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newpengiriman'); !!}"><i class="large material-icons">add</i></a>
-                <table border="1">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Data Piutang Customer</h4>
+          <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newpengiriman'); !!}"><i class="large material-icons">add</i></a>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
                   <tr>
                     <th>Nomor Nota</th>
                     <th>Tanggal Pengiriman</th>
@@ -31,12 +32,14 @@
                     </td>
                   </tr>
                   @endforeach
-                </table>
-              </div>
-            </div>
+                  </tbody>
+            </table>
           </div>
+        </div>
       </div>
     </div>
+  </div>
+</div>
   {{ Form::close() }}
   @endsection
   

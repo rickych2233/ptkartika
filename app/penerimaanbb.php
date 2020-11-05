@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB; 
 
 class penerimaanbb extends Model
 {
@@ -20,5 +21,11 @@ class penerimaanbb extends Model
         $insertuser->jenispembayaranBB          = $txtjenispembayaranBB;
         $insertuser->grandhargaBB               = $txttotalGrand;
         $insertuser->save(); 
+    }
+
+    public function gettglpenerimaan($tglpenerimaan)
+    {
+        $data = penerimaanbb::select(DB::raw("kodesupplier,count(*) as jumlah"))->whereMonth("tglpenerimaanBB","=",$tglpenerimaan+1)->groupBy('kodesupplier')->get();
+        return $data;
     }
 }

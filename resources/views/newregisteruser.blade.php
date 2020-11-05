@@ -23,58 +23,74 @@
 @endif
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'saveregisteruser')) }}
-    <div class="main">
+  <div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+      </div>
+      <div class="card-body">
       <div class="row">
-        <div class="col m1"></div>
-        <div class="col m10">
-          <div class="card-panel">
-            <div class="row">
               <div class="col m12"><h5>Insert Pegawai<a href=""><span></span></a><hr></h5></div>
             </div>
             <!-- Username -->
-            <div class="row">
-                <div class="col m3">Username :</div>
-            </div>
-            <div class="row">
-                <div class=" col m6">
-                    {{Form::text('txtPegawaiusername', '', ['id'=>'txtPegawaiusername','','class'=>'validate'])}}
-                </div>
+            <div class="container">
+                <div class="form-group">
+                    <label>Username :</label>
+                    {{Form::text('txtPegawaiusername', '', ['id'=>'txtPegawaiusername','','class'=>'form-control'])}}
+                </div> 
             </div>
             <!-- Email -->
-            <div class="row">
-                <div class="col m3">Email :</div>
-            </div>
-            <div class="row">
-                <div class=" col m6">
-                    {{Form::text('txtPegawaiemail', '', ['id'=>'txtPegawaiemail','','class'=>'validate'])}}
-                </div>
+            <div class="container">
+                <div class="form-group">
+                    <label>Email :</label>
+                    {{Form::text('txtPegawaiemail', '', ['id'=>'txtPegawaiemail','','class'=>'form-control'])}}
+                </div> 
             </div>
             <!-- Password -->
-            <div class="row">
-                <div class="col m3">Password :</div>
-            </div>
-            <div class="row">
-                <div class=" col m6">
-                    {{Form::password('txtPegawaipassword', ['id'=>'txtPegawaipassword','','class'=>'validate'])}}
-                </div>
+            <div class="container">
+                <div class="form-group">
+                    <label>Password :</label>
+                    {{Form::password('txtPegawaipassword', ['id'=>'txtPegawaipassword','','class'=>'form-control'])}}
+                </div> 
             </div>
             <!-- Nama -->
-            <div class="row">
-                <div class="col m3">Nama :</div>
-            </div>
-            <div class="row">
-                <div class=" col m6">
-                    {{Form::text('txtPegawainama', '', ['id'=>'txtPegawainama','','class'=>'validate'])}}
-                </div>
+            <div class="container">
+                <div class="form-group">
+                    <label>Nama :</label>
+                    {{Form::text('txtPegawainama', '', ['id'=>'txtPegawainama','','class'=>'form-control'])}}
+                </div> 
             </div>
             <!-- Alamat -->
-            <div class="row">
-                <div class="col m3">Alamat  :</div>
-            </div>
-            <div class="row">
-                <div class=" col m6">
+            <div class="container">
+                <div class="form-group">
+                    <label>Alamat :</label>
                     {{Form::text('txtPegawaialamat', '', ['id'=>'txtPegawaialamat','','class'=>'validate'])}}
-                </div>
+                </div> 
+            </div>
+             <!-- No. Ktp -->
+             <div class="container">
+                <div class="form-group">
+                    <label>Nomor Ktp :</label>
+                    {{Form::text('txtPegawainoktp', '', ['id'=>'txtPegawainoktp','','class'=>'validate'])}}
+                </div> 
+            </div>
+            <!-- Role -->
+            <div class="container">
+                <div class="form-group">
+                    <label>Role Pegawai :</label>
+                    {{ Form::select('txtPegawairole', $getrole, null, ['id'=>'txtPegawairole', 'class'=>'validate browser-default']) }}
+                </div> 
+            </div>
+            <!-- Status -->
+            <div class="container">
+                <div class="form-group">
+                    <label>Status Pegawai :</label>
+                    <?php
+                        $getstatus['READY']         = "READY"; 
+                        $getstatus['NOT READY']     = "NOT READY"; 
+                    ?>
+                    {{ Form::select('txtPegawaistatus', $getstatus, null, ['id'=>'txtPegawaistatus', 'class'=>'validate browser-default']) }}
+                </div> 
             </div>
             <!-- Telepon --><!-- Handphone -->
             <div class="row">
@@ -89,37 +105,7 @@
                     {{Form::text('txtPegawaihandphone', '', ['id'=>'txtPegawaihandphone','','class'=>'validate'])}}
                 </div>
             </div>
-            <!-- No. Ktp -->
-            <div class="row">
-                <div class="col m3">Nomor Ktp :</div>
-            </div>
-            <div class="row">
-                <div class=" col m6">
-                    {{Form::text('txtPegawainoktp', '', ['id'=>'txtPegawainoktp','','class'=>'validate'])}}
-                </div>
-            </div>
-            <!-- Role -->
-            <div class="row">
-                <div class="col m3">Role Pegawai :</div>
-            </div>
-            <div class="row">
-                <div class=" col m6">
-                    {{ Form::select('txtPegawairole', $getrole, null, ['id'=>'txtPegawairole', 'class'=>'validate browser-default']) }}
-                </div>
-            </div>
-            <!-- Status -->
-            <div class="row">
-                <div class="col m3">Status Pegawai :</div>
-            </div>
-            <div class="row">
-                <div class=" col m6">
-                    <?php
-                        $getstatus['READY']         = "READY"; 
-                        $getstatus['NOT READY']     = "NOT READY"; 
-                    ?>
-                    {{ Form::select('txtPegawaistatus', $getstatus, null, ['id'=>'txtPegawaistatus', 'class'=>'validate browser-default']) }}
-                </div>
-            </div>
+           
             <!-- Tombol Submit -->
             <div class="row">
                 <div class=" col m6">

@@ -12,6 +12,7 @@ use App\barang;
 use App\prosesproduksi;
 use App\detailprosesproduksi;
 use App\user;
+use App\penerimaanbb;
 
 class BarangController extends Controller
 {	//kategoribarang
@@ -28,7 +29,16 @@ class BarangController extends Controller
 	public function laporanbahanmentah(){
 		$getbarang 					= new barang();
 		$data['databarang'] 		= $getbarang->all();
+		$getpenerimaanbb 			= new penerimaanbb();
+		$data['datapenerimaanbb'] 	= $getpenerimaanbb->all();
 		return view("laporanbahanmentah")->with($data);
+	}
+
+	public function getbulan(Request $request){
+		$getsupplier 	= new penerimaanbb();
+		$tglpenerimaan 	= $request->tgl;
+		$data 			= $getsupplier->gettglpenerimaan($tglpenerimaan);
+		echo json_encode($data);
 	}
 
 	public function getkategoribarang() {

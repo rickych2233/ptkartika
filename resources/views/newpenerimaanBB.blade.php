@@ -29,14 +29,14 @@
 @endif
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savepenerimaanBB')) }}
-    <div class="main">
-      <div class="row">
-        <div class="col m1"></div>
-        <div class="col m5">
-          <div class="card-panel">
-            <!-- Kode Barang -->
-            <div class="row">
-                <div class="col m6">Nomor Nota :</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col m12">Nomor Nota :</div>
             </div>
             <div class="row">
                 <div class=" col m6">
@@ -63,21 +63,10 @@
             </div>
             <div class="row">
                 <div class=" col m6">
-                    @php($datepenerimaan = date('d-m-Y'))
-                    {{Form::text('txttglpenerimaanBB',$datepenerimaan, ['id'=>'txttglpenerimaanBB', 'readonly'=>'readonly'])}}
+                    {{Form::date('txttglpenerimaanBB', date('Y-m-d'), ['id'=>'txttglpenerimaanBB','','readonly'=>'readonly'])}}
                 </div>
             </div>
-              <div class="row">
-                <div class=" col m6">
-                  {{Form::submit('Insert',['name'=>'btnInsertBB','id'=>'btnInsertBB','class'=>'btn waves-light btn-small'])}}
-                  <input  type='submit' class='waves-light btn-small' name='btncancels' id='btncancels' value='Cancel'>
-                </div>
-            </div>
-          </div>
-        </div>
-        <div class="col m5">
-          <div class="card-panel">
-            <!-- Status penerimaan -->
+            
             <div class="row">
                 <div class="col m6">Status :</div>
             </div>
@@ -104,15 +93,24 @@
                   {{Form::text('txttotalGrand','', ['id'=>'txttotalGrand', 'readonly'=>'readonly'])}}
                 </div>
             </div>
-          </div>
-        </div>
-        <div class="col m8 offset-m2">
-          <div class="card-panel">
             <div class="row">
-                <div class=" col m6">
-                  <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('detailpenerimaanBB'); !!}"><i class="large material-icons">add</i></a>
-                </div>
+              <div class=" col m6">
+                {{Form::submit('Insert',['name'=>'btnInsertBB','id'=>'btnInsertBB','class'=>'btn waves-light btn-small'])}}
+                <input  type='submit' class='waves-light btn-small' name='btncancels' id='btncancels' value='Cancel'>
+              </div>
             </div>
+          </div>
+        <div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">List Barang</h4>
+        <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('detailpenerimaanBB'); !!}"><i class="large material-icons">add</i></a>
+      </div>
             <table border="1">
               <tr>
                 <th>Nama Barang</th>
@@ -142,11 +140,13 @@
                     @endfor
                     @php($tempAJAX = $temp1)
                   @endif
-            </table>
-          </div>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
+  </div>
+</div>
   {{ Form::close() }}
   @endsection
   

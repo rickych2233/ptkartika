@@ -17,32 +17,44 @@
 
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savepengirimanbarang')) }}
-    <div class="main">
-      <div class="row">
-        <div class="col m1"></div>
-          <div class="col m5">
-            <div class="card-panel">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col m12"><h5>Proses Produksi<a href=""><span></span></a><hr></h5></div>
+              </div>
                 <!-- Kode Barang -->
-                <div class="row">
-                    <div class="col m6">Nomor Nota :</div>
+                <div class="container">
+                  <div class="form-group">
+                    <?php
+                        $date     = date('Ym');
+                        $jum      = $datapengirimanbarang->count() + 1; 
+                        $kodejum  = "PE".$date.str_pad($jum, 3, "0",STR_PAD_LEFT);
+                    ?>
+                    <label>Nomor Nota :</label>
+                    {{Form::text('txtnonotapengirimanB',$kodejum, ['id'=>'txtnonotapengirimanB', 'readonly'=>'readonly', 'class'=>'form-control'])}}
+                  </div>
                 </div>
-                <div class="row">
-                    <div class=" col m6">
-                        <?php
-                            $date     = date('Ym');
-                            $jum      = $datapengirimanbarang->count() + 1; 
-                            $kodejum  = "PE".$date.str_pad($jum, 3, "0",STR_PAD_LEFT);
-                        ?>
-                        {{Form::text('txtnonotapengirimanB',$kodejum, ['id'=>'txtnonotapengirimanB', 'readonly'=>'readonly'])}}
-                    </div>
+                <div class="container">
+                  <div class="form-group">
+                    <label>Tanggal Pengiriman :</label>
+                    {{Form::date('txttglpengirimanB', date('Y-m-d'), ['id'=>'txttglpengirimanB', 'class'=>'form-control'])}}
+                  </div>
                 </div>
-                <div class="row">
-                    <div class="col m6">Tanggal Pengiriman :</div>
+                <div class="container">
+                  <div class="form-group">
+                    <label>Nama Toko :</label>
+                    {{ Form::select('txtkodecustomer', $getcust, null, ['id'=>'txtkodecustomer', 'class'=>'form-control']) }}
+                  </div>
                 </div>
-                <div class="row">
-                    <div class=" col m6">
-                        {{Form::date('txttglpengirimanB', date('Y-m-d'), ['id'=>'txttglpengirimanB'])}}
-                    </div>
+                <div class="container">
+                  <div class="form-group">
+                    <label>Nama Sales Penjualan :</label>
+                    {{ Form::select('txtusername', $getkode, null, ['id'=>'txtusername', 'class'=>'form-control']) }}
+                  </div>
                 </div>
                  <!-- Tombol Submit -->
                 <div class="row">
@@ -51,78 +63,58 @@
                         <input  type='submit' class='btn waves-light btn-medium' name='btncancels' id='btncancels' value='Cancel'>
                     </div>
                 </div>
+              </div>
             </div>
           </div>
-          <div class="col m5">
-            <div class="card-panel">
-                <div class="row">
-                    <div class="row">
-                        <div class="col m6">Nama Sales Penjualan :</div>
-                    </div> 
-                    <div class="row">
-                        <div class=" col m6">
-                        {{ Form::select('txtusername', $getkode, null, ['id'=>'txtusername', 'class'=>'validate browser-default']) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="row">
-                        <div class="col m6">Nama Toko :</div>
-                    </div> 
-                    <div class="row">
-                        <div class=" col m6">
-                        {{ Form::select('txtkodecustomer', $getcust, null, ['id'=>'txtkodecustomer', 'class'=>'validate browser-default']) }}
-                        </div>
-                    </div>
-                </div>  
-            </div>
-          </div>
-          <div class="col m10 offset-m1">
-            <div class="card-panel">
-            <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newbarangbuatpengiriman'); !!}"><i class="large material-icons">shopping_cart</i></a>
-            <table border="1">
-                  <tr>
-                    <th>Nama Barang</th>
-                    <th>Harga</th>
-                    <th>Stok Sekarang</th>
-                    <th>Stok DiAmbil</th>
-                  </tr>
-                    @if(session()->get("cartpe")) 
-                        @php($cart = session()->get("cartpe"))
-                        @php($jum  = count($cart))
-                        <input name="somed" id="somed" type="hidden" value="<?php echo ($jum); ?>" >
-                        @for($j=0; $j < $jum; $j++)
-                            <tr>
-                                @php($temp1 = $cart[$j]['kodebarang'])
-                                @php($temp2 = $cart[$j]['harga'])
-                                <input name="somedataasd" id="somedataasd" type="hidden" value="<?php echo ($temp1); ?>" >
-                                {{Form::hidden('txtnonotadpengirimanB', '', ['id'=>'txtnonotadpengirimanB'])}}
-                                {{Form::hidden('txtkodebarang'.$temp1, $cart[$j]['kodebarang'], ['id'=>'txtkodebarang'.$temp1])}}
-                                <td>{{$cart[$j]['namabarang']}}</td>
-                                <td>{{$cart[$j]['harga']}}</td>
-                                <td>{{$cart[$j]['stok']}}</td>
-                                {{Form::hidden('txtstoksekarang'.$temp1, $cart[$j]['stok'], ['id'=>'txtstoksekarang'.$temp1])}}
-                                <td>{{Form::text('txtjumlahbarang'.$temp1, '', ['id'=>'txtjumlahbarang'.$temp1,'onkeyup'=>"penambahan('$temp1')"])}}</td>
-                            </tr>
-                        @endfor
-                        @php($tempAJAX = $temp1)
-                    @endif
-                </table>
-            </div> 
-          </div>
+        <div>
       </div>
     </div>
+  </div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header">
+            <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newbarangbuatpengiriman'); !!}"><i class="large material-icons">shopping_cart</i></a>
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+            <tr>
+                <th>Nama Barang</th>
+                <th>Harga</th>
+                <th>Stok Sekarang</th>
+                <th>Stok DiAmbil</th>
+              </tr>
+              @if(session()->get("cartpe")) 
+                  @php($cart = session()->get("cartpe"))
+                  @php($jum  = count($cart))
+                  <input name="somed" id="somed" type="hidden" value="<?php echo ($jum); ?>" >
+                  @for($j=0; $j < $jum; $j++)
+                      <tr>
+                          @php($temp1 = $cart[$j]['kodebarang'])
+                          @php($temp2 = $cart[$j]['harga'])
+                          <input name="somedataasd" id="somedataasd" type="hidden" value="<?php echo ($temp1); ?>" >
+                          {{Form::hidden('txtnonotadpengirimanB', '', ['id'=>'txtnonotadpengirimanB'])}}
+                          {{Form::hidden('txtkodebarang'.$temp1, $cart[$j]['kodebarang'], ['id'=>'txtkodebarang'.$temp1])}}
+                          <td>{{$cart[$j]['namabarang']}}</td>
+                          <td>{{$cart[$j]['harga']}}</td>
+                          <td>{{$cart[$j]['stok']}}</td>
+                          {{Form::hidden('txtstoksekarang'.$temp1, $cart[$j]['stok'], ['id'=>'txtstoksekarang'.$temp1])}}
+                          <td>{{Form::text('txtjumlahbarang'.$temp1, '', ['id'=>'txtjumlahbarang'.$temp1,'onkeyup'=>"penambahan('$temp1')"])}}</td>
+                      </tr>
+                  @endfor
+                  @php($tempAJAX = $temp1)
+              @endif
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   {{ Form::close() }}
   @endsection
   
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" >
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{{ URL::asset('css/materialize.css') }}" rel="stylesheet"/>
-  <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/materialize.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/materialize.min.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script>

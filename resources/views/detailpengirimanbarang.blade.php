@@ -29,11 +29,12 @@
 
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savepengirimanbarang')) }}
-    <div class="main">
-      <div class="row">
-        <div class="col m1"></div>
-          <div class="col m5">
-            <div class="card-panel">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          </div>
+            <div class="card-body">
                 <!-- Kode Barang -->
                 <div class="row">
                     <div class="col m6">Nomor Nota :</div>
@@ -53,20 +54,7 @@
                                 {{Form::date('txttglpengirimanB', date('Y-m-d'), ['id'=>'txttglpengirimanB'])}}
                             </div>
                         </div>
-
-                 <!-- Tombol Submit -->
-                <div class="row">
-                    <div class=" col m6">
-                        {{Form::submit('Update',['name'=>'btnupdate','id'=>'btnupdate','class'=>'btn waves-light btn-medium'])}}
-                        <input  type='submit' class='btn waves-light btn-medium' name='btncancels' id='btncancels' value='Cancel'>
-                    </div>
-                </div>
-            </div>
-          </div>
-          <div class="col m5">
-            <div class="card-panel">
-                <div class="row">
-                    <div class="row">
+                        <div class="row">
                         <div class="col m6">Nama Sales Penjualan :</div>
                     </div> 
                     <div class="row">
@@ -74,9 +62,8 @@
                         {{ Form::select('txtusername', $getkode, $row->username, ['id'=>'txtusername', 'class'=>'validate browser-default']) }}
                         </div>
                     </div>
-                </div>
+                
                 <div class="row">
-                    <div class="row">
                         <div class="col m6">Nama Toko :</div>
                     </div> 
                     <div class="row">
@@ -84,11 +71,22 @@
                         {{ Form::select('txtkodecustomer', $getcust, $row->kodecustomer, ['id'=>'txtkodecustomer', 'class'=>'validate browser-default']) }}
                         </div>
                     </div>
-                </div>  
                 @endif
               @endforeach
+               <!-- Tombol Submit -->
+               <div class="row">
+                    <div class=" col m6">
+                        {{Form::submit('Update',['name'=>'btnupdate','id'=>'btnupdate','class'=>'btn waves-light btn-medium'])}}
+                        <input  type='submit' class='btn waves-light btn-medium' name='btncancels' id='btncancels' value='Cancel'>
+                    </div>
+                </div>
+              </div>
             </div>
           </div>
+        <div>
+      </div>
+    </div>
+  </div>
           <div class="col m5 offset-m3">
             <div class="card-panel">
             <table border="1">

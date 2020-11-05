@@ -21,27 +21,28 @@
 @endif
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savekategoribarang')) }}
-    <div class="main">
+  <div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+      </div>
+      <div class="card-body">
       <div class="row">
-        <div class="col m1"></div>
-        <div class="col m8">
-          <div class="card-panel">
-            <div class="row">
-              <div class="col m12 center"><h5>Kategori Barang Baru<a href=""><span></span></a><hr></h5></div>
+        <div class="col m12 center"><h5>Kategori Barang Baru<a href=""><span></span></a><hr></h5></div>
+        </div>
+        <!-- Kode Barang -->
+        <div class="row">
+            <div class="col m2">Kode Kategori Barang :</div>
+        </div>
+        <div class="row">
+            <div class=" col m6">
+                <?php
+                    $jum = $datakategoribarang->count() + 1; 
+                    $kodejum = "KB".str_pad($jum, 3, "0",STR_PAD_LEFT);
+                ?>
+                {{Form::text('txtkodekategoribarang', $kodejum, ['id'=>'txtkodekategoribarang', 'readonly'=>'readonly'])}}
             </div>
-            <!-- Kode Barang -->
-            <div class="row">
-                <div class="col m2">Kode Kategori Barang :</div>
-            </div>
-            <div class="row">
-                <div class=" col m6">
-                    <?php
-                        $jum = $datakategoribarang->count() + 1; 
-                        $kodejum = "KB".str_pad($jum, 3, "0",STR_PAD_LEFT);
-                    ?>
-                    {{Form::text('txtkodekategoribarang', $kodejum, ['id'=>'txtkodekategoribarang', 'readonly'=>'readonly'])}}
-                </div>
-            </div>
+        </div>
             <!-- Nama Barang -->
             <div class="row">
                 <div class="col m3">Nama Kategori Barang :</div>
@@ -67,10 +68,10 @@
                   <input  type='submit' class='waves-light btn-large' name='btncancels' id='btncancels' value='Cancel'>
                 </div>
             </div>
-          </div>
-        </div>
       </div>
     </div>
+  </div>
+</div>
   {{ Form::close() }}
   @endsection
   

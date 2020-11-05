@@ -18,12 +18,12 @@
 
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savetfpembelian')) }}
-    <div class="main">
-      <div class="row">
-        <div class="col m1"></div>
-          <div class="col m5">
-            <div class="card-panel">
-              <div class="row">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          </div>
+            <div class="card-body">
                 <h5>Update Kategori Barang<a href=""><span></span></a><hr></h5>
                 @foreach($datatfpembelian as $row)
                   @if($row->nonotaTFPembelian == $temp)
@@ -43,21 +43,7 @@
                         {{Form::text('txtupkodesupplierTF', $row->kodesupplier, ['id'=>'txtupkodesupplierTF'])}}
                       </div>
                   </div>
-                  
-              <!-- Tombol Submit -->
-              <div class="row">
-                <div class=" col m8">
-                {{Form::submit('Update',['name'=>'btnupdateTF','id'=>'btnupdateTF','class'=>'btn waves-light btn-medium'])}}
-                {{ Form::submit('cancel',['name'=>'btncancels','id'=>'btncancels','class'=>'btn waves-light btn-medium red']) }}
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col m5">
-            <div class="card-panel">
-              <div class="row">
-                    <div class="row">
+                  <div class="row">
                       <div class="col m6">Tanggal Pembelian Bahan Baku :</div>
                     </div>
                     <div class="row">
@@ -81,11 +67,22 @@
                           {{Form::text('txtupjenispembayaranTF', $row->jenispembayaranTF, ['id'=>'txtupjenispembayaranTF'])}}
                         </div>
                     </div>
-                  @endif
+              <!-- Tombol Submit -->
+              @endif
                 @endforeach
+              <div class="row">
+                <div class=" col m8">
+                {{Form::submit('Update',['name'=>'btnupdateTF','id'=>'btnupdateTF','class'=>'btn waves-light btn-medium'])}}
+                {{ Form::submit('cancel',['name'=>'btncancels','id'=>'btncancels','class'=>'btn waves-light btn-medium red']) }}
+                </div>
+                </div>
               </div>
             </div>
           </div>
+        <div>
+      </div>
+    </div>
+  </div>
           <div class="col m7 offset-m3">
             <div class="card-panel">
               <div class="row">

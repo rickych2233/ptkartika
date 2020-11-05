@@ -11,9 +11,13 @@
 |
 */
 //all
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+});
+
 // Route::get('login',[
 //     'uses'          => 'welcomeController@login'
 // ]);
@@ -80,7 +84,9 @@ Route::get('viewprosesproduksi', [
 Route::get('editprosesproduksi', [
 	'uses' => 'BarangController@editprosesproduksi'
 ]);
-
+Route::get('getbulan', [
+	'uses' => 'BarangController@getbulan'
+]);
 //penerimaanbahanbaku
 Route::get('addtocartpenerimaanBB/{kode}',[
     'uses' => 'bahanbakuController@addtocartpenerimaanBB'

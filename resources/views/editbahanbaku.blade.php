@@ -19,12 +19,12 @@
 @section('content')
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savepenerimaanBB')) }}
-    <div class="main">
-      <div class="row">
-        <div class="col m1"></div>
-          <div class="col m5">
-            <div class="card-panel">
-              <div class="row">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          </div>
+            <div class="card-body">
                 <h5>Update Penjualan Barang jadi<a href=""><span></span></a><hr></h5>
                 @foreach($datapenerimaanbb as $row)
                   @if($row->nonotapenerimaanBB == $temp1)
@@ -46,21 +46,7 @@
                           {{Form::text('txtupkodesupplier', $row->kodesupplier, ['id'=>'txtupkodesupplier', 'readonly'=>'readonly'])}}
                         </div>
                     </div>
-                    <!-- Tombol Submit -->
                     <div class="row">
-                      <div class=" col m8">
-                      {{Form::submit('Update',['name'=>'btnupdateDPBB','id'=>'btnupdateDPBB','class'=>'btn waves-light btn-medium'])}}
-                      {{ Form::submit('cancel',['name'=>'btncancels','id'=>'btncancels','class'=>'btn waves-light btn-medium red']) }}
-                      </div>
-                    </div>
-              </div>
-            </div>
-          </div>
-          <div class="col m5">
-            <div class="card-panel">
-              <div class="row">
-                <!-- Tgl penerimaanBB -->
-                <div class="row">
                   <div class="col m5">Tanggal :</div>
                 </div>
                 <div class="row">
@@ -86,11 +72,23 @@
                     {{ Form::select('txtupjenispembayaranBB', $jenisBB, $row->jenispembayaranBB, ['id'=>'txtupjenispembayaranBB', 'class'=>'validate browser-default']) }}
                   </div>
                 </div>
+                @endif
+        @endforeach
+                    <!-- Tombol Submit -->
+                    <div class="row">
+                      <div class=" col m8">
+                      {{Form::submit('Update',['name'=>'btnupdateDPBB','id'=>'btnupdateDPBB','class'=>'btn waves-light btn-medium'])}}
+                      {{ Form::submit('cancel',['name'=>'btncancels','id'=>'btncancels','class'=>'btn waves-light btn-medium red']) }}
+                      </div>
+                </div>
               </div>
             </div>
           </div>
-          @endif
-        @endforeach
+        <div>
+      </div>
+    </div>
+  </div>
+          
         <div class="col m8 offset-m2">
           <div class="card-panel">
             <div class="row">

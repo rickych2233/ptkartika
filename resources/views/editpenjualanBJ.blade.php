@@ -37,13 +37,13 @@
 @section('content')
 {{ Form::open(array('url' => 'savepenjualanBJ')) }}
   <!-- INI MENU UTAMA-->
-    <div class="main">
-      <div class="row">
-        <div class="col m1"></div>
-          <div class="col m5">
-            <div class="card-panel ">
-              <div class="row">
-                <h5>Update Penjualan Barang jadi<a href=""><span></span></a><hr></h5>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          </div>
+            <div class="card-body">
+            <h4 class="card-title">Update Penjualan Barang Jadi</h4>
                 @foreach($datapenjualanbj as $row)    
                     @if($temp1 == $row->nonotapenjualanBJ)
                     <!-- Kode Customer -->
@@ -65,24 +65,6 @@
                             {{Form::text('txtuptglpembelianBJ', $row->tglpembelianBJ, ['id'=>'txtuptglpembelianBJ', 'readonly'=>'readonly'])}}
                         </div>
                     </div>
-                    @endif
-                @endforeach
-              </div>
-              <!-- Tombol Submit -->
-              <div class="row">
-                <div class=" col m8">
-                {{Form::submit('Update',['name'=>'btnInsertPBJ','id'=>'btnInsertPBJ','class'=>'btn waves-light btn-medium'])}}
-                {{ Form::submit('cancel',['name'=>'btncancels','id'=>'btncancels','class'=>'btn waves-light btn-medium red']) }}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col m5">
-            <div class="card-panel ">
-              <div class="row">
-                <h5>Update Penjualan Barang jadi<a href=""><span></span></a><hr></h5>
-                @foreach($datapenjualanbj as $row)    
-                    @if($temp1 == $row->nonotapenjualanBJ)
                     <!-- Status Pembelian -->
                     <div class="row">
                         <div class="col m5">Status Pembelian :</div>
@@ -112,9 +94,15 @@
                     </div>
                     @endif
                 @endforeach
+                {{Form::submit('Update',['name'=>'btnInsertPBJ','id'=>'btnInsertPBJ','class'=>'btn waves-light btn-medium'])}}
+              {{ Form::submit('cancel',['name'=>'btncancels','id'=>'btncancels','class'=>'btn waves-light btn-medium red']) }}
               </div>
             </div>
           </div>
+        <div>
+      </div>
+    </div>
+  </div>
         <div class="col m10 offset-m1">
           <div class="card-panel">
             <div class="row">

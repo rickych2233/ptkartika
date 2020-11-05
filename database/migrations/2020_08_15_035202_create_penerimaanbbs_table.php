@@ -16,7 +16,7 @@ class CreatePenerimaanbbsTable extends Migration
         Schema::create('penerimaanbb', function (Blueprint $table) {
             $table->string('nonotapenerimaanBB',13);
             $table->string('kodesupplier',4);
-            $table->string('tglpenerimaanBB');
+            $table->date('tglpenerimaanBB');
             $table->string('statuspenerimaanBB',12);
             $table->string('jenispembayaranBB',7);
             $table->integer('grandhargaBB');

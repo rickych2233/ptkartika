@@ -26,13 +26,13 @@
 
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savepenjualanBJ')) }}
-    <div class="main">
-      <div class="row">
-        <div class="col m1"></div>
-        <div class="col m8 offset-m1">
-            <div class="card-panel">
-              <div class="row">
-                <h5>History Pelunasan Piutang<a href=""><span></span></a><hr></h5>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          </div>
+            <div class="card-body">
+                <h4 class="card-title">History Pelunasan Piutang</h4>
                 @foreach($datadetailpenjualanbj as $rows2)
                   @if($rows2->nonotaBJFK == $temp1)
                   <?php
@@ -52,6 +52,7 @@
                     {{Form::hidden('txtgrandtotal', $tempsss,['id'=>'txtgrandtotal'])}}
                   <div class="col m3">Grand Total :@php(print_r($hasil_rupiah))</div>
                 </div>
+
                 <table border="1">
                   <tr>
                     <th>Nomor Nota</th>
@@ -69,12 +70,7 @@
                     @endif()
                   @endforeach
                 </table>
-              </div>
-            </div>
-          </div>
-          <div class="col m5 offset-m1">
-            <div class="card-panel">
-              <div class="row">
+                <br>
                 <h5>Pelunasan Piutang<a href=""><span></span></a><hr></h5>
                 <div class="row">
                   <div class="col m3">Nomor Nota :</div>
@@ -86,7 +82,7 @@
                         $jum      = $datapelunasanpiutang->count() + 1; 
                         $kodejum  = "PP".$date.str_pad($jum, 3, "0",STR_PAD_LEFT);
                       ?>
-                      {{Form::text('txtnonotapelunasan', $kodejum, ['id'=>'txtnonotapelunasan','','readonly'=>'readonly'])}}
+                      {{Form::text('txtnonotapelunasan', $kodejum, ['id'=>'txtnonotapelunasan','class'=>'form-control','readonly'=>'readonly'])}}
                     </div>
                 </div>
                 @foreach($datapenjualanbj as $row)
@@ -96,28 +92,15 @@
                 </div>
                 <div class="row">
                     <div class=" col m6">
-                      {{ Form::select('txtsalespenjualan', $getkode, null, ['id'=>'txtsalespenjualan', 'class'=>'validate browser-default']) }}
+                      {{ Form::select('txtsalespenjualan', $getkode, null, ['id'=>'txtsalespenjualan','class'=>'form-control']) }}
                     </div>
                 </div>
-                <!-- Tombol Submit -->
-                <div class="row">
-                    <div class=" col m6">
-                      {{Form::submit('Simpan',['name'=>'btnInsertpiutang','id'=>'btnInsertpiutang','class'=>'btn waves-light btn-small'])}}
-                      <input  type='submit' class='waves-light btn-small' name='btncancels' id='btncancels' value='Cancel'>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col m5">
-            <div class="card-panel">
-              <div class="row">
                 <div class="row">
                   <div class="col m3">Customer :</div>
                 </div>
                 <div class="row">
                   <div class=" col m6">
-                    {{Form::text('txtkodecustomer', $row->kodecustomer, ['id'=>'txtkodecustomer','readonly'=>'readonly'])}}
+                    {{Form::text('txtkodecustomer', $row->kodecustomer, ['id'=>'txtkodecustomer','class'=>'form-control','readonly'=>'readonly'])}}
                   </div>
                 </div>
                 <div class="row">
@@ -126,7 +109,7 @@
                 <div class="row">
                   <div class=" col m6">
                     @php($date = date('yy-m-d'))
-                    {{Form::text('txttglpelunasan', $date, ['id'=>'txttglpelunasan','readonly'=>'readonly'])}}
+                    {{Form::text('txttglpelunasan', $date, ['id'=>'txttglpelunasan','class'=>'form-control','readonly'=>'readonly'])}}
                   </div>
                 </div>
                   @endif
@@ -146,35 +129,31 @@
                 </div>
                 <div class="row">
                   <div class=" col m6">
-                    {{Form::text('txtmbn', $sisa, ['id'=>'txtmbn','readonly'=>'readonly'])}}
+                    {{Form::text('txtmbn', $sisa, ['id'=>'txtmbn','class'=>'form-control','readonly'=>'readonly'])}}
                   </div>
                 </div>
                 <div class="row">
                   <div class="col m3">Jumlah Bayar:</div>
                 </div>
-                <div class="row">
-                  <div class=" col m6">
-                    {{Form::text('txtjumlahdibayar', '', ['id'=>'txtjumlahdibayar'])}}
-                    {{Form::hidden('txtnonotapenjualanBJ', $temp1, ['id'=>'txtnonotapenjualanBJ','','class'=>'validate'])}}
-                  </div>
-                </div>
+              <div class="row">
+                <div class=" col m6">
+                  {{Form::text('txtjumlahdibayar', '', ['id'=>'txtjumlahdibayar','class'=>'form-control'])}}
+                  {{Form::hidden('txtnonotapenjualanBJ', $temp1, ['id'=>'txtnonotapenjualanBJ','','class'=>'validate'])}}
+              </div>
+            </div>
+            {{Form::submit('Simpan',['name'=>'btnInsertpiutang','id'=>'btnInsertpiutang','class'=>'btn btn-success btn-sm'])}}
+            <input  type='submit' class='btn btn-warning btn-sm' name='btncancels' id='btncancels' value='Cancel'>
               </div>
             </div>
           </div>
+        <div>
       </div>
     </div>
+</div>
   {{ Form::close() }}
   @endsection
   
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" >
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{{ URL::asset('css/materialize.css') }}" rel="stylesheet"/>
-  <script type="text/javascript" src="{{ URL::asset('js/jquery.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/materialize.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/materialize.min.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">\
 
 <script>
   $(document).ready(function(){

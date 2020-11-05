@@ -21,12 +21,13 @@
 @endif
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savesupplier')) }}
-    <div class="main">
+  <div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+      </div>
+      <div class="card-body">
       <div class="row">
-        <div class="col m1"></div>
-        <div class="col m10">
-          <div class="card-panel">
-            <div class="row">
               <div class="col m12"><h5>New Supplier<a href=""><span></span></a><hr></h5></div>
             </div>
             <!-- Kode Supplier -->
@@ -85,10 +86,10 @@
                   <input  type='submit' class='waves-light btn-large' name='btncancels' id='btncancels' value='Cancel'>
                 </div>
             </div>
-          </div>
-        </div>
       </div>
     </div>
+  </div>
+</div>
   {{ Form::close() }}
   @endsection
   
