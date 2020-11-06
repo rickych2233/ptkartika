@@ -201,13 +201,13 @@ class penjualanBJController extends Controller
 			$temps3 = session()->get('notaDBJ1');
 			for($i=0; $i< count($temps3); $i++){
 				$update1 = detailpenjualanbj::find($request['txtupnomornotaDBJ'.$temps3[$i]]);
-				$update1->namabarangDBJ 		= $request['txtupnamabarangDBJ'.$temps3[$i]];
+				$update1->kodebarang 			= $request['txtupnamabarangDBJ'.$temps3[$i]];
 				$update1->satuaanDBJ 			= $request['txtupsatuanDBJ'.$temps3[$i]];
 				$update1->hargaDBJ 				= $request['txtuphargaDBJ'.$temps3[$i]];
 				$update1->qtyDBJ 				= $request['txtupqtyDBJ'.$temps3[$i]];
 				$update1->grandtotalDBJ 		= $request['txtupgrandtotalDBJ'.$temps3[$i]];
 				$update1->statusDBJ 			= $request['txtstatusDBJ'.$temps3[$i]];
-				$update1->nonotaBJFK 			= $request->txtupnonotapenjualanBJ;
+				$update1->nonotaBJ 				= $request->txtupnonotapenjualanBJ;
 				$update1->save();
 			}
 			Alert::success('Success', 'Success Message');

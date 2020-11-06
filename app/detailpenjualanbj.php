@@ -14,14 +14,14 @@ class detailpenjualanbj extends Model
     {
         $insertuser                     = new detailpenjualanbj(); 
         $insertuser->nonotaDBJ          = $txtnonotaDBJ; 
-        $insertuser->namabarangDBJ      = $txtnamabarangDBJ;
+        $insertuser->kodebarang         = $txtnamabarangDBJ;
         $insertuser->satuaanDBJ         = $txtsatuaanDBJ; 
         $insertuser->hargaDBJ           = $txthargaDBJ;
         $insertuser->qtyDBJ             = $txtqtyDBJ;
         $insertuser->grandtotalDBJ      = $txtgrandtotalDBJ;
         $insertuser->statusDBJ          = $txtstatusDBJ;
         $insertuser->historyDBJ         = $txthistoryDBJ;
-        $insertuser->nonotaBJFK         = $txtnonotaBJFK;
+        $insertuser->nonotaBJ           = $txtnonotaBJFK;
         $insertuser->save(); 
     }
     

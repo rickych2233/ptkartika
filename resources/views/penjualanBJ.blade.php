@@ -42,7 +42,11 @@
         <div class="card-header">
           </div>
             <div class="card-body">
+<<<<<<< HEAD
+                <div class="container float-left">
+=======
                 <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                   <div class="form-group">
                       <?php
                         $date     = date('Ym');
@@ -52,6 +56,52 @@
                     <label>Nomor Nota :</label>
                     {{Form::text('txtnonotapenjualanBJ', $kodejum, ['id'=>'txtnonotapenjualanBJ', 'readonly'=>'readonly'])}}
                   </div> 
+<<<<<<< HEAD
+                </div>
+                </div>
+                <div class="container float-left">
+                  <div class="form-group">
+                    <label>Kode Customer :</label>
+                    {{ Form::select('txtkodecustomerBJ',$getkodecustomer , null,['id'=>'txtkodecustomerBJ', 'class'=>'validate browser-default','onchange'=>'ubahalamat()']) }}
+                  </div> 
+                </div>
+                <div class="container float-left">
+                  <div class="form-group">
+                    <label>Nomor Hp Customer :</label>
+                    {{Form::text('txtzxc', '', ['id'=>'txtzxc', 'readonly'=>'readonly'])}}
+                  </div> 
+                </div>
+                <div class="container float-left">
+                  <div class="form-group">
+                    <label>Tanggal Pembelian :</label>
+                    {{Form::date('txttglpembelianBJ', date('Y-m-d'), ['id'=>'txttglpembelianBJ','','readonly'=>'readonly'])}}
+                  </div> 
+                </div>
+                <div class="container float-left">
+                  <div class="form-group">
+                    <label>Status Pembayaran:</label>
+                    {{ Form::select('txtstatusBJ',$bayar , null,['id'=>'txtstatusBJ', 'class'=>'validate browser-default','onchange'=>'ubahalamat()']) }}
+                  </div> 
+                </div>
+                <div class="container float-left">
+                  <div class="form-group">
+                    <label>Jenis Pembayaran:</label>
+                    {{ Form::select('txtjenispembayaranBJ', $pembayaran, null, ['id'=>'txtjenispembayaranBJ', 'class'=>'validate browser-default']) }}
+                  </div> 
+                </div>
+                <div class="container float-left">
+                  <div class="form-group">
+                    <label>Status Pesanan:</label>
+                    {{ Form::select('txtstatuspesanBJ', $pesanan, null, ['id'=>'txtstatuspesanBJ', 'class'=>'validate browser-default']) }}
+                  </div> 
+                </div>
+                <div class="container float-left">
+                  <div class="form-group">
+                    {{Form::submit('Penjualan Barang',['name'=>'btnInsert','id'=>'btnInsert','class'=>'btn btn-Success btn-xl'])}}
+                    <input  type='submit' class='btn btn-warning btn-xl' name='btncancels' id='btncancels' value='Cancel'>
+                  </div> 
+                </div>
+=======
                 </div>
                 </div>
                 <div class="container">
@@ -92,6 +142,7 @@
                 </div>
                 {{Form::submit('Penjualan Barang',['name'=>'btnInsert','id'=>'btnInsert','class'=>'btn btn-Success btn-xl'])}}
                 <input  type='submit' class='btn btn-warning btn-xl' name='btncancels' id='btncancels' value='Cancel'>
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
             </div>
           </div>
         <div>

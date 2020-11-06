@@ -9,7 +9,11 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
+<<<<<<< HEAD
+        <h4 class="card-title">List Penyesuaian Stok</h4>
+=======
         <h4 class="card-title">List Pegawai</h4>
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
         <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('penyesuaianstok'); !!}">Tambah</a>
       </div>
       <div class="card-body">

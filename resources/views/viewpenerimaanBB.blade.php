@@ -1,3 +1,4 @@
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 @extends('layouts.headerAdmin')
 <?php
   $tempchart1 = [];
@@ -32,7 +33,7 @@
                       <td>{{$row->tglpenerimaanBB}}</td>
                       <td>{{$row->statuspenerimaanBB}}</td>
                       <td>{{$row->jenispembayaranBB}}</td>
-                      <td><a class="waves-effect waves-light btn modal-trigger red left" href="{!! url('updateBB/'.$row->nonotapenerimaanBB); !!}">CHECK</a></td>
+                      <td><a class="waves-effect waves-light btn modal-trigger red left" href="{!! url('updateBB/'.$row->nonotapenerimaanBB); !!}">UPDATE</a></td>
                     </tr>
                     @endforeach
               </tbody>

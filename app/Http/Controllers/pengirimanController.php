@@ -12,6 +12,7 @@ use App\user;
 use App\customer;
 use App\barang;
 use App\detailpengirimanbarang;
+use App\returpengiriman;
 
 class pengirimanController extends Controller
 {
@@ -19,6 +20,12 @@ class pengirimanController extends Controller
 		$pengirimanbarang 				    = new pengirimanbarang();
         $data['datapengirimanbarang'] 	    = $pengirimanbarang->all();
 		return view("viewpengiriman")->with($data);
+	}
+	
+	public function listreturbarang(){
+        $barang 				            = new returpengiriman();
+		$data['detailretur'] 	            = $barang->all();
+        return view("listreturbarang")->with($data);
     }
     
     public function newpengiriman(){
@@ -38,8 +45,19 @@ class pengirimanController extends Controller
         $barang 				            = new barang();
         $data['databarang'] 	            = $barang->all();
         return view("newbarangbuatpengiriman")->with($data);
-    }
+	}
+
 	
+
+	public function returpengiriman(){
+        $barang 				            			= new detailpengirimanbarang();
+		$data['detailpengirimanbarang'] 	            = $barang->all();
+		$returnpengiriman 				            	= new returpengiriman();
+        $data['detailreturnpengiriman'] 	           	= $returnpengiriman->all();
+        return view("returpengiriman")->with($data);
+    }
+
+
 	function updatepengirimanbarang($data1)
 	{
 		$cart = array();
@@ -59,6 +77,29 @@ class pengirimanController extends Controller
 				$cart[$jum]['nonotapengirimanB']		 	= $row->nonotapengirimanB;
 				session()->put("sessionpengiriman",$cart);
 				return redirect('detailpengirimanbarang');
+			}
+		}
+	}
+
+	function returpengirimanbarang($data2)
+	{
+		$cart = array();
+		$dataPP = [];
+		$jum = 0;
+		$getpengiriman				= new pengirimanbarang();
+		$data['datapengiriman']		= $getpengiriman->all();
+		if(session()->get('sessionretur'))
+		{
+			$cart	= session()->get('sessionretur');
+			$jum	= count($cart);
+		}
+		foreach($data['datapengiriman'] as $row)
+		{
+			if($row->nonotapengirimanB == $data2)
+			{
+				$cart[$jum]['nonotapengirimanB']		 	= $row->nonotapengirimanB;
+				session()->put("sessionretur",$cart);
+				return redirect('returpengiriman');
 			}
 		}
 	}
@@ -117,8 +158,43 @@ class pengirimanController extends Controller
 
 	public function savepengirimanbarang(Request $request){
         if($request->input("btncancels")) {
+			$request->session()->forget('sessionpengiriman');
+			$request->session()->forget('sessionretur');
 			$request->session()->forget('cartpe');
 			return $this->viewpengiriman();
+		}else if($request->input("btnretur")){
+			$rules = [
+				'txtnomorretur'			=> 'required',
+				'txtkodebarang'			=> 'required',
+				'txttglretur'			=> 'required',
+				'txtjumlahbarang'		=> 'required',
+				'txtketerangan'			=> 'required',
+				'txtnonotapengirimanB'	=> 'required'
+			];
+			$customeMessage = [
+				'txtnomorretur.required'		=> 'Nomor Retur tidak boleh kosong',
+				'txtkodebarang.required'		=> 'kode barang tidak boleh kosong',
+				'txttglretur.required'			=> 'Tanggal retur tidak boleh kosong',
+				'txtjumlahbarang.required'		=> 'Jumlah barang tidak boleh kosong',
+				'txtketerangan.required'		=> 'keterangan tidak boleh kosong',
+				'txtnonotapengirimanB.required'	=> 'nonotapengiriman tidak boleh kosong'
+			];
+			$valid = Validator::make($request->all(),$rules,$customeMessage);
+			if($valid->fails()){
+				return redirect('returpengiriman')->withErrors($valid)->withInput();
+			}else{
+				$txtnomorretur			= $request->txtnomorretur;
+				$txtkodebarang			= $request->txtkodebarang;
+				$txttglretur			= $request->txttglretur;
+				$txtjumlahbarang		= $request->txtjumlahbarang;
+				$txtketerangan	    	= $request->txtketerangan;
+				$txtnonotapengirimanB	= $request->txtnonotapengirimanB;
+				$adduser                = new returpengiriman();
+				$adduser->insertdata($txtnomorretur,$txtkodebarang,$txttglretur,$txtjumlahbarang,$txtketerangan,$txtnonotapengirimanB);
+				Alert::success('Success', 'Success Message');
+				$request->session()->forget('sessionretur');
+				return redirect('viewpengiriman');
+			}
 		}else if($request->input("btnupdate")){
 			$update = pengirimanbarang::find($request->txtnonotapengirimanB);
 			$update->tglpengirimanB 		= $request->txttglpengirimanB;

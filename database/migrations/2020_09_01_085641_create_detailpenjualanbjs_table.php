@@ -15,14 +15,14 @@ class CreateDetailpenjualanbjsTable extends Migration
     {
         Schema::create('detailpenjualanbj', function (Blueprint $table) {
             $table->string('nonotaDBJ',12);
-            $table->string('namabarangDBJ',50);
+            $table->string('kodebarang',50);
             $table->string('satuaanDBJ',30);
             $table->integer('hargaDBJ');
             $table->integer('qtyDBJ');
             $table->integer('grandtotalDBJ');
             $table->string('statusDBJ',12);
             $table->string('historyDBJ',12);
-            $table->string('nonotaBJFK',12);
+            $table->string('nonotaBJ',12);
             $table->primary('nonotaDBJ');
         });
     }

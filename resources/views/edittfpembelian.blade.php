@@ -103,8 +103,8 @@
                       ?>
                       {{Form::hidden('txtupnonotaDTF'.$temp2, $rows->nonotaDTFPembelian,['id'=>'txtupnonotaDTF'.$temp2])}} 
                       
-                      <td>{{$rows->barangbakuDTFPembelian}}</td>
-                      {{Form::hidden('txtupbarangbakuDTF'.$temp2, $rows->barangbakuDTFPembelian,['id'=>'txtupbarangbakuDTF'.$temp2])}}
+                      <td>{{$rows->kodebarang}}</td>
+                      {{Form::hidden('txtupbarangbakuDTF'.$temp2, $rows->kodebarang,['id'=>'txtupbarangbakuDTF'.$temp2])}}
                       
                       <td>{{$rows->hargaDTFPembelian}}</td>
                       {{Form::hidden('txthargaDTF'.$temp2, $rows->hargaDTFPembelian,['id'=>'txthargaDTF'.$temp2])}} 

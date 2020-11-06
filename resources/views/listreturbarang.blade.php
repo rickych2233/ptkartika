@@ -9,33 +9,24 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-<<<<<<< HEAD
           <h4 class="card-title">List Pengiriman</h4>
-=======
-          <h4 class="card-title">Data Piutang Customer</h4>
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
           <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newpengiriman'); !!}"><i class="large material-icons">add</i></a>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table">
                   <thead class=" text-primary">
                   <tr>
-                    <th>Nomor Nota</th>
-                    <th>Tanggal Pengiriman</th>
-                    <th>Sales Penjualan</th>
-                    <th>Kode Customer</th>
-                    <th>Action</th>
+                    <th>Nama Barang</th>
+                    <th>Tanggal Retur</th>
+                    <th>Jumlah Retur</th>
+                    <th>keterangan</th>
                   </tr>
-                  @foreach($datapengirimanbarang as $row)
+                  @foreach($detailretur as $row)
                   <tr>
-                    <td>{{$row->nonotapengirimanB}}</td>
-                    <td>{{$row->tglpengirimanB}}</td>
-                    <td>{{$row->username}}</td>
-                    <td>{{$row->kodecustomer}}</td>
-                    <td>
-                      <a class="waves-effect waves-light btn modal-trigger yellow darken-1 left" href="{!! url('updatepengirimanbarang/'.$row->nonotapengirimanB); !!}">UPDATE</a>
-                    </td>
-                    <td><a class="waves-effect waves-light btn modal-trigger green darken-1 left" href="{!! url('returpengirimanbarang/'.$row->nonotapengirimanB); !!}">RETUR</a></td>
+                    <td>{{$row->kodebarang}}</td>
+                    <td>{{$row->tglretur}}</td>
+                    <td>{{$row->jumlahbarang}}</td>
+                    <td>{{$row->keterangan}}</td>
                   </tr>
                   @endforeach
                   </tbody>

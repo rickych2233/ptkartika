@@ -14,7 +14,7 @@ class detailpenerimaanbb extends Model
     {
         $insertuser                     = new detailpenerimaanBB(); 
         $insertuser->nonotaDPBB         = $txtnonotaDPBB; 
-        $insertuser->namabarangDPBB     = $txtnamabarangDPBB;
+        $insertuser->kodebarang         = $txtnamabarangDPBB;
         $insertuser->satuaanDPBB        = $txtsatuaanDPBB; 
         $insertuser->hargaDPBB          = $txthargaDPBB; 
         $insertuser->qtypenerimaanBB    = $qtypenerimaanBB;

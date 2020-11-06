@@ -33,7 +33,11 @@
         <h4 class="card-title">History Harga</h4>
       </div>
 
+<<<<<<< HEAD
+      <div class="container float-left">
+=======
       <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
         <div class="form-group">
           <label>Nama Barang: </label>
           {{ Form::select('txtkodebarangHH', $getnama, null, ['id'=>'txtkodebarangHH', 'class'=>'form-control','onchange'=>'ubahbarang()']) }}
@@ -41,7 +45,11 @@
       </div>
 
       <div class="card-body">
+<<<<<<< HEAD
+        <div class="container float-left">
+=======
         <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
           <?php
               $jum     = $datahistoryharga->count() + 1; 
               $kodebrg = "H".str_pad($jum, 3, "0",STR_PAD_LEFT);
@@ -50,6 +58,19 @@
             <label>ID History :</label>
             {{Form::text('txtidhistoryHH', $kodebrg, ['id'=>'txtidhistoryHH', 'class'=>'form-control','readonly'=>'readonly'])}}
           </div> 
+<<<<<<< HEAD
+        </div>
+
+        <div class="container float-left">
+          <div class="form-group">
+            <label>Tanggal History: </label>
+            @php($date = date('yy-m-d'))
+            {{Form::text('txttanggalhistoryHH', $date, ['id'=>'txttanggalHH','class'=>'form-control',''])}}
+          </div> 
+        </div>
+
+        <div class="container float-left">
+=======
         </div>
 
         <div class="container">
@@ -61,20 +82,29 @@
         </div>
 
         <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
           <div class="form-group">
             <label>Harga :</label>
             {{Form::text('txthargajualHH', '', ['id'=>'txthargajual', 'class'=>'form-control',''])}}
           </div> 
         </div>
 
+<<<<<<< HEAD
+        <div class="container float-left">
+=======
         <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
           <div class="form-group">
             <label>Tanggal Berlaku: </label>
             {{Form::date('txttanggalberlakuHH', '', ['id'=>'txttanggalberlakuHH','class'=>'form-control',''])}}
           </div> 
         </div>
         <br>
+<<<<<<< HEAD
+        <div class="container float-left">
+=======
         <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
           <div class="row">
             <table border="1">
               <thead>
@@ -89,8 +119,16 @@
             </table>
           </div>
         </div>
+<<<<<<< HEAD
+        <div class="container float-left">
+          <div class="row">
+            {{Form::submit('Simpan',['name'=>'btnsimpanHH','id'=>'btnsimpanHH','class'=>'btn waves-light btn-medium'])}}
+          </div>
+        </div>
+=======
         <br>
         {{Form::submit('Simpan',['name'=>'btnsimpanHH','id'=>'btnsimpanHH','class'=>'btn waves-light btn-medium'])}}
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
       </div>
     </div>
   </div>

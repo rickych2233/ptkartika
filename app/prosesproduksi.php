@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use DB; 
 
 class prosesproduksi extends Model
 {
@@ -19,5 +20,13 @@ class prosesproduksi extends Model
         $insertuser->kodebarang     = $txtbarangjadiPP; 
         $insertuser->qtyhasilPP     = $txtqtyhasilPP; 
         $insertuser->save(); 
+    }
+
+    public function gettampilproduksi($tgldari,$tglsampai)
+    {
+        $data = prosesproduksi::select(DB::raw("kodebarang,qtyhasilPP"))
+        ->whereBetween("tglPP",[date($tgldari),date($tglsampai)])
+        ->get();
+        return $data;
     }
 }

@@ -116,7 +116,7 @@
                   <th>Status</th>
                 </tr>
                 @foreach($datadetailpenjualanbj as $rows)
-                  @if($temp1 == $rows->nonotaBJFK)
+                  @if($temp1 == $rows->nonotaBJ)
                   <tr>
                     @php($temp2 = $rows->nonotaDBJ)
                     <?php
@@ -125,7 +125,7 @@
                       // dd($temp2);
                     ?>
                     {{Form::hidden('txtupnomornotaDBJ'.$temp2, $rows->nonotaDBJ, ['id'=>'txtupnomornotaDBJ'.$temp2])}}
-                    <td>{{Form::text('txtupnamabarangDBJ'.$temp2, $rows->namabarangDBJ, ['id'=>'txtupnamabarangDBJ'.$temp2, 'readonly'=>'readonly',''])}}</td>
+                    <td>{{Form::text('txtupnamabarangDBJ'.$temp2, $rows->kodebarang, ['id'=>'txtupnamabarangDBJ'.$temp2, 'readonly'=>'readonly',''])}}</td>
                     <td>{{Form::text('txtupsatuanDBJ'.$temp2, $rows->satuaanDBJ, ['id'=>'txtupsatuanDBJ'.$temp2, 'readonly'=>'readonly',''])}}</td>
                     <td>{{Form::text('txtuphargaDBJ'.$temp2, $rows->hargaDBJ, ['id'=>'txtuphargaDBJ'.$temp2, 'readonly'=>'readonly',''])}}</td>
                     <td>{{Form::text('txtupqtyDBJ'.$temp2, $rows->qtyDBJ, ['id'=>'txtupqtyDBJ'.$temp2,'onkeyup'=>"penambahan($temp2)"])}}</td>

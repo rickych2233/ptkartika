@@ -1,3 +1,4 @@
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 @extends('layouts.headerAdmin')
 <?php
   $getstatus['AKTIF']     = "AKTIF"; 
@@ -34,7 +35,7 @@
             <div class="card-body">
                 <h4 class="card-title">History Pelunasan Piutang</h4>
                 @foreach($datadetailpenjualanbj as $rows2)
-                  @if($rows2->nonotaBJFK == $temp1)
+                  @if($rows2->nonotaBJ == $temp1)
                   <?php
                     $temps[$index] = $rows2->grandtotalDBJ;
                     $index++;
@@ -48,6 +49,7 @@
                         $tempsss += $temps[$i];
                       }
                       $hasil_rupiah = " Rp " . number_format($tempsss,2,',','.');
+                      // dd($tempsss);
                     ?>
                     {{Form::hidden('txtgrandtotal', $tempsss,['id'=>'txtgrandtotal'])}}
                   <div class="col m3">Grand Total :@php(print_r($hasil_rupiah))</div>
@@ -129,6 +131,12 @@
                 </div>
                 <div class="row">
                   <div class=" col m6">
+<<<<<<< HEAD
+                      <?php
+                        // dd($sisa);
+                      ?>
+=======
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                     {{Form::text('txtmbn', $sisa, ['id'=>'txtmbn','class'=>'form-control','readonly'=>'readonly'])}}
                   </div>
                 </div>
@@ -153,12 +161,14 @@
   {{ Form::close() }}
   @endsection
   
+<<<<<<< HEAD
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+=======
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">\
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
 
 <script>
   $(document).ready(function(){
-    $('.sidenav').sidenav();
-    $('.modal').modal();
     $('#txtjumlahdibayar').keyup(function(){
       var jum = $('#txtmbn').val();
       var dijum = $('#txtjumlahdibayar').val();
@@ -183,6 +193,5 @@
   //modal
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, options);
   });
 </script>

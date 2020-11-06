@@ -15,7 +15,7 @@ class CreateDetailpenerimaanbbsTable extends Migration
     {
         Schema::create('detailpenerimaanbb', function (Blueprint $table) {
             $table->string('nonotaDPBB',12);
-            $table->string('namabarangDPBB',50);
+            $table->string('kodebarang',50);
             $table->string('satuaanDPBB',30);
             $table->integer('hargaDPBB');
             $table->integer('qtypenerimaanBB');

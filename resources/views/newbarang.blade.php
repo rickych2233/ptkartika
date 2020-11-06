@@ -26,16 +26,28 @@
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savebarang')) }}
   <div class="row">
+<<<<<<< HEAD
+    <div class="col-md-12 ">
+      <div class="card">
+        <div class="card-header ">
+          </div>
+            <div class="card-body ">
+=======
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
           </div>
             <div class="card-body">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
               <div class="row">
                   <div class=" col m6"><h5>Barang Baru<a href=""><span></span></a><hr></h5></div>
               </div>
               <!-- Kode Barang -->
+<<<<<<< HEAD
+              <div class="container float-left">
+=======
               <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                   <?php
                       $jum     = $databarang->count() + 1; 
@@ -46,49 +58,73 @@
                 </div> 
               </div>
               <!-- Nama Barang -->
+<<<<<<< HEAD
+              <div class="container float-left">
+=======
               <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                 <label>Nama Barang :</label>
                 {{Form::text('txtnamabarang', '', ['id'=>'txtnamabarang', 'placeholder'=>'Gula Pasir','class'=>'form-control'])}}
                 </div> 
               </div>
               <!-- Kategori Barang -->
+<<<<<<< HEAD
+              <div class="container float-left">
+=======
               <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                 <label>Kategori Barang :</label>
                 {{ Form::select('txtkodekategoribarang', $getkode, null, ['id'=>'txtkodekategoribarang','class'=>'form-control']) }}
                 </div> 
               </div>
             <!-- Satuan Barang -->
+<<<<<<< HEAD
+            <div class="container float-left">
+=======
             <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                 <label>Satuan :</label>
                   {{Form::text('txtsatuanbarang', '', ['id'=>'txtsatuanbarang', 'placeholder'=>'Biji','class'=>'form-control'])}}
                 </div> 
               </div>
             <!-- Stok Barang -->
+<<<<<<< HEAD
+            <div class="container float-left">
+=======
             <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
               <div class="form-group">
               <label>Stok :</label>
               {{Form::text('txtstokbarang', '', ['id'=>'txtstokbarang', 'placeholder'=>'10','class'=>'form-control'])}}
              </div>
             </div>
             <!-- Harga Barang -->
+<<<<<<< HEAD
+            <div class="container float-left">
+=======
             <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
               <div class="form-group">
               <label>Harga Satuan :</label>
               {{Form::text('txthargabarang', '', ['id'=>'txthargabarang', 'placeholder'=>'1000','class'=>'form-control'])}}
               </div>
             </div>
             <!-- Status Barang -->
+<<<<<<< HEAD
+            <div class="container float-left">
+=======
             <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
               <div class="form-group">
               <label>Status :</label>
               {{ Form::select('txtstatusbarang', $getstatus, null, ['id'=>'txtstatusbarang','class'=>'form-control']) }}
               </div>
             </div>
             <!-- Tombol Submit -->
-            <div class="row">
+            <div class="container float-left">
                 <div class=" col m6">
                   {{Form::submit('Insert',['name'=>'btninsertbarang','id'=>'btninsertbarang','class'=>'btn btn-primary'])}}
                   <button type="button" class="btn btn-primary" name='btncancel' id='btncancel' value='Cancel'>Cancel</button>

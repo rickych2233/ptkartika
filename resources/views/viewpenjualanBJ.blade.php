@@ -35,8 +35,10 @@
                     @php($jenispembayaranBJ   = $row->jenispembayaranBJ)
                     @php($nonotaBFJK          = $row->nonotaBFJK)
                     <td>
-                      <a class="waves-effect waves-light btn modal-trigger yellow darken-1 left" href="{!! url('updatepenjualanBJ/'.$row->nonotapenjualanBJ); !!}">UPDATE</a>
-                      <a style="margin-left:3%" class="waves-effect waves-light btn modal-trigger red left"  href="{!! url('pelunasanpiutang/'.$row->nonotapenjualanBJ); !!}">Pembayaran Piutang</a>
+                      <a class="btn btn-warning btn-lg" href="{!! url('updatepenjualanBJ/'.$row->nonotapenjualanBJ); !!}">UPDATE</a>
+                    </td>
+                    <td>
+                      <a class="btn btn-primary btn-sm"  href="{!! url('pelunasanpiutang/'.$row->nonotapenjualanBJ); !!}">Pembayaran Piutang</a>
                     </td>
                   </tr>
                   @endforeach

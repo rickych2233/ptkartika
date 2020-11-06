@@ -18,6 +18,10 @@
 <html lang="en">
 
 <head>
+<<<<<<< HEAD
+  
+=======
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
@@ -25,6 +29,10 @@
   <title>
     @yield('title')
   </title>
+<<<<<<< HEAD
+  
+=======
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -35,6 +43,38 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
+<<<<<<< HEAD
+
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="orange">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+      <div class="logo">
+        <a href="" class="simple-text">
+          PT KARTIKA
+          <b>
+          <?php
+            $tempdata = session('data2');
+            echo $tempdata;
+          ?>
+          </b>
+        </a>  
+      </div>
+      <div class="sidebar-wrapper" id="sidebar-wrapper">
+        <ul class="nav">
+          @if($tempdata == "ADMIN")
+          <li>
+            <a href="{!! url('laporanbahanmentah'); !!}">
+              <i class="now-ui-icons design_app"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          @endif
+
+          @if($tempdata == "ADMIN")
+=======
 
 <body class="">
   <div class="wrapper ">
@@ -62,6 +102,7 @@
             </a>
           </li>
 
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="now-ui-icons design_app"></i>Master</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -73,7 +114,13 @@
               <a class="dropdown-item" href="{!! url('customer'); !!}">Master Customer</a>
             </div>
           </li>
+<<<<<<< HEAD
+          @endif
 
+          @if($tempdata == "ADMIN" || $tempdata == "PEGAWAI")
+=======
+
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="now-ui-icons design_app"></i>Manajemen Stok</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -81,7 +128,13 @@
               <a class="dropdown-item" href="{!! url('viewpenyesuaianstok'); !!}">Penyesuaian Stok</a>
             </div>
           </li>
+<<<<<<< HEAD
+          @endif
+          
+          @if($tempdata == "ADMIN" || $tempdata == "SALES PENJUALAN")
+=======
 
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="now-ui-icons design_app"></i>Transaksi Penjualan</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -90,15 +143,37 @@
               <a class="dropdown-item" href="{!! url('viewpengiriman'); !!}">List Pengiriman Barang</a>
             </div>
           </li>
+<<<<<<< HEAD
+          @endif
+
+          @if($tempdata == "ADMIN" || $tempdata == "PEGAWAI")
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="now-ui-icons design_app"></i>Transaksi Pembelian</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              
+=======
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="now-ui-icons design_app"></i>Transaksi Pembelian</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
               <a class="dropdown-item" href="{!! url('viewtfpembelian'); !!}">Pembelian Bahan Baku</a>
               <a class="dropdown-item" href="{!! url('viewpenerimaanBB'); !!}">Penerimaan Bahan Baku</a>
               <a class="dropdown-item" href="{!! url('viewhutangsupplier'); !!}">List Hutang ke supplier</a>
             </div>
           </li>
+<<<<<<< HEAD
+          @endif
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="now-ui-icons design_app"></i>List</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{!! url('listreturbarang'); !!}">List Retur Barang</a>
+            </div>
+          </li>
+          
+=======
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
           <li>
             <a href="{!! url('login'); !!}">
               <i class="now-ui-icons design_app"></i>
@@ -129,15 +204,25 @@
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <ul class="navbar-nav">
+<<<<<<< HEAD
+
+              <!-- <li class="nav-item">
+=======
               <li class="nav-item">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <a class="nav-link" href="#pablo">
                   <i class="now-ui-icons media-2_sound-wave"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Stats</span>
                   </p>
                 </a>
+<<<<<<< HEAD
+              </li> -->
+              <!-- <li class="nav-item dropdown">
+=======
               </li>
               <li class="nav-item dropdown">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="now-ui-icons location_world"></i>
                   <p>
@@ -149,15 +234,24 @@
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
+<<<<<<< HEAD
+              </li> -->
+              <!-- <li class="nav-item">
+=======
               </li>
               <li class="nav-item">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <a class="nav-link" href="#pablo">
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
                 </a>
+<<<<<<< HEAD
+              </li> -->
+=======
               </li>
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
               
             </ul>
           </div>
@@ -175,6 +269,14 @@
     </div>
   </div>
   <!--   Core JS Files   -->
+<<<<<<< HEAD
+  <script src="../assets/js/core/jquery.min.js" ></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Chart JS -->
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
+=======
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
@@ -184,6 +286,7 @@
   <!-- Chart JS -->
   <script src="../public/assets/js/plugins/chart.js"></script>
   <script src="../public/assets/js/plugins/chartjs.min.js"></script>
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
   <!--  Notifications Plugin    -->
   <script src="../assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->

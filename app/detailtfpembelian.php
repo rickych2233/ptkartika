@@ -14,7 +14,7 @@ class detailtfpembelian extends Model
     {
         $insertuser                          = new detailtfpembelian(); 
         $insertuser->nonotaDTFPembelian      = $txtnonotaDTFPembelian; 
-        $insertuser->barangbakuDTFPembelian  = $txtbarangbakuDTFPembelian; 
+        $insertuser->kodebarang              = $txtbarangbakuDTFPembelian; 
         $insertuser->qtyDTFPembelian         = $txtqtyDTFPembelian; 
         $insertuser->hargaDTFPembelian       = $txthargaDTFPembelian;
         $insertuser->grandtotalDTF           = $txtgrandtotalDTF;

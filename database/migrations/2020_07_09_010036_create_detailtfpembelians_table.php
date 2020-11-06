@@ -15,7 +15,7 @@ class CreateDetailtfpembeliansTable extends Migration
     {
         Schema::create('detailtfpembelian', function (Blueprint $table) {
             $table->integer('nonotaDTFPembelian');
-            $table->string('barangbakuDTFPembelian',5);
+            $table->string('kodebarang',5);
             $table->integer('qtyDTFPembelian');
             $table->integer('hargaDTFPembelian');
             $table->integer('grandtotalDTF');

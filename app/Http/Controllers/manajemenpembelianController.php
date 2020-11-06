@@ -110,7 +110,7 @@ class manajemenpembelianController extends Controller
 			// dd($temps3);
 			for($i=0; $i< count($temps3); $i++){
 				$update1 = detailtfpembelian::find($request['txtupnonotaDTF'.$temps3[$i]]);
-				$update1->barangbakuDTFPembelian 		= $request['txtupbarangbakuDTF'.$temps3[$i]];
+				$update1->kodebarang			 		= $request['txtupbarangbakuDTF'.$temps3[$i]];
 				$update1->hargaDTFPembelian 			= $request['txthargaDTF'.$temps3[$i]];
 				$update1->qtyDTFPembelian				= $request['txtupqtyDTF'.$temps3[$i]];
 				$update1->grandtotalDTF 				= $request['txtupgrandDTF'.$temps3[$i]];

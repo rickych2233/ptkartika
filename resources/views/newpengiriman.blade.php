@@ -24,10 +24,17 @@
           </div>
             <div class="card-body">
               <div class="row">
+<<<<<<< HEAD
+                <div class="col m12"><h5>List Pengiriman<a href=""><span></span></a><hr></h5></div>
+              </div>
+                <!-- Kode Barang -->
+                <div class="container float-left">
+=======
                 <div class="col m12"><h5>Proses Produksi<a href=""><span></span></a><hr></h5></div>
               </div>
                 <!-- Kode Barang -->
                 <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                   <div class="form-group">
                     <?php
                         $date     = date('Ym');
@@ -38,26 +45,38 @@
                     {{Form::text('txtnonotapengirimanB',$kodejum, ['id'=>'txtnonotapengirimanB', 'readonly'=>'readonly', 'class'=>'form-control'])}}
                   </div>
                 </div>
+<<<<<<< HEAD
+                <div class="container float-left">
+=======
                 <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                   <div class="form-group">
                     <label>Tanggal Pengiriman :</label>
                     {{Form::date('txttglpengirimanB', date('Y-m-d'), ['id'=>'txttglpengirimanB', 'class'=>'form-control'])}}
                   </div>
                 </div>
+<<<<<<< HEAD
+                <div class="container float-left">
+=======
                 <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                   <div class="form-group">
                     <label>Nama Toko :</label>
                     {{ Form::select('txtkodecustomer', $getcust, null, ['id'=>'txtkodecustomer', 'class'=>'form-control']) }}
                   </div>
                 </div>
+<<<<<<< HEAD
+                <div class="container float-left">
+=======
                 <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                   <div class="form-group">
                     <label>Nama Sales Penjualan :</label>
                     {{ Form::select('txtusername', $getkode, null, ['id'=>'txtusername', 'class'=>'form-control']) }}
                   </div>
                 </div>
                  <!-- Tombol Submit -->
-                <div class="row">
+                <div class="container float-left">
                     <div class=" col m6">
                         {{Form::submit('Pengiriman',['name'=>'btninsert','id'=>'btninsert','class'=>'btn waves-light btn-medium'])}}
                         <input  type='submit' class='btn waves-light btn-medium' name='btncancels' id='btncancels' value='Cancel'>

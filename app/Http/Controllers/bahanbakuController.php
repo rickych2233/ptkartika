@@ -124,7 +124,7 @@ class bahanbakuController extends Controller
 			for($i=0; $i< count($temps3); $i++){
 				// dd($temps3);
 				$update1 = detailpenerimaanbb::find($request['txtupnonotaDPBB'.$temps3[$i]]);
-				$update1->namabarangDPBB 				= $request['txtupnamabarangDPBB'.$temps3[$i]];
+				$update1->kodebarang	 				= $request['txtupnamabarangDPBB'.$temps3[$i]];
 				$update1->satuaanDPBB 					= $request['txtupsatuanDPBB'.$temps3[$i]];
 				$update1->hargaDPBB						= $request['txtuphargaDPBB'.$temps3[$i]];
 				$update1->qtypenerimaanBB 				= $request['txtupqtypenerimaanBB'.$temps3[$i]];

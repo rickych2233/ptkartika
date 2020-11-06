@@ -21,4 +21,5 @@ class penjualanbj extends Model
         $insertuser->statuspesanBJ          	= $txtstatuspesanBJ;
         $insertuser->save(); 
     }
+    
 }

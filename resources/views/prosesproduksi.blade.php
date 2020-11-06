@@ -20,7 +20,11 @@
                 <div class="col m12"><h5>Proses Produksi<a href=""><span></span></a><hr></h5></div>
               </div>
             <!-- Nomor nota -->
+<<<<<<< HEAD
+            <div class="container float-left">
+=======
             <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
               <div class="form-group">
                 <?php
                   $date = date('Ym');
@@ -32,28 +36,44 @@
               </div> 
             </div>
             <!-- Tanggal -->
+<<<<<<< HEAD
+            <div class="container float-left">
+=======
             <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                   <label>Tanggal :</label>
                   {{Form::date('txttglPP', date('Y-m-d'), ['id'=>'txttglPP', 'class'=>'form-control','readonly'=>'readonly'])}}
                 </div> 
               </div>
             <!-- Nama Barang -->
+<<<<<<< HEAD
+            <div class="container float-left">
+=======
             <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
               <div class="form-group">
                 <label>Nama Barang :</label>
                 {{ Form::select('txtbarangjadiPP', $getkodess, null, ['id'=>'txtbarangjadiPP', 'class'=>'form-control']) }}
               </div>
             </div>
             <!-- Qty -->
+<<<<<<< HEAD
+            <div class="container float-left">
+=======
             <div class="container">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
               <div class="form-group">
                 <label>Qty Hasil:</label>
                 {{Form::text('txtqtyhasilPP', '', ['id'=>'txtqtyhasilPP','','class'=>'form-control'])}}
               </div> 
             </div>
             <!-- Tombol Submit -->
+<<<<<<< HEAD
+            <div class="container float-left">
+=======
             <div class="row">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
               <div class=" col m6">
                 {{Form::submit('Insert',['name'=>'btnInsertPP','id'=>'btnInsertPP','class'=>'btn btn-success btn-xl'])}}
                 <input  type='submit' class='btn btn-warning btn-xl' name='btncancels' id='btncancels' value='Cancel'>
@@ -65,7 +85,11 @@
     </div>
   </div>
 
+<<<<<<< HEAD
+<div class="row">
+=======
   <div class="row">
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">

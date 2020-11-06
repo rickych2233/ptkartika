@@ -61,7 +61,9 @@ Route::post('savebarang',[
 Route::get('barang', [
 	'uses' => 'BarangController@getbarang'
 ]);
-
+Route::get('getproduksiperperiode', [
+	'uses' => 'BarangController@getproduksiperperiode'
+]);
 //prosesproduksi
 Route::get('addtocart/{kode}',[
     'uses' => 'BarangController@addtocart'
@@ -248,11 +250,20 @@ Route::get('getstokbarang',[
 Route::get('updatepengirimanbarang/{kode1}',[
     'uses'          => 'pengirimanController@updatepengirimanbarang'
 ]);
+Route::get('returpengirimanbarang/{kode2}',[
+    'uses'          => 'pengirimanController@returpengirimanbarang'
+]);
 Route::get('addtocartpengirimanbarang/{kode}',[
     'uses'          => 'pengirimanController@addtocartpengirimanbarang'
 ]);
+Route::get('returpengiriman',[
+    'uses'          => 'pengirimanController@returpengiriman'
+]);
 Route::get('detailpengirimanbarang',[
     'uses'          => 'pengirimanController@detailpengirimanbarang'
+]);
+Route::get('listreturbarang',[
+    'uses'          => 'pengirimanController@listreturbarang'
 ]);
 Route::get('newbarangbuatpengiriman',[
     'uses'          => 'pengirimanController@newbarangbuatpengiriman'

@@ -8,7 +8,11 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
+<<<<<<< HEAD
+          <h4 class="card-title">Data Pembelian Bahan Baku</h4>
+=======
           <h4 class="card-title">Data Pembelian Supplier</h4>
+>>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
             <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('tfpembelian'); !!}"><i class="large material-icons">add</i></a>
             <div class="card-body">
               <div class="table-responsive">
@@ -25,7 +29,7 @@
                     <td>{{$row->nonotaTFPembelian}}</td>
                     <td>{{$row->tglpembelianTF}}</td>
                     <td>{{$row->statusTF}}</td>
-                    <td><a class="waves-effect waves-light btn modal-trigger red left" href="{!! url('updatetfpembelian/'.$row->nonotaTFPembelian); !!}">CHECK</a></td>
+                    <td><a class="waves-effect waves-light btn modal-trigger red left" href="{!! url('updatetfpembelian/'.$row->nonotaTFPembelian); !!}">UPDATE</a></td>
                   </tr>
                   @endforeach
               </tbody>
