@@ -131,12 +131,9 @@
                 </div>
                 <div class="row">
                   <div class=" col m6">
-<<<<<<< HEAD
                       <?php
                         // dd($sisa);
                       ?>
-=======
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                     {{Form::text('txtmbn', $sisa, ['id'=>'txtmbn','class'=>'form-control','readonly'=>'readonly'])}}
                   </div>
                 </div>
@@ -161,11 +158,7 @@
   {{ Form::close() }}
   @endsection
   
-<<<<<<< HEAD
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-=======
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">\
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
 
 <script>
   $(document).ready(function(){

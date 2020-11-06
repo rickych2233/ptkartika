@@ -32,11 +32,7 @@
                   <td>{{$row->tglPP}}</td>
                   <td>{{$row->kodebarang}}</td>
                   <td>{{$row->qtyhasilPP}}</td>
-<<<<<<< HEAD
                   <td><a class="btn btn-primary btn-sm-lg" href="{!! url('updateprosesproduksi/'.$row->nonotaPP); !!}">UPDATE</a></td>
-=======
-                  <td><a class="waves-effect waves-light btn modal-trigger yellow darken-1 left" href="{!! url('updateprosesproduksi/'.$row->nonotaPP); !!}">UPDATE</a></td>
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 </tr>
               @endforeach
               </tbody>

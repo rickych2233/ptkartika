@@ -26,11 +26,7 @@
     <div class="card">
       <div class="card-header">
         <h4 class="card-title">List Supplier</h4>
-<<<<<<< HEAD
         <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newsupplier'); !!}">Tambah</a>
-=======
-        <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newsupplier'); !!}"><i class="large material-icons">add</i></a>
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
       </div>
       <div class="card-body">
         <div class="table-responsive">

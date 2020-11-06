@@ -25,11 +25,7 @@
         <div class="card-header">
           </div>
             <div class="card-body">
-<<<<<<< HEAD
                 <h5>Update Bahan Baku<a href=""><span></span></a><hr></h5>
-=======
-                <h5>Update Penjualan Barang jadi<a href=""><span></span></a><hr></h5>
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 @foreach($datapenerimaanbb as $row)
                   @if($row->nonotapenerimaanBB == $temp1)
                     <!-- Kode Customer -->

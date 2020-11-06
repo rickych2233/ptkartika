@@ -28,7 +28,6 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-<<<<<<< HEAD
         <div class="card-body">
 
           <div class="row">
@@ -86,71 +85,14 @@
             <div class=" col m6">
               {{Form::submit('Simpan History',['name'=>'btnInsert','id'=>'btnInsert','class'=>'btn btn-success btn-xl'])}}
               <input  type='submit' class='btn btn-warning btn-xl' name='btncancels' id='btncancels' value='Cancel'>
-=======
-        <div class="card-header">
-          </div>
-            <div class="card-body">
-              <div class="row">
-                  <div class=" col m6"><h5>Penyesuaian Stok<a href=""><span></span></a><hr></h5></div>
-              </div>
-              <!-- Kode Barang -->
-              <div class="container">
-                <div class="form-group">
-                <?php
-                  $date     = date('Ym');
-                  $jum      = $datapenyesuaianstok->count() + 1; 
-                  $kodejum  = "PS".$date.str_pad($jum, 3, "0",STR_PAD_LEFT);
-                ?>
-                <label>Nomor Nota Penyesuaian Stok :</label>
-                {{Form::text('txtnonotaPS', $kodejum, ['id'=>'txtnonotaPS', 'readonly'=>'readonly', 'class'=>'form-control'])}}
-                </div> 
-              </div>
-              <!-- Nama Barang -->
-              <div class="container">
-                <div class="form-group">
-                <label>Nama Barang :</label>
-                {{ Form::select('txtkodebarangSP', $getkode, null, ['id'=>'txtkodebarangSP', 'class'=>'form-control','onchange'=>'ubahstok()']) }}
-                </div> 
-              </div>
-              <!-- Kategori Barang -->
-              <div class="container">
-                <div class="form-group">
-                <label>Stok saat ini :</label>
-                {{Form::text('txtstokskrngPS', '', ['id'=>'txtstokskrngPS','','class'=>'form-control','readonly'=>'readonly'])}}
-                </div> 
-              </div>
-            <!-- Satuan Barang -->
-            <div class="container">
-              <div class="form-group">
-              <label>Stok revisi :</label>
-              {{Form::text('txtrevisiPS', '', ['id'=>'txtrevisiPS','','class'=>'form-control'])}}
-              </div> 
-            </div>
-            <!-- Stok Barang -->
-            <div class="container">
-              <div class="form-group">
-              <label>Keterangan :</label>
-              {{Form::text('txtketeranganPS', '', ['id'=>'txtketeranganPS','','class'=>'form-control'])}}
-             </div>
-            </div>
-            <!-- Tombol Submit -->
-            <div class="row">
-                <div class=" col m6">
-                {{Form::submit('Simpan History',['name'=>'btnInsert','id'=>'btnInsert','class'=>'btn btn-success btn-xl'])}}
-                  <input type='submit' class='btn btn-success btn-xl' name='btncancels' id='btncancels' value='Cancel'>
-                </div>
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
             </div>
             </div>
           </div>
 
         </div>
       </div>
-<<<<<<< HEAD
     </div>
   </div>
-=======
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
   {{ Form::close() }}
   @endsection
   

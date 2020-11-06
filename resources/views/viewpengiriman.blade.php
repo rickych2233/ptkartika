@@ -9,11 +9,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-<<<<<<< HEAD
           <h4 class="card-title">List Pengiriman</h4>
-=======
-          <h4 class="card-title">Data Piutang Customer</h4>
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
           <a class="waves-effect waves-light btn modal-trigger left" href="{!! url('newpengiriman'); !!}"><i class="large material-icons">add</i></a>
             <div class="card-body">
               <div class="table-responsive">

@@ -33,88 +33,56 @@
               <div class="col m12"><h5>Insert Pegawai<a href=""><span></span></a><hr></h5></div>
             </div>
             <!-- Username -->
-<<<<<<< HEAD
             <div class="container float-left">
-=======
-            <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                     <label>Username :</label>
                     {{Form::text('txtPegawaiusername', '', ['id'=>'txtPegawaiusername','','class'=>'form-control'])}}
                 </div> 
             </div>
             <!-- Email -->
-<<<<<<< HEAD
             <div class="container float-left">
-=======
-            <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                     <label>Email :</label>
                     {{Form::text('txtPegawaiemail', '', ['id'=>'txtPegawaiemail','','class'=>'form-control'])}}
                 </div> 
             </div>
             <!-- Password -->
-<<<<<<< HEAD
             <div class="container float-left">
-=======
-            <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                     <label>Password :</label>
                     {{Form::password('txtPegawaipassword', ['id'=>'txtPegawaipassword','','class'=>'form-control'])}}
                 </div> 
             </div>
             <!-- Nama -->
-<<<<<<< HEAD
             <div class="container float-left">
-=======
-            <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                     <label>Nama :</label>
                     {{Form::text('txtPegawainama', '', ['id'=>'txtPegawainama','','class'=>'form-control'])}}
                 </div> 
             </div>
             <!-- Alamat -->
-<<<<<<< HEAD
             <div class="container float-left">
-=======
-            <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                     <label>Alamat :</label>
                     {{Form::text('txtPegawaialamat', '', ['id'=>'txtPegawaialamat','','class'=>'validate'])}}
                 </div> 
             </div>
              <!-- No. Ktp -->
-<<<<<<< HEAD
              <div class="container float-left">
-=======
-             <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                     <label>Nomor Ktp :</label>
                     {{Form::text('txtPegawainoktp', '', ['id'=>'txtPegawainoktp','','class'=>'validate'])}}
                 </div> 
             </div>
             <!-- Role -->
-<<<<<<< HEAD
             <div class="container float-left">
-=======
-            <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                     <label>Role Pegawai :</label>
                     {{ Form::select('txtPegawairole', $getrole, null, ['id'=>'txtPegawairole', 'class'=>'validate browser-default']) }}
                 </div> 
             </div>
             <!-- Status -->
-<<<<<<< HEAD
             <div class="container float-left">
-=======
-            <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                 <div class="form-group">
                     <label>Status Pegawai :</label>
                     <?php
@@ -125,7 +93,6 @@
                 </div> 
             </div>
             <!-- Telepon --><!-- Handphone -->
-<<<<<<< HEAD
             <div class="container float-left">
                 <div class="form-group">
                     <label>Telepon :</label>
@@ -135,17 +102,6 @@
             <div class="container float-left">
                 <div class="form-group">
                     <label>Handphone :</label>
-=======
-            <div class="row">
-                <div class="col m3">Telepon :</div>
-                <div class="col m6">Handphone :</div>
-            </div>
-            <div class="row">
-                <div class=" col m3">
-                    {{Form::text('txtPegawaitelepon', '', ['id'=>'txtPegawaitelepon','','class'=>'validate'])}}
-                </div>
-                <div class=" col m3">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                     {{Form::text('txtPegawaihandphone', '', ['id'=>'txtPegawaihandphone','','class'=>'validate'])}}
                 </div>
             </div>

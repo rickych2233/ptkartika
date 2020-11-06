@@ -24,17 +24,10 @@
           </div>
             <div class="card-body">
               <div class="row">
-<<<<<<< HEAD
                 <div class="col m12"><h5>List Pengiriman<a href=""><span></span></a><hr></h5></div>
               </div>
                 <!-- Kode Barang -->
                 <div class="container float-left">
-=======
-                <div class="col m12"><h5>Proses Produksi<a href=""><span></span></a><hr></h5></div>
-              </div>
-                <!-- Kode Barang -->
-                <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                   <div class="form-group">
                     <?php
                         $date     = date('Ym');

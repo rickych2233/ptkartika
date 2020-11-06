@@ -29,27 +29,18 @@
               <!-- Nomor Nota -->
               @foreach($dataprosesproduksi as $row)
                 @if($temp == $row->nonotaPP)
-<<<<<<< HEAD
                 <div class="container float-left">
-=======
-                <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                   <div class="form-group">
                     <label>Nomor Nota :</label>
                     {{Form::text('txtupnonoPP', $row->nonotaPP, ['id'=>'txtupnonoPP', 'readonly'=>'readonly','class'=>'form-control'])}}
                   </div> 
                 </div>
                 <!-- Tanggal Produksi -->
-<<<<<<< HEAD
                 <div class="container float-left">
-=======
-                <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                   <div class="form-group">
                     <label>Tanggal Proses Produksi :</label>
                     {{Form::text('txttglupPP', $row->tglPP, ['id'=>'txttglupPP', 'readonly'=>'readonly','class'=>'form-control'])}}
                   </div> 
-<<<<<<< HEAD
                 </div>
                 <!-- Kode Barang -->
                 <div class="container float-left">
@@ -73,31 +64,6 @@
                 {{Form::submit('Update',['name'=>'btnupdateDPP','id'=>'btnupdateDPP','class'=>'btn btn-primary btn-sm'])}}
                 {{ Form::submit('cancel',['name'=>'btncancels','id'=>'btncancels','class'=>'btn btn-warning btn-sm']) }}
                 </div>
-=======
-                </div>
-                <!-- Kode Barang -->
-                <div class="container">
-                  <div class="form-group">
-                    <label>Kode Barang :</label>
-                    {{Form::text('txtupkodebarangPP', $row->kodebarang, ['id'=>'txtupkodebarangPP','class'=>'form-control'])}}
-                  </div> 
-                </div>
-                <!-- Qty Produksi -->
-                <div class="container">
-                  <div class="form-group">
-                    <label>Qty Proses Produksi :</label>
-                    {{Form::text('txtqtyupPP', $row->qtyhasilPP, ['id'=>'txtqtyupPP','class'=>'form-control'])}}
-                  </div> 
-                </div>
-                @endif
-              @endforeach
-              <!-- Tombol Submit -->
-              <div class="row">
-                <div class=" col m8">
-                {{Form::submit('Update',['name'=>'btnupdateDPP','id'=>'btnupdateDPP','class'=>'btn waves-light btn-medium'])}}
-                {{ Form::submit('cancel',['name'=>'btncancels','id'=>'btncancels','class'=>'btn waves-light btn-medium red']) }}
-                </div>
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
               </div>
           </div>
         <div>

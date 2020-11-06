@@ -6,42 +6,22 @@
     $idx = 0;
     $arraybulan = array('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
     $tempchart2['kodesupplier'] = [];
-<<<<<<< HEAD
-    $tempchart2['jumlah']= [];  
+    $tempchart2['jumlah']= []; 
     $tempchart3['kodebarang'] = [];
     $tempchart3['qtyhasilPP'] = [];
 ?> 
-=======
-    $tempchart2['jumlah']= [];   
-?>
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
 @endsection
 @section('content')
 
   <!-- INI MENU UTAMA-->
   {{ Form::open(array('url' => 'savekategoribarang')) }}
     <div class="container">
-<<<<<<< HEAD
         <span class="col-sm-6">
             <div class="card">
                 <div class="card-body">
                     <h5>Laporan Bahan Mentah Yang Dikirim Supplier</h5>
                     <div class="table-responsive" style="position: relative; height:50%; width:100%">
                         @php($idx = 0)
-=======
-        <div class="row col-5">
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        {{ Form::select('txtfilter2', $arraybulan, null, ['id'=>'txtfilter2', 'class'=>'validate browser-default','onchange'=>"bulan()"]) }}
-                        <canvas id="userChart2" width="100" height="100" class="userChart2">test</canvas>
-                    </div>  
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                         @foreach($databarang as $rows)
                             @if($rows->kodekategoribarang != "KB001")
                                 @php($tempchart1['namabarang'][$idx]    = $rows->namabarang)
@@ -52,7 +32,6 @@
                         <canvas id="userChart" class="userChart">test</canvas>
                     </div>  
                 </div>
-<<<<<<< HEAD
             </div>
         </span>
         <span class="col-sm-1">
@@ -86,19 +65,11 @@
                 </div>
             </div>
         </span>
-=======
-            </div>
-        </div>
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
     </div>
 {{ Form::close() }}
 @endsection
 @section('scripts')
 @endsection
-<<<<<<< HEAD
-=======
-  <script type="text/javascript" src="{{ URL::asset('js/chart.js') }}"></script>
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
 
 <script>
   var myurl = "<?php echo URL::to('/'); ?>";
