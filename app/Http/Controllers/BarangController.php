@@ -31,11 +31,8 @@ class BarangController extends Controller
 		$data['databarang'] 		= $getbarang->all();
 		$getpenerimaanbb 			= new penerimaanbb();
 		$data['datapenerimaanbb'] 	= $getpenerimaanbb->all();
-<<<<<<< HEAD
 		$getproseproduksi			= new prosesproduksi();
 		$data['dataprosesproduksi']	= $getproseproduksi->all();
-=======
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
 		return view("laporanbahanmentah")->with($data);
 	}
 
@@ -45,7 +42,6 @@ class BarangController extends Controller
 		$data 			= $getsupplier->gettglpenerimaan($tglpenerimaan);
 		echo json_encode($data);
 	}
-<<<<<<< HEAD
 	
 	public function getproduksiperperiode(Request $request){
 		$getsupplier 	= new prosesproduksi();
@@ -54,8 +50,6 @@ class BarangController extends Controller
 		$data 			= $getsupplier->gettampilproduksi($tgldari,$tglsampai);
 		echo json_encode($data);
 	}
-=======
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
 
 	public function getkategoribarang() {
 		$getkategoribarang 					= new kategoribarang();
