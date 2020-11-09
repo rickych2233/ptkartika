@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class detailpenjualanbj extends Model
 {
@@ -28,6 +29,16 @@ class detailpenjualanbj extends Model
     public function getdetail($namabarang)
     {
         $data = detailpenjualanbj::select("detailpenjualanbj.*")->where("nonotaDBJ","=",$namabarang)->get();
+        return $data;
+    }
+    
+    public function getproduksi($tahunperbandingan)
+    {
+        $data = DB::table('detailpenjualanbj')
+        ->join('penjualanbj','penjualanbj.nonotapenjualanBJ','=','detailpenjualanbj.nonotaBJ')
+        ->select('kodebarang','qtyDBJ')
+        ->whereYear('penjualanbj.tglpembelianBJ', '=', $tahunperbandingan)
+        ->get();
         return $data;
     }
 }

@@ -29,4 +29,12 @@ class prosesproduksi extends Model
         ->get();
         return $data;
     }
+
+    public function getproduksi($bulanproduksi)
+    {
+        $data = prosesproduksi::select(DB::raw("kodebarang,qtyhasilPP"))
+        ->whereMonth("tglPP",'=',$bulanproduksi)
+        ->get();
+        return $data;
+    }
 }

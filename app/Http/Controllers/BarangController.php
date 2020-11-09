@@ -13,6 +13,9 @@ use App\prosesproduksi;
 use App\detailprosesproduksi;
 use App\user;
 use App\penerimaanbb;
+use App\returpengiriman;
+use App\penjualanbj;
+use App\detailpenjualanbj;
 
 class BarangController extends Controller
 {	//kategoribarang
@@ -33,6 +36,10 @@ class BarangController extends Controller
 		$data['datapenerimaanbb'] 	= $getpenerimaanbb->all();
 		$getproseproduksi			= new prosesproduksi();
 		$data['dataprosesproduksi']	= $getproseproduksi->all();
+		$getreturpengiriman			= new returpengiriman();
+		$data['datareturpengiriman']= $getreturpengiriman->all();
+		$getpiutangcustomer			= new detailpenjualanbj();
+		$data['datapiutangcustomer']= $getpiutangcustomer->all();
 		return view("laporanbahanmentah")->with($data);
 	}
 
@@ -49,6 +56,35 @@ class BarangController extends Controller
 		$tglsampai 		= $request->tglsampai;
 		$data 			= $getsupplier->gettampilproduksi($tgldari,$tglsampai);
 		echo json_encode($data);
+	}
+
+	public function getreturbarang(Request $request){
+		$getretur 		= new returpengiriman();
+		$tahuningin 	= $request->tahuningin;
+		$data 			= $getretur->gettampilretur($tahuningin);
+		echo json_encode($data);
+	}
+
+	public function getpiutangcustomer(Request $request){
+		$getpiutang 		= new penjualanbj();
+		$tahuncustomer 		= $request->tahuncustomer;
+		$data 				= $getpiutang->gettampilpiutang($tahuncustomer);
+		echo json_encode($data);
+	}
+
+	public function getbulanproduksi(Request $request){
+		$getprosesproduksi 		= new prosesproduksi();
+		$bulanproduksi 			= $request->bulanproduksi;
+		$data 					= $getprosesproduksi->getproduksi($bulanproduksi);
+		echo json_encode($data);
+	}
+
+	public function getperbandingan(Request $request){
+		$getdetailpenjualan 		= new detailpenjualanbj();
+		$tahunperbandingan 			= $request->tahunperbandingan;
+		$data 						= $getdetailpenjualan->getproduksi($tahunperbandingan);
+		echo json_encode($data);
+		// echo $data;
 	}
 
 	public function getkategoribarang() {

@@ -64,6 +64,18 @@ Route::get('barang', [
 Route::get('getproduksiperperiode', [
 	'uses' => 'BarangController@getproduksiperperiode'
 ]);
+Route::get('getreturbarang', [
+	'uses' => 'BarangController@getreturbarang'
+]);
+Route::get('getpiutangcustomer', [
+	'uses' => 'BarangController@getpiutangcustomer'
+]);
+Route::get('getbulanproduksi', [
+	'uses' => 'BarangController@getbulanproduksi'
+]);
+Route::get('getperbandingan', [
+	'uses' => 'BarangController@getperbandingan'
+]);
 //prosesproduksi
 Route::get('addtocart/{kode}',[
     'uses' => 'BarangController@addtocart'

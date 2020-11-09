@@ -105,7 +105,6 @@
                     {{Form::text('txtPegawaihandphone', '', ['id'=>'txtPegawaihandphone','','class'=>'validate'])}}
                 </div>
             </div>
-           
             <!-- Tombol Submit -->
             <div class="container float-left">
                 <div class=" col m6">

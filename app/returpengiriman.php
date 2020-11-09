@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class returpengiriman extends Model
 {
@@ -20,5 +21,14 @@ class returpengiriman extends Model
         $insertuser->keterangan            = $txtketerangan;
         $insertuser->nonotapengirimanB     = $txtnonotapengirimanB;
         $insertuser->save(); 
+    }
+
+    public function gettampilretur($tahuningin)
+    {
+        $data = returpengiriman::select(DB::raw("kodebarang,jumlahbarang"))
+        ->whereYear('tglretur', '=', $tahuningin)
+        ->get();
+        // dd($data);
+        return $data;
     }
 }

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class penjualanbj extends Model
 {
@@ -22,4 +23,14 @@ class penjualanbj extends Model
         $insertuser->save(); 
     }
     
+    public function gettampilpiutang($tahuncustomer)
+    {
+        $data = DB::table('penjualanbj')
+        ->join('detailpenjualanbj','penjualanbj.nonotapenjualanBJ','=','detailpenjualanbj.nonotaBJ')
+        ->select('kodebarang','grandtotalDBJ')
+        ->whereYear('penjualanbj.tglpembelianBJ', '=', $tahuncustomer)
+        ->where('penjualanbj.statusBJ','=','LUNAS')
+        ->get();
+        return $data;
+    }
 }

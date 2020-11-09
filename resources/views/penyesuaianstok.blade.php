@@ -86,7 +86,6 @@
               {{Form::submit('Simpan History',['name'=>'btnInsert','id'=>'btnInsert','class'=>'btn btn-success btn-xl'])}}
               <input  type='submit' class='btn btn-warning btn-xl' name='btncancels' id='btncancels' value='Cancel'>
             </div>
-            </div>
           </div>
 
         </div>

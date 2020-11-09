@@ -15,11 +15,7 @@ class TriggerDbb extends Migration
     {
         DB::unprepared('CREATE TRIGGER tr_detail_penerimaanbb AFTER INSERT ON detailpenerimaanbb FOR EACH ROW
         BEGIN
-<<<<<<< HEAD
             update barang set stok=stok+NEW.qtypenerimaanBB where barang.kodebarang=NEW.kodebarang;
-=======
-            update barang set stok=stok+NEW.qtypenerimaanBB where barang.kodebarang=NEW.namabarangDPBB;
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
         END');
     }
 

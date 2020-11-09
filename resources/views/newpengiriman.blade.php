@@ -38,31 +38,19 @@
                     {{Form::text('txtnonotapengirimanB',$kodejum, ['id'=>'txtnonotapengirimanB', 'readonly'=>'readonly', 'class'=>'form-control'])}}
                   </div>
                 </div>
-<<<<<<< HEAD
                 <div class="container float-left">
-=======
-                <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                   <div class="form-group">
                     <label>Tanggal Pengiriman :</label>
                     {{Form::date('txttglpengirimanB', date('Y-m-d'), ['id'=>'txttglpengirimanB', 'class'=>'form-control'])}}
                   </div>
                 </div>
-<<<<<<< HEAD
                 <div class="container float-left">
-=======
-                <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                   <div class="form-group">
                     <label>Nama Toko :</label>
                     {{ Form::select('txtkodecustomer', $getcust, null, ['id'=>'txtkodecustomer', 'class'=>'form-control']) }}
                   </div>
                 </div>
-<<<<<<< HEAD
                 <div class="container float-left">
-=======
-                <div class="container">
->>>>>>> 711ca42d7774825dc0471cb4587cc658b1873098
                   <div class="form-group">
                     <label>Nama Sales Penjualan :</label>
                     {{ Form::select('txtusername', $getkode, null, ['id'=>'txtusername', 'class'=>'form-control']) }}
